@@ -1,6 +1,8 @@
 package ru.progwards.java1.lessons.basics;
 
 public class ReverseDigits {
+    //которая получает параметром number
+    // -  двадцати трёх значное положительное число,
     public static int reverseDigits(int number) {
         int n1 = 0;
         while (number != 0) {
@@ -11,7 +13,7 @@ public class ReverseDigits {
     }
 
     public static void main(String[] args) {
-        System.out.println("reverse = " + reverseDigits(38625));
+        System.out.println("reverse = " + reverseDigits(383625));
     }
 
 }
