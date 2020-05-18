@@ -4,10 +4,10 @@ public class AccuracyDoubleFloat {
     //объём шара 4/3πR3.     6.3712e3
     //------------        3.1 Реализовать функцию которая будет возвращать
     // объём шара с радиусом radius и основана на типе double.
-    public static double radius;
+    //public static double radius;
     public static float radiusFl;
     public static double volumeBallDouble;
-    public static float volumeBallFloat;
+    public static float  volumeBallFloat;
     public static double calculateAccuracy;
     public static double volumeBallDouble(double radius){
         volumeBallDouble = Math.pow(radius, 3.0d) * 4.0d/3.0d * 3.14d;
