@@ -40,9 +40,12 @@ public class AccuracyDoubleFloat {
 
     public static void main(String[] args) {
 
-        volumeBallDouble(6.3712e3);
+        volumeBallDouble(6.3712e3d);
+        System.out.println("volumeBallDouble " +" = " + volumeBallDouble + " km.3");
         volumeBallFloat(6.3712e3f);
+        System.out.println("volumeBallFloat " + radiusFl +" = " + volumeBallFloat + " km.3");
         calculateAccuracy(6.3712e3d);
+        System.out.println("calculateAccuracy" + " = " + calculateAccuracy + " km.3");
 
 
     }
