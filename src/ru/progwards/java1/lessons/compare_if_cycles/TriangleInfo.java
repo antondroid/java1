@@ -2,13 +2,7 @@ package ru.progwards.java1.lessons.compare_if_cycles;
 
 public class TriangleInfo {
 //
-//      2.2 Реализовать функцию
-//    public static boolean isRightTriangle(int a, int b, int c)
-//    , которая возвращает true, если треугольник со
-//    сторонами a, b, c является прямоугольным.
-//    Из геометрии известно, что для прямоугольного треугольника
-//    выполняется теорема Пифагора
-//    (сумма квадратов катетов равна квадрату гипотенузы).
+
 //      2.3 Реализовать функцию
 //    public static boolean isIsoscelesTriangle(int a, int b, int c)
 //    , которая возвращает true, если треугольник со сторонами a, b, c
@@ -35,8 +29,34 @@ public class TriangleInfo {
 
     }
 
+    //      2.2 Реализовать функцию
+//    public static boolean isRightTriangle(int a, int b, int c)
+//    , которая возвращает true, если треугольник со
+//    сторонами a, b, c является прямоугольным.
+//    Из геометрии известно, что для прямоугольного треугольника
+//    выполняется теорема Пифагора
+//    (сумма квадратов катетов равна квадрату гипотенузы).
+    public static boolean isRightTriangle(int a, int b, int c)
+    {   boolean isSquar=false;
+        int asq,bsq,csq; //square power
+        asq = (int) Math.pow(a, 2);
+        bsq = (int) Math.pow(b, 2);
+        csq = (int) Math.pow(c, 2);
+        if (  (asq == (bsq + csq) ) | (bsq == (asq + csq)) | (csq == (asq + bsq))  )
+        {
+            isSquar = true;
+        }
+        else
+        {
+            isSquar = false;
+        }
+
+
+        return isSquar;
+    }
+
         public static void main(String[] args) {
-            System.out.println( "isTriangle " + isTriangle(2,2,8));
+            System.out.println( "isSquar " + isRightTriangle(5,6,8));
 
     }
 }
