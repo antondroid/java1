@@ -3,11 +3,7 @@ package ru.progwards.java1.lessons.compare_if_cycles;
 public class TriangleInfo {
 //
 
-//      2.3 Реализовать функцию
-//    public static boolean isIsoscelesTriangle(int a, int b, int c)
-//    , которая возвращает true, если треугольник со сторонами a, b, c
-//    является равнобедренным. Из геометрии известно, что
-//    в равнобедренном треугольнике есть две равные стороны.
+
 
 //    2.1 Реализовать функцию
 //    public static boolean isTriangle(int a, int b, int c),
@@ -28,7 +24,7 @@ public class TriangleInfo {
         return isTriangl;
 
     }
-
+//-------------------------------------------------------------------
     //      2.2 Реализовать функцию
 //    public static boolean isRightTriangle(int a, int b, int c)
 //    , которая возвращает true, если треугольник со
@@ -54,9 +50,32 @@ public class TriangleInfo {
 
         return isSquar;
     }
+//--------------------------------------------------------------------------
+    //      2.3 Реализовать функцию
+//    public static boolean isIsoscelesTriangle(int a, int b, int c)
+//    , которая возвращает true, если треугольник со сторонами a, b, c
+//    является равнобедренным. Из геометрии известно, что
+//    в равнобедренном треугольнике есть две равные стороны.
+
+    public static boolean isIsoscelesTriangle(int a, int b, int c)
+    {
+        boolean iso=false;
+
+        if (  (a == b) | (b == c) | (c == a)  )
+        {
+            iso = true;
+        }
+        else
+        {
+            iso = false;
+        }
+
+        return iso;
+    }
+
 
         public static void main(String[] args) {
-            System.out.println( "isSquar " + isRightTriangle(5,6,8));
+            System.out.println( "iso " + isIsoscelesTriangle(5,8,9));
 
     }
 }
