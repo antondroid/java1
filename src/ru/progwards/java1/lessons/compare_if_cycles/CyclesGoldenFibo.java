@@ -42,13 +42,16 @@ public class CyclesGoldenFibo {
 //
 public static boolean containsDigit(int number, int digit)
 {
-    int n1 = 0;
+    int n1 = number;
     int n2 =0;
     boolean contain=false;
-    while (number != 0) {
-        if ((number % 10)==digit)  //528%10==8
+    while (number > 0) {
+        n2=number%10;
+        if (n2==digit)  //528%10==8
         {
             contain=true;
+            break;
+
         }
         else
         {
@@ -58,20 +61,11 @@ public static boolean containsDigit(int number, int digit)
         //number /= 10; // 3/10==0
     }
 
-    System.out.println("number "+number+ " contain "+digit);
+    System.out.println("number "+n1+ " contain "+digit);
     return contain;
 }
 
-
-
-
-
-
-
     public static void main(String[] args) {
-        System.out.println("number included" + containsDigit(123, 2));
-
-
-
+        System.out.println("number included "  + containsDigit(1234567698, 8));
     }
 }
