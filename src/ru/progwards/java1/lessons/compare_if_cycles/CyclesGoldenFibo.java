@@ -131,6 +131,17 @@ public static int fiboNumber(int n)
 //------------------------------------------------------------------------------------
     //static int a,b,c;
     public static void main(String[] args) {
+// вывести на консоль, используя цикл, 15 первых чисел Фибоначчи.
+       int n=1;
+       int number=0;
+       while (n<16)
+       {
+           fiboNumber(n);
+           n++;
+           System.out.println(n);
+            System.out.println(number);
+           System.out.println(fiboNumber(n));
+       }
        System.out.println("numjjjjber included  0"  + containsDigit(123450698, 0));
        System.out.println("золотой треугольник это   " + isGoldenTriangle(5,5,3));
        // System.out.println(a,b,c);
