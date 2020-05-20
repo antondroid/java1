@@ -22,7 +22,7 @@ public class CyclesGoldenFibo {
     int n1 = number;
     int n2 =0;
     boolean contain=false;
-    while (number > 0) {
+    while (number >= 0) {
         System.out.println("номер " + number);
         n2=number%10;
         if (n2==digit)  //528%10==8
@@ -112,6 +112,7 @@ public static int fiboNumber(int n)
     double c1= (double)c;
     double  l = 1.61703d; //low lim
     double h =1.61903d;   // high lim
+    double r1 = a1/c1;
     if (  ( (a == b) & ( (a1/c1)>l ) & ( (a1/c1)<h )  ) |   ( (a == c) & ( (a1/b1)>l ) & ( (a1/b1)<h )   ) | ( (c == b) & ( (b1/a1)>l ) & ( (b1/a1)<h )  )  )
     {
         isGoldTri = true;
@@ -132,7 +133,7 @@ public static int fiboNumber(int n)
     //static int a,b,c;
     public static void main(String[] args) {
 // вывести на консоль, используя цикл, 15 первых чисел Фибоначчи.
-       int n=1;
+       /*int n=1;
        int number=0;
        while (n<16)
        {
@@ -141,9 +142,9 @@ public static int fiboNumber(int n)
            System.out.println(n);
             System.out.println(number);
            System.out.println(fiboNumber(n));
-       }
-       System.out.println("numjjjjber included  0"  + containsDigit(123450698, 0));
-       System.out.println("золотой треугольник это   " + isGoldenTriangle(5,5,3));
+       }*/
+      System.out.println("numjjjjber included  0"  + containsDigit(0, 0));
+       //System.out.println("золотой треугольник это   " + isGoldenTriangle(13,13,21));
        // System.out.println(a,b,c);
        // System.out.println("number fibo is "  + fiboNumber(10));
      //Числа Фибоначчи 1, 1, 2, 3, 5, 8, 13, 21, 34, 55, 89, 144, ...
