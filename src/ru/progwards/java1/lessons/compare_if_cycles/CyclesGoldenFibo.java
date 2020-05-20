@@ -4,7 +4,7 @@ package ru.progwards.java1.lessons.compare_if_cycles;
 import static ru.progwards.java1.lessons.compare_if_cycles.TriangleInfo.isIsoscelesTriangle;
 
 public class CyclesGoldenFibo {
-
+//static int a,b,c;
 //3.1 Реализовать функцию
 //public static boolean containsDigit(int number, int digit),
 // которая будет возвращать true, если число number
@@ -23,11 +23,12 @@ public class CyclesGoldenFibo {
     int n2 =0;
     boolean contain=false;
     while (number > 0) {
+        System.out.println("номер " + number);
         n2=number%10;
         if (n2==digit)  //528%10==8
         {
             contain=true;
-            System.out.println(digit);
+            System.out.println("цыфра "+ digit);
             break;
         }
         else
@@ -103,23 +104,22 @@ public static int fiboNumber(int n)
 // Он должен быть равнобедренным и отношение ребра к основанию
 // должно лежать между значениями 1.61703 и 1.61903.
 //-------------------------------------------------------------------------
-    public static boolean isGoldenTriangle(int a, int b, int c)
+    public static <l> boolean isGoldenTriangle(int a, int b, int c)
 {
     boolean isGoldTri=true;
-    double a1= (double)int a;
-    if (  ((a == b)&     ) | (b == c) | (c == a)  )
+    double a1= (double)a;
+    double b1= (double)b;
+    double c1= (double)c;
+    double  l = 1.61703d; //low lim
+    double h =1.61903d;   // high lim
+    if (  ( (a == b) & ( (a1/c1)>l ) & ( (a1/c1)<h )  ) |   ( (a == c) & ( (a1/b1)>l ) & ( (a1/b1)<h )   ) | ( (c == b) & ( (b1/a1)>l ) & ( (b1/a1)<h )  )  )
     {
-        iso = true;
+        isGoldTri = true;
     }
     else
     {
-        iso = false;
+       isGoldTri = false;
     }
-
-    return iso;
-
-
-
     return isGoldTri;
 }
 //----------------------------------------------------------------------------------
@@ -129,8 +129,11 @@ public static int fiboNumber(int n)
 // Золотые треугольники. И если есть, вывести на консоль длины основания
 // и рёбер этих треугольников.
 //------------------------------------------------------------------------------------
+    //static int a,b,c;
     public static void main(String[] args) {
        System.out.println("numjjjjber included  0"  + containsDigit(123450698, 0));
+       System.out.println("золотой треугольник это   " + isGoldenTriangle(5,5,3));
+       // System.out.println(a,b,c);
        // System.out.println("number fibo is "  + fiboNumber(10));
      //Числа Фибоначчи 1, 1, 2, 3, 5, 8, 13, 21, 34, 55, 89, 144, ...
 }
