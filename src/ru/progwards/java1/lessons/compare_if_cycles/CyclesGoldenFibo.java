@@ -98,8 +98,8 @@ public static boolean isGoldenTriangle(int a, int b, int c)
 }
 
     public static void main(String[] args) {
-      //  System.out.println("number included "  + containsDigit(1234567698, 8));
-        System.out.println("number fibo is "  + fiboNumber(10));
+       System.out.println("numjjjjber included "  + containsDigit(123456608, 0));
+       // System.out.println("number fibo is "  + fiboNumber(10));
      //Числа Фибоначчи 1, 1, 2, 3, 5, 8, 13, 21, 34, 55, 89, 144, ...
 }
 
