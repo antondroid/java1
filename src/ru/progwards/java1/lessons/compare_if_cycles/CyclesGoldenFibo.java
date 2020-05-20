@@ -1,8 +1,5 @@
 package ru.progwards.java1.lessons.compare_if_cycles;
-//3.1 Реализовать функцию
-//public static boolean containsDigit(int number, int digit),
-// которая будет возвращать true, если число number содержит цифру digit.
-//
+
 // Теперь проведём исследование. Есть ли у Золотого треугольника связь
 // с числами Фибоначчи. Золотой треугольник это равнобедренный треугольник
 // у которого ребро относится к основанию как 1.61803 (приблизительно),
@@ -38,9 +35,18 @@ package ru.progwards.java1.lessons.compare_if_cycles;
 
 public class CyclesGoldenFibo {
 
+//3.1 Реализовать функцию
+//public static boolean containsDigit(int number, int digit),
+// которая будет возвращать true, если число number
+// содержит цифру digit.
+//
+public static boolean containsDigit(int number, int digit)
+{
 
 
 
+
+}
 
 
 
