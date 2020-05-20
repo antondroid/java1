@@ -40,7 +40,6 @@ public class CyclesGoldenFibo {
 // которая будет возвращать true, если число number
 // содержит цифру digit.
 //
-public static int digit;
 public static boolean containsDigit(int number, int digit)
 {
     int n1 = number;
@@ -58,11 +57,11 @@ public static boolean containsDigit(int number, int digit)
             number /= 10;   //drop last dig
         }
     }
-     System.out.println("number "+n1+ " contain "+digit);
+    //System.out.println("number "+n1+ " contain "+digit);
     return contain;
 }
 
     public static void main(String[] args) {
-        System.out.println("number included " + digit + containsDigit(1234567698, 8));
+        System.out.println("number included "  + containsDigit(1234567698, 8));
     }
 }
