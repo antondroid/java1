@@ -1,9 +1,7 @@
 package ru.progwards.java1.lessons.compare_if_cycles;
 
 
-
-
-
+import static ru.progwards.java1.lessons.compare_if_cycles.TriangleInfo.isIsoscelesTriangle;
 
 public class CyclesGoldenFibo {
 
@@ -11,9 +9,16 @@ public class CyclesGoldenFibo {
 //public static boolean containsDigit(int number, int digit),
 // которая будет возвращать true, если число number
 // содержит цифру digit.
-//
-public static boolean containsDigit(int number, int digit)
-{
+//----------------------------------review--------------------------
+  /*  OK: Тест "Тест containsDigit" пройден успешно.
+    ERROR: Тест "Тест containsDigit с нулями" не пройден.
+    Проверка containsDigit() expected:true but was:false
+    OK: Тест "Тест fiboNumber" пройден успешно.
+    ERROR: Тест "Тест isGoldenTriangle" не пройден.
+    Проверка isGoldenTriangle() expected:true but was:false*/
+
+    public static boolean containsDigit(int number, int digit)
+    {
     int n1 = number;
     int n2 =0;
     boolean contain=false;
@@ -22,6 +27,7 @@ public static boolean containsDigit(int number, int digit)
         if (n2==digit)  //528%10==8
         {
             contain=true;
+            System.out.println(digit);
             break;
         }
         else
@@ -40,6 +46,9 @@ public static boolean containsDigit(int number, int digit)
 // Числа Фибоначчи это ряд чисел 1, 1, 2, 3, 5, 8, 13, 21, 34, 55, 89, 144, ...
 // в котором первые два элемента равны 1, а каждый следующий
 // равен сумме двух предыдущих.
+//-----------------------reviw-------------------------------------------------
+/*    ERROR: Тест "Тест isGoldenTriangle" не пройден.
+    Проверка isGoldenTriangle() expected:true but was:false */
 //
 public static int fiboNumber(int n)
 {
@@ -89,16 +98,39 @@ public static int fiboNumber(int n)
 // Если всё получилось, посмотрите на консоль и сделайте вывод:
 // есть ли связь между числами Фибоначчи и Золотыми треугольниками.
 //----------------------------------------------------------------------------------
-public static boolean isGoldenTriangle(int a, int b, int c)
+// которая будет возвращать true, если треугольник
+// со сторонами a, b, c является Золотым. Определим критерии.
+// Он должен быть равнобедренным и отношение ребра к основанию
+// должно лежать между значениями 1.61703 и 1.61903.
+//-------------------------------------------------------------------------
+    public static boolean isGoldenTriangle(int a, int b, int c)
 {
-    boolean isGoldTri=false;
+    boolean isGoldTri=true;
+    double a1= (double)int a;
+    if (  ((a == b)&     ) | (b == c) | (c == a)  )
+    {
+        iso = true;
+    }
+    else
+    {
+        iso = false;
+    }
+
+    return iso;
+
 
 
     return isGoldTri;
 }
-
+//----------------------------------------------------------------------------------
+// вывести на консоль, используя цикл, 15 первых чисел Фибоначчи.
+// После этого, используя вложенные циклы, определить: есть ли среди треугольников,
+// длины сторон которых являются натуральными числами не превышающими 100,
+// Золотые треугольники. И если есть, вывести на консоль длины основания
+// и рёбер этих треугольников.
+//------------------------------------------------------------------------------------
     public static void main(String[] args) {
-       System.out.println("numjjjjber included "  + containsDigit(123456608, 0));
+       System.out.println("numjjjjber included  0"  + containsDigit(123450698, 0));
        // System.out.println("number fibo is "  + fiboNumber(10));
      //Числа Фибоначчи 1, 1, 2, 3, 5, 8, 13, 21, 34, 55, 89, 144, ...
 }
