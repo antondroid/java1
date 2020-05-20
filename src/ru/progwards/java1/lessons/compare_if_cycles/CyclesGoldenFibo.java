@@ -116,10 +116,10 @@ public static int fiboNumber(int n)
     double r1 = c1/a1;
     if ((r1>l)&(r1<h))
     {
-        System.out.println(" this is golden ratio " + a + " to " + c+ " ratio " +r1);
+        //System.out.println(" this is golden ratio " + a + " to " + c+ " ratio " +r1);
     }
     else {
-        System.out.println(" this is bad ratio " + a + " to " + c +" ratio "  +r1);
+        //System.out.println(" this is bad ratio " + a + " to " + c +" ratio "  +r1);
         }
     if (  ( (a == b) & ( (c1/a1)>l ) & ( (c1/a1)<h )  ) |   ( (a == c) & ( (a1/b1)>l ) & ( (a1/b1)<h )   ) | ( (c == b) & ( (a1/b1)>l ) & ( (a1/b1)<h )  )  )
     {
