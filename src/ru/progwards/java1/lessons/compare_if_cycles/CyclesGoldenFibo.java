@@ -29,7 +29,8 @@ public class CyclesGoldenFibo {
         {
             contain=true;
            // System.out.println("цыфра "+ digit);
-            break;
+            return contain;
+            //break;
         }
         else
         {
@@ -143,10 +144,10 @@ public static int fiboNumber(int n)
             System.out.println(number);
            System.out.println(fiboNumber(n));
        }*/
-      System.out.println("number included  0"  + containsDigit(0, 0));
-       System.out.println("золотой треугольник это   " + isGoldenTriangle(13,13,21));
+      System.out.println("number included  0  "  + containsDigit(0, 0));
+       //System.out.println("золотой треугольник это   " + isGoldenTriangle(13,13,21));
        //System.out.println(a,b,c);
-        System.out.println("number fibo is "  + fiboNumber(10));
+       // System.out.println("number fibo is "  + fiboNumber(10));
      //Числа Фибоначчи 1, 1, 2, 3, 5, 8, 13, 21, 34, 55, 89, 144, ...
 }
 
