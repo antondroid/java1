@@ -29,8 +29,8 @@ public class CyclesGoldenFibo {
         {
             contain=true;
            // System.out.println("цыфра "+ digit);
-            return contain;
-            //break;
+
+            break;
         }
         else
         {
@@ -48,7 +48,7 @@ public class CyclesGoldenFibo {
 // Числа Фибоначчи это ряд чисел 1, 1, 2, 3, 5, 8, 13, 21, 34, 55, 89, 144, ...
 // в котором первые два элемента равны 1, а каждый следующий
 // равен сумме двух предыдущих.
-//-----------------------reviw-------------------------------------------------
+//----------------------- review -------------------------------------------------
 /*    ERROR: Тест "Тест isGoldenTriangle" не пройден.
     Проверка isGoldenTriangle() expected:true but was:false */
 //
@@ -105,16 +105,23 @@ public static int fiboNumber(int n)
 // Он должен быть равнобедренным и отношение ребра к основанию
 // должно лежать между значениями 1.61703 и 1.61903.
 //-------------------------------------------------------------------------
-    public static <l> boolean isGoldenTriangle(int a, int b, int c)
+    public static boolean isGoldenTriangle(int a, int b, int c)
 {
-    boolean isGoldTri=true;
+    boolean isGoldTri;
     double a1= (double)a;
     double b1= (double)b;
     double c1= (double)c;
     double  l = 1.61703d; //low lim
     double h =1.61903d;   // high lim
-    double r1 = a1/c1;
-    if (  ( (a == b) & ( (a1/c1)>l ) & ( (a1/c1)<h )  ) |   ( (a == c) & ( (a1/b1)>l ) & ( (a1/b1)<h )   ) | ( (c == b) & ( (b1/a1)>l ) & ( (b1/a1)<h )  )  )
+    double r1 = c1/a1;
+    if ((r1>l)&(r1<h))
+    {
+        System.out.println(" this is golden ratio " + a + " to " + c+ " ratio " +r1);
+    }
+    else {
+        System.out.println(" this is bad ratio " + a + " to " + c +" ratio "  +r1);
+        }
+    if (  ( (a == b) & ( (c1/a1)>l ) & ( (c1/a1)<h )  ) |   ( (a == c) & ( (a1/b1)>l ) & ( (a1/b1)<h )   ) | ( (c == b) & ( (a1/b1)>l ) & ( (a1/b1)<h )  )  )
     {
         isGoldTri = true;
     }
@@ -144,11 +151,11 @@ public static int fiboNumber(int n)
             System.out.println(number);
            System.out.println(fiboNumber(n));
        }*/
-      System.out.println("number included  0  "  + containsDigit(0, 0));
-       //System.out.println("золотой треугольник это   " + isGoldenTriangle(13,13,21));
-       //System.out.println(a,b,c);
-       // System.out.println("number fibo is "  + fiboNumber(10));
-     //Числа Фибоначчи 1, 1, 2, 3, 5, 8, 13, 21, 34, 55, 89, 144, ...
+        System.out.println("number included  0  "  + containsDigit(0, 0));
+        System.out.println("golden triangle   " + isGoldenTriangle(21,21,34));
+        //System.out.println(a,b,c);
+        System.out.println("number fibo is "  + fiboNumber(10));
+        //Числа Фибоначчи 1, 1, 2, 3, 5, 8, 13, 21, 34, 55, 89, 144, ...
 }
 
 
