@@ -23,12 +23,12 @@ public class CyclesGoldenFibo {
     int n2 =0;
     boolean contain=false;
     while (number >= 0) {
-        System.out.println("номер " + number);
+        //System.out.println("номер " + number);
         n2=number%10;
         if (n2==digit)  //528%10==8
         {
             contain=true;
-            System.out.println("цыфра "+ digit);
+           // System.out.println("цыфра "+ digit);
             break;
         }
         else
