@@ -16,7 +16,7 @@ public class CyclesGoldenFibo {
     OK: Тест "Тест fiboNumber" пройден успешно.
     ERROR: Тест "Тест isGoldenTriangle" не пройден.
     Проверка isGoldenTriangle() expected:true but was:false*/
-
+/*
     public static boolean containsDigit(int number, int digit)
     {
     int n1 = number;
@@ -40,6 +40,8 @@ public class CyclesGoldenFibo {
     //System.out.println("number "+n1+ " contain "+digit);
     return contain;
 }
+
+ */
 //--------------------------------------------------------------------
     //3.2 Реализовать, используя любой цикл, функцию
 //public static int fiboNumber(int n), которая будет возвращать
@@ -151,7 +153,7 @@ public static int fiboNumber(int n)
             System.out.println(number);
            System.out.println(fiboNumber(n));
        }*/
-        System.out.println("number included  0  "  + containsDigit(0, 0));
+        //System.out.println("number included  0  "  + containsDigit(100000, 0));
         System.out.println("golden triangle   " + isGoldenTriangle(21,21,34));
         //System.out.println(a,b,c);
         System.out.println("number fibo is "  + fiboNumber(10));
