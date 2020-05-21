@@ -16,28 +16,29 @@ public class CyclesGoldenFibo {
     OK: Тест "Тест fiboNumber" пройден успешно.
     ERROR: Тест "Тест isGoldenTriangle" не пройден.
     Проверка isGoldenTriangle() expected:true but was:false*/
-
+    static int number =1199; static int digit=1;
     public static boolean containsDigit(int number, int digit)
     {
     int n1 = number;
     int n2 =0;
     boolean contain=false;
-    if (n1==0) contain=true;
-    while (n1 >0) {
-        //System.out.println("номер " + number);
-        n2=n1%10;
-        if (n2==digit)  //528%10==8
+    if ((number==0)&(digit==0)) {contain=true;}
+    else
         {
-            contain=true;
-           // System.out.println("цыфра "+ digit);
+            while (n1 > 0) {
+                //System.out.println("номер " + number);
+                n2 = n1 % 10;
+                if (n2 == digit)  //528%10==8
+                {
+                    contain = true;
+                    // System.out.println("цыфра "+ digit);
 
-            break;
+                    break;
+                } else {
+                    n1 /= 10;   //drop last dig
+                }
+            }
         }
-        else
-        {
-            n1 /= 10;   //drop last dig
-        }
-    }
     //System.out.println("number "+n1+ " contain "+digit);
     return contain;
 }
@@ -108,23 +109,27 @@ public static int fiboNumber(int n)
 // Он должен быть равнобедренным и отношение ребра к основанию
 // должно лежать между значениями 1.61703 и 1.61903.
 //-------------------------------------------------------------------------
+//     ряд чисел 1, 1, 2, 3, 5, 8, 13, 21, 34, 55, 89, 144,
+//-------------------------------------------------------------------------
+    static int a=89,c=55,b=a;
     public static boolean isGoldenTriangle(int a, int b, int c)
 {
     boolean isGoldTri;
-    double a1= (double)a;
-    double b1= (double)b;
-    double c1= (double)c;
+    double a1= a;
+    double b1= b;
+    double c1= c;
     double  l = 1.61703d; //low lim
     double h =1.61903d;   // high lim
-    double r1 = c1/a1;
+    double r1 = a1/c1;
     if ((r1>l)&(r1<h))
     {
-        //System.out.println(" this is golden ratio " + a + " to " + c+ " ratio " +r1);
+        System.out.println(" this is golden ratio " + a + " to " + c+ " ratio " +r1);
     }
     else {
-        //System.out.println(" this is bad ratio " + a + " to " + c +" ratio "  +r1);
+        System.out.println(" this is bad ratio " + a + " to " + c +" ratio "  +r1);
         }
-    if (  ( (a == b) & ( (c1/a1)>l ) & ( (c1/a1)<h )  ) |   ( (a == c) & ( (a1/b1)>l ) & ( (a1/b1)<h )   ) | ( (c == b) & ( (a1/b1)>l ) & ( (a1/b1)<h )  )  )
+    //if (  ( (a == b) & ( (c1/a1)>l ) & ( (c1/a1)<h )  ) |   ( (a == c) & ( (a1/b1)>l ) & ( (a1/b1)<h )   ) | ( (c == b) & ( (a1/b1)>l ) & ( (a1/b1)<h )  )  )
+    if ( ( (a == b) & ( (a1/c1)>l ) & ( (a1/c1)<h )  ) |   ( (a == c) & ( (a1/b1)>l ) & ( (a1/b1)<h )   ) | ( (c == b) & ( (b1/a1)>l ) & ( (b1/a1)<h )  )  )
     {
         isGoldTri = true;
     }
@@ -154,10 +159,10 @@ public static int fiboNumber(int n)
             System.out.println(number);
            System.out.println(fiboNumber(n));
        }*/
-        System.out.println("number included  0  "  + containsDigit(0000000,0));
-        System.out.println("golden triangle   " + isGoldenTriangle(21,21,34));
+        System.out.println("number " +number + " include digit  "  + digit +" is " + containsDigit(number,digit));
+        System.out.println("golden triangle   " + isGoldenTriangle(a,b,c));
         //System.out.println(a,b,c);
-        System.out.println("number fibo is "  + fiboNumber(10));
+        //System.out.println("number fibo is "  + fiboNumber(10));
         //Числа Фибоначчи 1, 1, 2, 3, 5, 8, 13, 21, 34, 55, 89, 144, ...
 }
 
