@@ -16,9 +16,9 @@ public class CyclesGoldenFibo {
     OK: Тест "Тест fiboNumber" пройден успешно.
     ERROR: Тест "Тест isGoldenTriangle" не пройден.
     Проверка isGoldenTriangle() expected:true but was:false*/
-    static int number =1199; static int digit=1;
-    public static boolean containsDigit(int number, int digit)
-    {
+static int number =0; static int digit=1;
+public static boolean containsDigit(int number, int digit)
+{
     int n1 = number;
     int n2 =0;
     boolean contain=false;
@@ -111,8 +111,8 @@ public static int fiboNumber(int n)
 //-------------------------------------------------------------------------
 //     ряд чисел 1, 1, 2, 3, 5, 8, 13, 21, 34, 55, 89, 144,
 //-------------------------------------------------------------------------
-    static int a=89,c=55,b=a;
-    public static boolean isGoldenTriangle(int a, int b, int c)
+static int a=89,c=55,b=a;
+public static boolean isGoldenTriangle(int a, int b, int c)
 {
     boolean isGoldTri;
     double a1= a;
@@ -139,6 +139,7 @@ public static int fiboNumber(int n)
     }
     return isGoldTri;
 }
+
 //----------------------------------------------------------------------------------
 // вывести на консоль, используя цикл, 15 первых чисел Фибоначчи.
 // После этого, используя вложенные циклы, определить: есть ли среди треугольников,
@@ -147,18 +148,83 @@ public static int fiboNumber(int n)
 // и рёбер этих треугольников.
 //------------------------------------------------------------------------------------
     //static int a,b,c;
-    public static void main(String[] args) {
+    static int n=15;static int m=n-1;
 // вывести на консоль, используя цикл, 15 первых чисел Фибоначчи.
-       /*int n=1;
-       int number=0;
-       while (n<16)
+public static void fiboNumber15(int n,int m)
+{
+    n=1;
+    int cats[] = new int[16];
+       //int number=0;
+       while ((n<16))
        {
            fiboNumber(n);
+           cats[n]=fiboNumber(n);
+           System.out.print(n+" ");
+            //System.out.print(number);
+           System.out.print(fiboNumber(n));
+           System.out.print(" cats "+fiboNumber(n));
+           System.out.println(" base "+fiboNumber(n-1));
+
            n++;
-           System.out.println(n);
-            System.out.println(number);
-           System.out.println(fiboNumber(n));
-       }*/
+       }
+
+}
+
+    /*
+    // После этого, используя вложенные циклы, определить: есть ли среди треугольников,
+    // длины сторон которых являются натуральными числами не превышающими 100,
+    // Золотые треугольники. И если есть, вывести на консоль длины основания
+    // и рёбер этих треугольников.
+    */
+    public static void  fiboGold100 (int n,int m) throws InterruptedException {
+        n=1;m=n-1; int goldquantity=0;
+        int cats[] = new int[16];   //just for you wouldn't think, that i can't do to work with arrays
+        int base[] = new int[16];   //just for you wouldn't think, that i can't do to work with arrays!
+
+        //int number=0;
+        while ((n<16)&&(fiboNumber(n)<100))
+        {
+            fiboNumber(n);
+            cats[n]=fiboNumber(n); //just for you wouldn't think, that i can't do to work with arrays!
+            base[m]=fiboNumber(m); //just for you wouldn't think, that i can't do to work with arrays
+            System.out.print(n+" ");
+            //System.out.print(number);
+            System.out.print(fiboNumber(n));
+            System.out.print(" cats "+fiboNumber(n)); //just for you wouldn't think, that i can't do to work with methods!
+            System.out.print(" cats [n] "+cats[n]);    //just for you wouldn't think, that i can't do to work with methods!
+            System.out.println(" base "+fiboNumber(n-1));
+            //================just for you wouldn't think, that ====================
+            // ======= i can't do to work with methods & arrays together! ==========
+            a=cats[n];b=a;c=fiboNumber(n-1);
+            boolean onemoregold =   isGoldenTriangle(a,b,c);
+            if (onemoregold==true)
+            {
+                goldquantity ++;
+                System.out.println("U have find "  +goldquantity +  " golden triangles   " + isGoldenTriangle(a,b,c));
+                Thread.sleep(5000); // спать 1000 милисекунд.
+
+            }
+
+
+
+            n++;
+        }
+        System.out.println("Congratulations! U r found   " + goldquantity +  " golden triangles   ");
+        Thread.sleep(5000); // спать 1000 милисекунд.
+        System.out.println("U r a billionair now!   ");
+        Thread.sleep(5000); // спать 1000 милисекунд.
+        System.out.println("GAME OVER ");
+        Thread.sleep(10000); // спать 1000 милисекунд.
+
+    }
+
+
+
+
+public static void main(String[] args) throws InterruptedException {
+// вывести на консоль, используя цикл, 15 первых чисел Фибоначчи.
+        fiboNumber15(n,m);
+        fiboGold100(n,m);
         System.out.println("number " +number + " include digit  "  + digit +" is " + containsDigit(number,digit));
         System.out.println("golden triangle   " + isGoldenTriangle(a,b,c));
         //System.out.println(a,b,c);
