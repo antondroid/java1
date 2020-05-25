@@ -33,8 +33,20 @@ I am <AnimalKind>, eat <FoodKind> <CalculateFoodWeight>
 //-----------------------------------------------------------------------------------
  */
 public class Animal {
+ double weight;  //class property
  Animal(){}
+ public Animal(double weight)//конструктор который сохраняет вес животного.
+ {
+   this.weight=weight;
+ }
+  enum AnimalKind {ANIMAL, COW, HAMSTER, DUCK,}
+ public AnimalKind getKind() //Метод: который возвращает вид животного
+ {                           //enum AnimalKind
 
+   switch (AnimalKind)
+  case 1: return AnimalKind.;
+
+ }
 
  public static void main(String[] args) {
 
