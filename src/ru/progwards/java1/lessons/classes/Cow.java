@@ -10,11 +10,15 @@ public double getFoodCoeff(), который должен возвращать 0
  */
 public class Cow extends Animal {
     Cow(){}
-    //1.0----------------------------------------------------------------------
-    public Animal(double weight)//конструктор который сохраняет вес животного.
+    //1.0--------------------------add this because of comp send messages that const in cow must be w/o arguments`
+    // constructor Cow in class ru.progwards.java1.lessons.classes.Cow cannot be applied to given types;
+    // required: no arguments
+    // found: double
+    // --------------------------------------------
+    /*public Animal(double weight)//конструктор который сохраняет вес животного.
     {
         this.weight = weight;
-    }
+    }*/
 //-----------------------------------------------------
 //переопределяющий методы
 // 1.4 public AnimalKind getKind(), который возвращает COW
