@@ -30,8 +30,9 @@ public ComplexNum div(ComplexNum num), деление комплексных ч�
 (a + bi) / (c + di) = (a*c + b*d)/(c*c+d*d) + ((b*c - a*d)/(c*c+d*d))i
  */
 public class ComplexNum {
-    ComplexNum () {}
     int a, b;
+    ComplexNum () {}
+
 //--------------------------------------------------------------
 //3.1 конструктор
 //public ComplexNum(int a, int b), который инициализирует комплексное число
@@ -59,8 +60,11 @@ public String toString()
 //-----------------------------------------------------------
 public ComplexNum add(ComplexNum num)
 {
+    ComplexNum sum = new ComplexNum();
+    sum.a = a + num.a;
+    sum.b = b + num.b;
     //(a + bi) + (c + di) = (a + c) + (b + d)i
-    return num;
+    return sum;
 }
 //-----------------------------------------------------------
 
@@ -71,7 +75,11 @@ public ComplexNum add(ComplexNum num)
 //-----------------------------------------------------------
 public ComplexNum sub(ComplexNum num)
 {
-    return num;
+    ComplexNum dif = new ComplexNum();
+    dif.a=a-num.a;
+    dif.b=b-num.b;
+
+    return dif;
 }
 //-----------------------------------------------------------
 
@@ -83,7 +91,11 @@ public ComplexNum sub(ComplexNum num)
 //-----------------------------------------------------------
 public ComplexNum mul(ComplexNum num)
 {
-    return num;
+    ComplexNum mtpl= new ComplexNum();
+    mtpl.a = a * num.a - b * num.b;
+    mtpl.b = b*num.a+ a*num.b;
+
+    return mtpl;
 }
 //-----------------------------------------------------------
 
@@ -94,7 +106,10 @@ public ComplexNum mul(ComplexNum num)
 //-----------------------------------------------------------
 public ComplexNum div(ComplexNum num)
 {
-    return num;
+
+    ComplexNum divd = new ComplexNum();
+    //divd.a =
+    return divd;
 }
 //-----------------------------------------------------------
 
