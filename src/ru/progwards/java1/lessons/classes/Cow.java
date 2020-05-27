@@ -16,10 +16,10 @@ public class Cow extends Animal {
     // required: no arguments
     // found: double
     // --------------------------------------------
-    /*public Animal(double weight)//конструктор который сохраняет вес животного.
+    public Cow (double weight)//конструктор который сохраняет вес животного.
     {
         this.weight = weight;
-    }*/
+    }
 //-----------------------------------------------------
 //переопределяющий методы
 // 1.4 public AnimalKind getKind(), который возвращает COW
