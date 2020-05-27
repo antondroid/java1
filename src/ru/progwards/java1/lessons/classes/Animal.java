@@ -67,6 +67,8 @@ public class Animal {
                 break;
         }
         return animalKind;
+        //return result;
+
     }
 
     //1.2 -----------------------------------------------------------------

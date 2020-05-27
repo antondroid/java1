@@ -16,8 +16,12 @@ public class Duck extends Animal
 //переопределяющий методы:
 //1.8 public AnimalKind getKind(), который возвращает DUCK.
 //---------------------------------------------------------------------------
-
+@Override
+    public AnimalKind getKind() {
     AnimalKind animalKind = AnimalKind.DUCK;
+    return super.getKind();
+}
+
 //---------------------------------------------------------------------------
 //1.9 public FoodKind getFoodKind(), который возвращает CORN
 //---------------------------------------------------------------------------------

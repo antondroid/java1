@@ -15,9 +15,12 @@ public class Hamster extends Animal{
 // класс Hamster, потомок класса Animal, переопределяющий методы:
 //1.6  public AnimalKind getKind(), который возвращает HAMSTER.
 //-------------------------------------------------------------------------
+@Override
+public AnimalKind getKind() {
+    AnimalKind animalKind = AnimalKind.HAMSTER;
+    return super.getKind();
+}
 
-
-Animal.AnimalKind animalKind = AnimalKind.HAMSTER;
 
 //------------------------------------------------------------------------
 //1.7 public FoodKind getFoodKind(), который возвращает CORN
