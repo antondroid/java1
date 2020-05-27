@@ -33,12 +33,11 @@ I am <AnimalKind>, eat <FoodKind> <CalculateFoodWeight>
 //-----------------------------------------------------------------------------------
  */
 public class Animal {
+    Animal() { }
     double weight;  //class property
 
-    Animal() { }
-
     //1.0----------------------------------------------------------------------
-    public Animal(double weight)//конструктор который сохраняет вес животного.
+    Animal(double weight)//конструктор который сохраняет вес животного.
     {
         this.weight = weight;
     }
@@ -49,7 +48,7 @@ public class Animal {
     enum AnimalKind {ANIMAL, COW, HAMSTER, DUCK,}
 
     //1.1----------------------------------------------------------------------
-    public AnimalKind getKind() //Метод: который возвращает вид животного
+    AnimalKind getKind() //Метод: который возвращает вид животного
     {                           //enum AnimalKind
 
         switch (animalKind) {

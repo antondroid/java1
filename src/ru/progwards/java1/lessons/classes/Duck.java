@@ -25,14 +25,20 @@ public class Duck extends Animal
 //---------------------------------------------------------------------------
 //1.9 public FoodKind getFoodKind(), который возвращает CORN
 //---------------------------------------------------------------------------------
-FoodKind foodKind = FoodKind.CORN;
+@Override
+public FoodKind getFoodKind() {
+    FoodKind foodKind  = FoodKind.CORN;
+    return super.getFoodKind();
+}
 //---------------------------------------------------------------------------
 //переопределить метод:
 //public double getFoodCoeff(), который должен возвращать 0.04
 //----------------------------------------------------------------------------
-
+@Override
+public double getFoodCoeff() {
     double foodCoeff = 0.04;
-
+    return super.getFoodCoeff();
+    }
     public static void main(String[] args) {
 
     }
