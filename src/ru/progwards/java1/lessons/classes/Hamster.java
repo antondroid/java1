@@ -10,7 +10,10 @@ public double getFoodCoeff(), который должен возвращать 0
  */
 public class Hamster extends Animal{
     Hamster(){}
-
+    public Hamster (double weight)//конструктор который сохраняет вес животного.
+    {
+        this.weight = weight;
+    }
  //------------------------------------------------------------------------
 // класс Hamster, потомок класса Animal, переопределяющий методы:
 //1.6  public AnimalKind getKind(), который возвращает HAMSTER.

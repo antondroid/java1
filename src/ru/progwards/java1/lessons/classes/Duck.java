@@ -12,6 +12,10 @@ public double getFoodCoeff(), который должен возвращать 0
 public class Duck extends Animal
 {
     Duck(){}
+    public Duck (double weight)//конструктор который сохраняет вес животного.
+    {
+        this.weight = weight;
+    }
 //---------------------------------------------------------------------------
 //переопределяющий методы:
 //1.8 public AnimalKind getKind(), который возвращает DUCK.
