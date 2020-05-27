@@ -108,7 +108,8 @@ public ComplexNum div(ComplexNum num)
 {
 
     ComplexNum divd = new ComplexNum();
-    //divd.a =
+    divd.a = (a * num.a + b*num.b)/(num.a*num.a + num.b*num.b);
+    divd.b = (b*num.a-a*num.b)/(num.a*num.a + num.b*num.b);
     return divd;
 }
 //-----------------------------------------------------------
