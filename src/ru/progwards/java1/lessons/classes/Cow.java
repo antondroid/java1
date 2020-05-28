@@ -10,7 +10,9 @@ public double getFoodCoeff(), который должен возвращать 0
  */
 public class Cow extends Animal {
     Cow(){}
-
+    AnimalKind animalKind = AnimalKind.COW;
+    FoodKind foodKind  = FoodKind.HAY;
+    double   foodCoeff = 0.05;
     //1.0--------------------------add this because of comp send messages that const in cow must be w/o arguments`
     // constructor Cow in class ru.progwards.java1.lessons.classes.Cow cannot be applied to given types;
     // required: no arguments
@@ -20,11 +22,13 @@ public class Cow extends Animal {
     {
         this.weight = weight;
     }
+
+
 //-----------------------------------------------------
 //переопределяющий методы
 // 1.4 public AnimalKind getKind(), который возвращает COW
 //----------------------------------------------------------
-AnimalKind animalKind = AnimalKind.COW;
+
 
    /* @Override
     public AnimalKind getKind() {
@@ -37,7 +41,7 @@ AnimalKind animalKind = AnimalKind.COW;
 //1.5 public FoodKind getFoodKind(), который возвращает HAY
 //-----------------------------------------------------------
 
-    FoodKind foodKind  = FoodKind.HAY;
+
    /* @Override
 
     public FoodKind getFoodKind() {
@@ -50,7 +54,7 @@ AnimalKind animalKind = AnimalKind.COW;
 //2.3 Для класса Cow, переопределить метод:
 //public double getFoodCoeff(), который должен возвращать 0.05
 //------------------------------------------------------------
-    double   foodCoeff = 0.05;
+
     /*@Override
     public double getFoodCoeff() {
 
