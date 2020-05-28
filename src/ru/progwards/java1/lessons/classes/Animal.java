@@ -53,16 +53,16 @@ public class Animal {
 
         switch (animalKind) {
             case ANIMAL:
-                result = "ANIMAL";
+                animalKind=AnimalKind.ANIMAL;
                 break;
             case COW:
-                result = "COW";
+                animalKind=AnimalKind.COW;
                 break;
             case HAMSTER:
-                result = "HAMSTER";
+               animalKind=AnimalKind.HAMSTER;
                 break;
             case DUCK:
-                result = "DUCK";
+                animalKind=AnimalKind.DUCK;
                 break;
         }
         return animalKind;
@@ -79,13 +79,13 @@ public class Animal {
     {
         switch (foodKind) {
             case UNKNOWN:
-                result = ("UNKNOWN");
+               foodKind=FoodKind.UNKNOWN;
                 break;
             case HAY:
-                result = "HAY";
+                foodKind =FoodKind.HAY;
                 break;
             case CORN:
-                result = "CORN";
+                foodKind=FoodKind.CORN;
                 break;
         }
         return foodKind;
