@@ -34,7 +34,7 @@ I am <AnimalKind>, eat <FoodKind> <CalculateFoodWeight>
  */
 public class Animal {
     double weight;  //class property
-    AnimalKind animalKind;FoodKind foodKind;
+    AnimalKind animalKind;FoodKind foodKind;double foodCoeff;
     Animal() { }
 
 
@@ -113,7 +113,7 @@ public class Animal {
 //public double getFoodCoeff(), который возвращает коэффициент веса еды
 //к весу тела животного. Для класса Animal это 0.02
 //--------------------------------------------------------------------------------------
-    double foodCoeff = 0.02;
+    //double foodCoeff = 0.02;
 
     public double getFoodCoeff() {
         return foodCoeff;
