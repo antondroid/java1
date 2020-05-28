@@ -37,11 +37,12 @@ public class Cow extends Animal {
 //1.5 public FoodKind getFoodKind(), который возвращает HAY
 //-----------------------------------------------------------
 
-
+    FoodKind foodKind  = FoodKind.HAY;
     @Override
+
     public FoodKind getFoodKind() {
-        FoodKind foodKind  = FoodKind.HAY;
-        return super.getFoodKind();
+
+        return foodKind;
     }
 
 
@@ -49,10 +50,11 @@ public class Cow extends Animal {
 //2.3 Для класса Cow, переопределить метод:
 //public double getFoodCoeff(), который должен возвращать 0.05
 //------------------------------------------------------------
+    double   foodCoeff = 0.05;
     @Override
     public double getFoodCoeff() {
-        double   foodCoeff = 0.05;
-        return super.getFoodCoeff();
+
+        return foodCoeff;
     }
 
 
