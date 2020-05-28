@@ -33,8 +33,10 @@ I am <AnimalKind>, eat <FoodKind> <CalculateFoodWeight>
 //-----------------------------------------------------------------------------------
  */
 public class Animal {
-    Animal() { }
     double weight;  //class property
+    AnimalKind animalKind;FoodKind foodKind;
+    Animal() { }
+
 
     //1.0----------------------------------------------------------------------
     Animal(double weight)//конструктор который сохраняет вес животного.
@@ -42,9 +44,9 @@ public class Animal {
         this.weight = weight;
     }
 
-    AnimalKind animalKind = AnimalKind.ANIMAL;
-    String result;
 
+    String result;
+    //AnimalKind animalKind = AnimalKind.ANIMAL;
     enum AnimalKind {ANIMAL, COW, HAMSTER, DUCK,}
 
     //1.1----------------------------------------------------------------------
@@ -73,7 +75,7 @@ public class Animal {
     //1.2 -----------------------------------------------------------------
     enum FoodKind {UNKNOWN, HAY, CORN}
 
-    FoodKind foodKind = FoodKind.UNKNOWN;
+    //FoodKind foodKind = FoodKind.UNKNOWN;
 
     public FoodKind getFoodKind()    //, который возвращает вид еды,
     {
