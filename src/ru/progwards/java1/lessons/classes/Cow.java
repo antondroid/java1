@@ -22,6 +22,7 @@ public class Cow extends Animal {
     public Cow (double weight)//конструктор который сохраняет вес животного.
     {
         this.weight = weight;
+        System.out.println("cow");
     }
 
 

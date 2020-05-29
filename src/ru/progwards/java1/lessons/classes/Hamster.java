@@ -17,6 +17,7 @@ public class Hamster extends Animal{
     public Hamster (double weight)//конструктор который сохраняет вес животного.
     {
         this.weight = weight;
+        System.out.println("hamster");
     }
  //------------------------------------------------------------------------
 // класс Hamster, потомок класса Animal, переопределяющий методы:
