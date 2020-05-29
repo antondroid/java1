@@ -19,10 +19,18 @@ public class Cow extends Animal {
     // required: no arguments
     // found: double
     // --------------------------------------------
-    public Cow (double weight)//конструктор который сохраняет вес животного.
+    public Cow (double weight,AnimalKind animalKind,FoodKind foodKind,double foodCoeff)//конструктор который сохраняет вес животного.
     {
         this.weight = weight;
-        System.out.println("cow");
+        this.animalKind=animalKind;
+        this.foodKind=foodKind;
+        this.foodCoeff=foodCoeff;
+
+        System.out.println("weight  "+weight);
+        System.out.println("cow"+animalKind);
+        System.out.println("foodKind "    +foodKind);
+        System.out.println("foodCoeff  "        +foodCoeff);
+
     }
 
 
