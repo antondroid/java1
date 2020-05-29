@@ -43,7 +43,7 @@ class Animal {
    // FoodKind foodKind;
     Animal() { }
     //1.0----------------------------------------------------------------------
-    Animal(double weight)//конструктор который сохраняет вес животного.
+    Animal(double weight,AnimalKind animalKind,FoodKind foodKind,double foodCoeff)//конструктор который сохраняет вес животного.
     {
         this.weight = weight;
         this.animalKind=animalKind;
