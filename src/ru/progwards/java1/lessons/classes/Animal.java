@@ -43,12 +43,12 @@ class Animal {
    // FoodKind foodKind;
     Animal() { }
     //1.0----------------------------------------------------------------------
-    Animal(double weight,AnimalKind animalKind,FoodKind foodKind,double foodCoeff)//конструктор который сохраняет вес животного.
-    {
+    Animal(double weight)//конструктор который сохраняет вес животного.
+    {//AnimalKind animalKind,FoodKind foodKind,double foodCoeff
         this.weight = weight;
-        this.animalKind=animalKind;
+        /*this.animalKind=animalKind;
         this.foodKind=foodKind;
-        this.foodCoeff=foodCoeff;
+        this.foodCoeff=foodCoeff;*/
 
         System.out.println("weight  "+weight);
         System.out.println("cow"+animalKind);
@@ -111,7 +111,7 @@ class Animal {
             System.out.println("animalkind  " +animalKind);
             System.out.println("Arrays   "+ Arrays.toString(AnimalKind.values()));
             //System.out.println(Arrays.toString(Season.values()));
-            return anim;  //return result;
+            return AnimalKind.ANIMAL;  //return result;
 
 
         }

@@ -19,12 +19,13 @@ public class Cow extends Animal {
     // required: no arguments
     // found: double
     // --------------------------------------------
-    public Cow (double weight,AnimalKind animalKind,FoodKind foodKind,double foodCoeff)//конструктор который сохраняет вес животного.
-    {
-        this.weight = weight;
-        this.animalKind=animalKind;
+    public Cow (double weight)//конструктор который сохраняет вес животного.
+    {//,AnimalKind animalKind,FoodKind foodKind,double foodCoeff
+
+        super(weight);
+        /*this.animalKind=animalKind;
         this.foodKind=foodKind;
-        this.foodCoeff=foodCoeff;
+        this.foodCoeff=foodCoeff;*/
 
         System.out.println("weight  "+weight);
         System.out.println("cow"+animalKind);
@@ -40,11 +41,11 @@ public class Cow extends Animal {
 //----------------------------------------------------------
 
 
-   /* @Override
+    @Override
     public AnimalKind getKind() {
 
-        return super.getKind();
-    }*/
+        return AnimalKind.COW;
+    }
 
 
 //----------------------------------------------------------
@@ -52,12 +53,12 @@ public class Cow extends Animal {
 //-----------------------------------------------------------
 
 
-   /* @Override
+    @Override
 
     public FoodKind getFoodKind() {
 
         return foodKind;
-    }*/
+    }
 
 
 //----------------------------------------------------------
@@ -65,11 +66,11 @@ public class Cow extends Animal {
 //public double getFoodCoeff(), который должен возвращать 0.05
 //------------------------------------------------------------
 
-    /*@Override
+    @Override
     public double getFoodCoeff() {
 
         return foodCoeff;
-    }*/
+    }
 
 
 

@@ -19,6 +19,7 @@ public class Testclass
         public Duck(int i) {
             System.out.println("Duck(int)");
         }
+
     }
 
     public class TTest {
@@ -30,5 +31,9 @@ public class Testclass
 
     public static void main(String[] args) {
         //Duck.Duck();
+//--------------------------------------------------
+       // Duck d = new Duck(1);  //make static??????
+//---------------------------------------------------
+        System.out.println("Duck(int)");
     }
 }

@@ -19,7 +19,7 @@ public class Duck extends Animal
 
     public Duck (double weight)//конструктор который сохраняет вес животного.
     {
-        this.weight = weight;
+        super(weight);
         System.out.println("Duck");
     }
 //---------------------------------------------------------------------------
