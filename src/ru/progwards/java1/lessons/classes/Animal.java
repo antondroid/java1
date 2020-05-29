@@ -36,7 +36,7 @@ I am <AnimalKind>, eat <FoodKind> <CalculateFoodWeight>
  */
 class Animal {
     double weight;  //class property
-    AnimalKind animalKind = AnimalKind.COW;
+    AnimalKind animalKind = AnimalKind.ANIMAL;
     FoodKind foodKind = FoodKind.UNKNOWN;
     double foodCoeff=0.02;
 
@@ -83,7 +83,7 @@ class Animal {
         //1.1----------------------------------------------------------------------
         public AnimalKind getKind() //Метод: который возвращает вид животного
         {                           //enum AnimalKind
-            animalKind = AnimalKind.DUCK;
+            //animalKind = AnimalKind.DUCK;
             switch (animalKind)
             {
                 case ANIMAL:
@@ -103,7 +103,7 @@ class Animal {
             System.out.println("animalkind  " +animalKind);
             System.out.println("Arrays   "+ Arrays.toString(AnimalKind.values()));
             //System.out.println(Arrays.toString(Season.values()));
-            return animalKind;  //return result;
+            return anim;  //return result;
 
 
         }
