@@ -1,5 +1,7 @@
 package ru.progwards.java1.lessons.classes;
 
+import java.util.Arrays;
+
 /*
 //------------------------------------------------------------------------------------
 Реализовать класс Animal, содержащий:
@@ -32,12 +34,14 @@ public String toStringFull(), что бы он возвращал информа
 I am <AnimalKind>, eat <FoodKind> <CalculateFoodWeight>
 //-----------------------------------------------------------------------------------
  */
-public class Animal {
+class Animal {
     double weight;  //class property
-    AnimalKind animalKind;FoodKind foodKind;double foodCoeff;
+    AnimalKind animalKind = AnimalKind.COW;
+    FoodKind foodKind = FoodKind.UNKNOWN;
+    double foodCoeff;
+
+   // FoodKind foodKind;
     Animal() { }
-
-
     //1.0----------------------------------------------------------------------
     Animal(double weight)//конструктор который сохраняет вес животного.
     {
@@ -45,52 +49,86 @@ public class Animal {
     }
 
 
-    String result;
-    //AnimalKind animalKind = AnimalKind.ANIMAL;
-    enum AnimalKind {ANIMAL, COW, HAMSTER, DUCK,}
+    //
+    //String result;
+
+   /* enum AnimalKind {ANIMAL, COW, HAMSTER, DUCK,}
+    AnimalKind anim = AnimalKind.ANIMAL;
+    AnimalKind animal = AnimalKind.ANIMAL;
 
     //1.1----------------------------------------------------------------------
-    AnimalKind getKind() //Метод: который возвращает вид животного
+     AnimalKind getKind() //Метод: который возвращает вид животного
     {                           //enum AnimalKind
 
-        switch (animalKind) {
-            case ANIMAL:
-                animalKind=AnimalKind.ANIMAL;
+        switch (animal) {
+            case AnimalKind.ANIMAL:
+               anim = AnimalKind.ANIMAL;
                 break;
-            case COW:
-                animalKind=AnimalKind.COW;
+            case AnimalKind.COW:
+                anim =AnimalKind.COW;
                 break;
-            case HAMSTER:
-               animalKind=AnimalKind.HAMSTER;
+            case AnimalKind.HAMSTER:
+               anim=AnimalKind.HAMSTER;
                 break;
-            case DUCK:
-                animalKind=AnimalKind.DUCK;
+            case AnimalKind.DUCK:
+                anim=AnimalKind.DUCK;
                 break;
         }
-        return animalKind;
-        //return result;
+        return anim;
+        //return result;*/
+        enum AnimalKind {ANIMAL, COW, HAMSTER, DUCK}
+        //AnimalKind animalKind = AnimalKind.COW;
+        AnimalKind anim;
+        //animalKind = new  AnimalKind.COW;
+        //1.1----------------------------------------------------------------------
+        public AnimalKind getKind() //Метод: который возвращает вид животного
+        {                           //enum AnimalKind
+            animalKind = AnimalKind.DUCK;
+            switch (animalKind)
+            {
+                case ANIMAL:
+                    anim= AnimalKind.ANIMAL;
+                    break;
+                case COW:
+                    anim= AnimalKind.COW;
+                    break;
+                case HAMSTER:
+                    anim= AnimalKind.HAMSTER;
+                    break;
+                case DUCK:
+                    anim=AnimalKind.DUCK;
+                    break;
+            }
+            System.out.println("anim  " +anim);
+            System.out.println("animalkind  " +animalKind);
+            System.out.println("Arrays   "+ Arrays.toString(AnimalKind.values()));
+            //System.out.println(Arrays.toString(Season.values()));
+            return animalKind;  //return result;
 
-    }
+
+        }
 
     //1.2 -----------------------------------------------------------------
     enum FoodKind {UNKNOWN, HAY, CORN}
 
-    //FoodKind foodKind = FoodKind.UNKNOWN;
+    FoodKind foodKind1;
 
     public FoodKind getFoodKind()    //, который возвращает вид еды,
     {
         switch (foodKind) {
+            //case FoodKind.UNKNOWN:
             case UNKNOWN:
-               foodKind=FoodKind.UNKNOWN;
+               //foodKind=FoodKind.UNKNOWN;
+                foodKind1=FoodKind.UNKNOWN;
                 break;
             case HAY:
-                foodKind =FoodKind.HAY;
+                foodKind1 = FoodKind.HAY;
                 break;
             case CORN:
-                foodKind=FoodKind.CORN;
+                foodKind1=FoodKind.CORN;
                 break;
         }
-        return foodKind;
+        return foodKind1;
     }
 
     //--1.3 Метод
