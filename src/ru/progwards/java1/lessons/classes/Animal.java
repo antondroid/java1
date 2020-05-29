@@ -46,6 +46,14 @@ class Animal {
     Animal(double weight)//конструктор который сохраняет вес животного.
     {
         this.weight = weight;
+        this.animalKind=animalKind;
+        this.foodKind=foodKind;
+        this.foodCoeff=foodCoeff;
+
+        System.out.println("weight  "+weight);
+        System.out.println("cow"+animalKind);
+        System.out.println("foodKind "    +foodKind);
+        System.out.println("foodCoeff  "        +foodCoeff);
     }
 
 
