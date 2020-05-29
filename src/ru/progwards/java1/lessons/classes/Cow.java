@@ -9,10 +9,11 @@ package ru.progwards.java1.lessons.classes;
 public double getFoodCoeff(), который должен возвращать 0.05
  */
 public class Cow extends Animal {
-    Cow(){}
-   /* AnimalKind animalKind = AnimalKind.COW;
+    double weight;
+    AnimalKind animalKind = AnimalKind.COW;
     FoodKind foodKind  = FoodKind.HAY;
-    double   foodCoeff = 0.05;*/
+    double   foodCoeff = 0.05;
+    Cow(){}
     //1.0--------------------------add this because of comp send messages that const in cow must be w/o arguments`
     // constructor Cow in class ru.progwards.java1.lessons.classes.Cow cannot be applied to given types;
     // required: no arguments

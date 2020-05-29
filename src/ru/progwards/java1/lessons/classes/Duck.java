@@ -9,16 +9,18 @@ package ru.progwards.java1.lessons.classes;
 public double getFoodCoeff(), который должен возвращать 0.04
 //----------------------------------------------------------------------------
  */
-public class Duck
-        //extends Animal
+public class Duck extends Animal
 {
-   // double weight;
-    //super.Animal() {}
-    /*Duck(){}
+    double weight;
+    AnimalKind animalKind = AnimalKind.DUCK;
+    FoodKind foodKind = FoodKind.CORN;
+    double foodCoeff=0.04;
+    Duck(){}
+
     public Duck (double weight)//конструктор который сохраняет вес животного.
     {
         this.weight = weight;
-    }*/
+    }
 //---------------------------------------------------------------------------
 //переопределяющий методы:
 //1.8 public AnimalKind getKind(), который возвращает DUCK.

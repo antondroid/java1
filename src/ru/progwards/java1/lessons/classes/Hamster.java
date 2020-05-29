@@ -9,6 +9,10 @@ public double getFoodCoeff(), который должен возвращать 0
 //-------------------------------------------------------------------------
  */
 public class Hamster extends Animal{
+    double weight;
+    AnimalKind animalKind = AnimalKind.HAMSTER;
+    FoodKind foodKind  = FoodKind.CORN;
+    double   foodCoeff = 0.03;
     Hamster(){}
     public Hamster (double weight)//конструктор который сохраняет вес животного.
     {
@@ -18,6 +22,7 @@ public class Hamster extends Animal{
 // класс Hamster, потомок класса Animal, переопределяющий методы:
 //1.6  public AnimalKind getKind(), который возвращает HAMSTER.
 //-------------------------------------------------------------------------
+/*
 @Override
 public AnimalKind getKind() {
     AnimalKind animalKind = AnimalKind.HAMSTER;
@@ -43,6 +48,7 @@ public double getFoodCoeff() {
     double foodCoeff = 0.03;
     return super.getFoodCoeff();
     }
+*/
 
     public static void main(String[] args) {
 

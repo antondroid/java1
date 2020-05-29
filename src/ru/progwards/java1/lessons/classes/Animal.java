@@ -38,7 +38,7 @@ class Animal {
     double weight;  //class property
     AnimalKind animalKind = AnimalKind.COW;
     FoodKind foodKind = FoodKind.UNKNOWN;
-    double foodCoeff;
+    double foodCoeff=0.02;
 
    // FoodKind foodKind;
     Animal() { }
