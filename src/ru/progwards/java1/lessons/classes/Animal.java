@@ -178,8 +178,10 @@ class Animal {
     double foodWeight;
 
     public double calculateFoodWeight() {
-        foodWeight = (weight * foodCoeff);
+        //foodWeight = (weight * foodCoeff);
+        foodWeight = (getWeight() * getFoodCoeff());
         System.out.println("foodCoeff  " + animalKind+ "   "+foodCoeff);
+        System.out.println("foodCoeff  " + getKind()+ "   "+getFoodCoeff());
         return foodWeight;
     }
 
@@ -190,7 +192,8 @@ class Animal {
     //----------------------------------------------------------------------------------
     public String toStringFull() {
         System.out.println("I am " + animalKind + ", eat " + foodKind + " " + foodWeight);
-        return "I am " + animalKind + ", eat " + foodKind + " " + foodWeight;
+        System.out.println("I am " + getKind() + ", eat " + getFoodKind() + " " + calculateFoodWeight());
+        return "I am " + getKind() + ", eat " + getFoodKind() + " " + calculateFoodWeight();
     }
 
     public static void main(String[] args) {
