@@ -51,7 +51,7 @@ class Animal {
         this.foodCoeff=foodCoeff;*/
 
         System.out.println("weight  "+weight);
-        System.out.println("cow"+animalKind);
+        System.out.println("animal"+animalKind);
         System.out.println("foodKind "    +foodKind);
         System.out.println("foodCoeff  "        +foodCoeff);
     }
@@ -91,7 +91,7 @@ class Animal {
         //1.1----------------------------------------------------------------------
         public AnimalKind getKind() //Метод: который возвращает вид животного
         {                           //enum AnimalKind
-            //animalKind = AnimalKind.DUCK;
+            //switch is just for the sample, there needn't it really
             switch (animalKind)
             {
                 case ANIMAL:
@@ -111,7 +111,7 @@ class Animal {
             System.out.println("animalkind  " +animalKind);
             System.out.println("Arrays   "+ Arrays.toString(AnimalKind.values()));
             //System.out.println(Arrays.toString(Season.values()));
-            return AnimalKind.ANIMAL;  //return result;
+            return anim;  //return result;
 
 
         }
@@ -120,7 +120,7 @@ class Animal {
     enum FoodKind {UNKNOWN, HAY, CORN}
 
     FoodKind foodKind1;
-
+//switch is just for the sample, there needn't it really
     public FoodKind getFoodKind()    //, который возвращает вид еды,
     {
         switch (foodKind) {
@@ -144,8 +144,8 @@ class Animal {
 //I am <AnimalKind>, eat <FoodKind>
 //-------------------------------------------------------------------------------
     public String toString() {
-        System.out.println("Animal: I am " + animalKind + ", eat " + foodKind);
-        return "I am " + animalKind + ", eat " + foodKind;
+        System.out.println("Animal: I am " + animalKind + ", eat " + foodKind1);
+        return "I am " + animalKind + ", eat " + foodKind1;
 
     }
 
@@ -185,8 +185,8 @@ class Animal {
     //I am <AnimalKind>, eat <FoodKind> <CalculateFoodWeight>
     //----------------------------------------------------------------------------------
     public String toStringFull() {
-        System.out.println("I am " + animalKind + ", eat " + foodKind + " " + foodWeight);
-        return "I am " + animalKind + ", eat " + foodKind + " " + foodWeight;
+        System.out.println("I am " + animalKind + ", eat " + foodKind1 + " " + foodWeight);
+        return "I am " + anim + ", eat " + foodKind1 + " " + foodWeight;
     }
 
     public static void main(String[] args) {
