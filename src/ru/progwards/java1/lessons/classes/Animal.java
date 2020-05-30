@@ -111,7 +111,7 @@ class Animal {
             System.out.println("animalkind  " +animalKind);
             System.out.println("Arrays   "+ Arrays.toString(AnimalKind.values()));
             //System.out.println(Arrays.toString(Season.values()));
-            return anim;  //return result;
+            return animalKind;  //return result;
 
 
         }
@@ -136,7 +136,7 @@ class Animal {
                 foodKind1=FoodKind.CORN;
                 break;
         }
-        return foodKind1;
+        return foodKind;
     }
 
     //--1.3 Метод
@@ -144,8 +144,8 @@ class Animal {
 //I am <AnimalKind>, eat <FoodKind>
 //-------------------------------------------------------------------------------
     public String toString() {
-        System.out.println("Animal: I am " + animalKind + ", eat " + foodKind1);
-        return "I am " + animalKind + ", eat " + foodKind1;
+        System.out.println("Animal: I am " + animalKind + ", eat " + foodKind);
+        return "I am " + animalKind + ", eat " + foodKind;
 
     }
 
@@ -185,8 +185,8 @@ class Animal {
     //I am <AnimalKind>, eat <FoodKind> <CalculateFoodWeight>
     //----------------------------------------------------------------------------------
     public String toStringFull() {
-        System.out.println("I am " + animalKind + ", eat " + foodKind1 + " " + foodWeight);
-        return "I am " + anim + ", eat " + foodKind1 + " " + foodWeight;
+        System.out.println("I am " + animalKind + ", eat " + foodKind + " " + foodWeight);
+        return "I am " + animalKind + ", eat " + foodKind + " " + foodWeight;
     }
 
     public static void main(String[] args) {
