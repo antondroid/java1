@@ -16,18 +16,16 @@ public class Hamster extends Animal{
     Hamster(){}
     public Hamster (double weight)//конструктор который сохраняет вес животного.
     {
-        this.weight = weight;
+        super(weight);
         System.out.println("hamster");
     }
  //------------------------------------------------------------------------
 // класс Hamster, потомок класса Animal, переопределяющий методы:
 //1.6  public AnimalKind getKind(), который возвращает HAMSTER.
 //-------------------------------------------------------------------------
-/*
 @Override
 public AnimalKind getKind() {
-    AnimalKind animalKind = AnimalKind.HAMSTER;
-    return super.getKind();
+    return animalKind;
 }
 
 
@@ -36,8 +34,7 @@ public AnimalKind getKind() {
 //----------------------------------------------------------------------------
 @Override
 public FoodKind getFoodKind() {
-    FoodKind foodKind  = FoodKind.CORN;
-    return super.getFoodKind();
+    return foodKind;
 }
 
 //--------------------------------------------------------------------------
@@ -46,10 +43,8 @@ public FoodKind getFoodKind() {
 //--------------------------------------------------------------------------
 @Override
 public double getFoodCoeff() {
-    double foodCoeff = 0.03;
-    return super.getFoodCoeff();
+    return foodCoeff;
     }
-*/
 
     public static void main(String[] args) {
 

@@ -44,7 +44,7 @@ public class Cow extends Animal {
     @Override
     public AnimalKind getKind() {
 
-        return AnimalKind.COW;
+        return animalKind;
     }
 
 

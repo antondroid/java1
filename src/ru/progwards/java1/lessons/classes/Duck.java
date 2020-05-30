@@ -26,10 +26,9 @@ public class Duck extends Animal
 //переопределяющий методы:
 //1.8 public AnimalKind getKind(), который возвращает DUCK.
 //---------------------------------------------------------------------------
-/*@Override
+@Override
     public AnimalKind getKind() {
-    AnimalKind animalKind = AnimalKind.DUCK;
-    return super.getKind();
+    return animalKind;
 }
 
 //---------------------------------------------------------------------------
@@ -37,8 +36,7 @@ public class Duck extends Animal
 //---------------------------------------------------------------------------------
 @Override
 public FoodKind getFoodKind() {
-    FoodKind foodKind  = FoodKind.CORN;
-    return super.getFoodKind();
+    return FoodKind.CORN;  //just for joke (can simple foodKind variable)
 }
 //---------------------------------------------------------------------------
 //переопределить метод:
@@ -46,9 +44,8 @@ public FoodKind getFoodKind() {
 //----------------------------------------------------------------------------
 @Override
 public double getFoodCoeff() {
-    double foodCoeff = 0.04;
-    return super.getFoodCoeff();
-    }*/
+    return foodCoeff;
+    }
     public static void main(String[] args) {
 
     }
