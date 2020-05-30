@@ -50,10 +50,8 @@ class Animal {
         this.foodKind=foodKind;
         this.foodCoeff=foodCoeff;*/
 
-        System.out.println("weight  "+weight);
-        System.out.println("animal"+animalKind);
-        System.out.println("foodKind "    +foodKind);
-        System.out.println("foodCoeff  "        +foodCoeff);
+        System.out.println(" animal weight  "+weight);
+
     }
 
 
@@ -136,6 +134,8 @@ class Animal {
                 foodKind1=FoodKind.CORN;
                 break;
         }
+        System.out.println("animal foodKind "    +foodKind);
+
         return foodKind;
     }
 
@@ -153,6 +153,7 @@ class Animal {
 // 2.1 В классе Animal реализовать метод:
 //public double getWeight(), который возвращает вес животного
     public double getWeight() {
+        System.out.println("animal weight  "        +weight);
         return weight;
     }
 
@@ -164,6 +165,7 @@ class Animal {
     //double foodCoeff = 0.02;
 
     public double getFoodCoeff() {
+        System.out.println("animal foodCoeff  "        +foodCoeff);
         return foodCoeff;
     }
 
@@ -175,7 +177,8 @@ class Animal {
     double foodWeight;
 
     public double calculateFoodWeight() {
-        foodWeight = weight * foodCoeff;
+        foodWeight = (weight * foodCoeff);
+        System.out.println("foodCoeff  " + animalKind+ "   "+foodCoeff);
         return foodWeight;
     }
 

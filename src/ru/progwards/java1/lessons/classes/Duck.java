@@ -20,7 +20,7 @@ public class Duck extends Animal
     public Duck (double weight)//конструктор который сохраняет вес животного.
     {
         super(weight);
-        System.out.println("Duck");
+        System.out.println("Duck w " +weight);
     }
 //---------------------------------------------------------------------------
 //переопределяющий методы:
@@ -28,6 +28,7 @@ public class Duck extends Animal
 //---------------------------------------------------------------------------
 @Override
     public AnimalKind getKind() {
+    System.out.println("Duck kind " +animalKind);
     return animalKind;
 }
 
@@ -36,6 +37,8 @@ public class Duck extends Animal
 //---------------------------------------------------------------------------------
 @Override
 public FoodKind getFoodKind() {
+    System.out.println("Duck food final " +FoodKind.CORN);
+    System.out.println("Duck food var " +foodKind);
     return FoodKind.CORN;  //just for joke (can simple foodKind variable)
 }
 //---------------------------------------------------------------------------
@@ -44,6 +47,8 @@ public FoodKind getFoodKind() {
 //----------------------------------------------------------------------------
 @Override
 public double getFoodCoeff() {
+    System.out.println("Duck foodcoeff " +foodCoeff);
+
     return foodCoeff;
     }
     public static void main(String[] args) {

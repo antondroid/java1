@@ -17,7 +17,7 @@ public class Hamster extends Animal{
     public Hamster (double weight)//конструктор который сохраняет вес животного.
     {
         super(weight);
-        System.out.println("hamster");
+        System.out.println("hamster w "+weight);
     }
  //------------------------------------------------------------------------
 // класс Hamster, потомок класса Animal, переопределяющий методы:
@@ -25,6 +25,7 @@ public class Hamster extends Animal{
 //-------------------------------------------------------------------------
 @Override
 public AnimalKind getKind() {
+    System.out.println("hamster kind " +animalKind);
     return animalKind;
 }
 
@@ -34,6 +35,9 @@ public AnimalKind getKind() {
 //----------------------------------------------------------------------------
 @Override
 public FoodKind getFoodKind() {
+
+    System.out.println("hamster food -final " +FoodKind.CORN);
+    System.out.println("hamster food -var " +foodKind);
     return foodKind;
 }
 
@@ -43,6 +47,7 @@ public FoodKind getFoodKind() {
 //--------------------------------------------------------------------------
 @Override
 public double getFoodCoeff() {
+    System.out.println("Hamster foodcoeff " +foodCoeff);
     return foodCoeff;
     }
 

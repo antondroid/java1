@@ -27,10 +27,10 @@ public class Cow extends Animal {
         this.foodKind=foodKind;
         this.foodCoeff=foodCoeff;*/
 
-        System.out.println("weight  "+weight);
-        System.out.println("cow"+animalKind);
-        System.out.println("foodKind "    +foodKind);
-        System.out.println("foodCoeff  "        +foodCoeff);
+        System.out.println("cow weight  "+weight);
+
+
+
 
     }
 
@@ -43,8 +43,8 @@ public class Cow extends Animal {
 
     @Override
     public AnimalKind getKind() {
-
-        return animalKind;
+        System.out.println("cow kind - "+animalKind);
+        return animalKind ;
     }
 
 
@@ -56,7 +56,7 @@ public class Cow extends Animal {
     @Override
 
     public FoodKind getFoodKind() {
-
+        System.out.println("cow foodKind "    +foodKind);
         return foodKind;
     }
 
@@ -68,7 +68,7 @@ public class Cow extends Animal {
 
     @Override
     public double getFoodCoeff() {
-
+        System.out.println("cow foodCoeff  "        +foodCoeff);
         return foodCoeff;
     }
 
