@@ -144,7 +144,9 @@ class Animal {
 //I am <AnimalKind>, eat <FoodKind>
 //-------------------------------------------------------------------------------
     public String toString() {
+        System.out.println("Animal: I am " + animalKind + ", eat " + foodKind);
         return "I am " + animalKind + ", eat " + foodKind;
+
     }
 
     //------------------------------------------------------------------------------
@@ -183,10 +185,15 @@ class Animal {
     //I am <AnimalKind>, eat <FoodKind> <CalculateFoodWeight>
     //----------------------------------------------------------------------------------
     public String toStringFull() {
+        System.out.println("I am " + animalKind + ", eat " + foodKind + " " + foodWeight);
         return "I am " + animalKind + ", eat " + foodKind + " " + foodWeight;
     }
 
     public static void main(String[] args) {
+
+        //System.out.println("Animal  " + toString);
+        //System.out.println("Animal  " + ca);
+        //System.out.println(ge);
 
     }
 
