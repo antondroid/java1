@@ -144,8 +144,9 @@ class Animal {
 //I am <AnimalKind>, eat <FoodKind>
 //-------------------------------------------------------------------------------
     public String toString() {
-        System.out.println("Animal: I am " + animalKind + ", eat " + foodKind);
-        return "I am " + animalKind + ", eat " + foodKind;
+        System.out.println("Animal var : I am " + animalKind + ", eat " + foodKind);
+        System.out.println("Animal_func: I am " + getKind() + ", eat " + getFoodKind());
+        return "I am " + getKind() + ", eat " + getFoodKind() ;
 
     }
 
