@@ -191,8 +191,8 @@ class Animal {
     //I am <AnimalKind>, eat <FoodKind> <CalculateFoodWeight>
     //----------------------------------------------------------------------------------
     public String toStringFull() {
-        System.out.println("I am " + animalKind + ", eat " + foodKind + " " + foodWeight);
-        System.out.println("I am " + getKind() + ", eat " + getFoodKind() + " " + calculateFoodWeight());
+        System.out.println("I am " + animalKind + ", eat " + foodKind + " " + foodWeight); //inheritance didn't work if use variable - functions output
+        System.out.println("I am " + getKind() + ", eat " + getFoodKind() + " " + calculateFoodWeight()); //inheritance work if use functions
         return "I am " + getKind() + ", eat " + getFoodKind() + " " + calculateFoodWeight();
     }
 
