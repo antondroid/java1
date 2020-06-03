@@ -58,6 +58,7 @@ public class Eratosthenes
     public Eratosthenes(){}
     public Eratosthenes(int N)  //constructor
     {
+        if(N < 2){return;}
         boolean[] sieve = new boolean[N];
         Arrays.fill(sieve, true);
         Arrays.toString(sieve); // - for output only, didn'change array itself!
@@ -73,7 +74,7 @@ public class Eratosthenes
             while (pos <= N)
             {
                 pos = div * i; //complicate number position which has divider == div
-                System.out.println(pos);
+                System.out.println( " pos " + pos);
                 if (pos > N)
                 {
                     System.out.println("the & of array had reached");
@@ -86,7 +87,7 @@ public class Eratosthenes
     }
     public boolean isSimple(int n)
     {
-
+        if (n<2){ return true;}
         return sieve[n];
     }
 
