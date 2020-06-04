@@ -1,4 +1,7 @@
 package ru.progwards.java1.lessons.arrays;
+
+import java.util.Arrays;
+
 /*
 Реализовать динамический, саморастущий массив целых чисел,
 
@@ -33,5 +36,43 @@ public int at(int pos)
 
  - возвращает элемент по индексу pos.
  */
-public class DIntArray {
+public class DIntArray
+{
+    private int a[];//3.1 в классе разместить private переменную - массив целых чисел
+    public DIntArray(){} //3.2 конструктор - по умолчанию.
+//----------------------------------------------------------------------
+    //3.2 метод
+    //public void add(int num)
+    //
+    // - добавляет элемент num в конец массива,
+    //при этом размер массива должен увеличиться на 1.
+    // Для этого нужно будет разместить новый массив нужного размера,
+    // скопировать в него старый, и добавить в хвост элемент num.
+    public void add(int num)
+    {
+        int a_length = a.length;
+        a_length++;
+        int a1[] = new int [a_length];
+        //AtomicInteger[] arrayIntCopy = Arrays. copyOf(arrayInt, arrayInt. length);
+        a1 = Arrays.copyOf(a,a_length);
+        System.out.println( Arrays.toString(a));
+        System.out.println(Arrays.toString(a1));
+        a1[a_length-1] = num;
+        System.out.println(Arrays.toString(a1));
+    }
+    //--------------------------------------------------------------------------
+/*
+   3.3 метод
+public void atInsert(int pos, int num)
+
+- добавляет элемент
+num в позицию pos массива, при этом размер массива должен увеличиться на 1.
+ Для этого нужно будет разместить новый массив нужного размера, скопировать
+  в него старый, c учетом того, что новый элемент окажется где-то в середине,
+  и потом положить в нужный индекс элемент num.
+ */
+    public void atInsert(int pos, int num)
+    {
+        
+    }
 }
