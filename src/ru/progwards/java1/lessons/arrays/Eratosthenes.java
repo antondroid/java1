@@ -64,6 +64,7 @@ public class Eratosthenes
         Arrays.toString(sieve); // - for output only, didn'change array itself!
         System.out.println("arr a_2_str - array itself  "+   sieve);
         System.out.println("arr a_2_str - function toString   "+   Arrays.toString(sieve));
+        sift();
     }
    private void sift()
     {   int div=2;   //start divider number
@@ -80,6 +81,8 @@ public class Eratosthenes
                     System.out.println("the & of array had reached");
                 }
                 sieve[pos] = false;
+                System.out.println( "  simple " + sieve[pos]);
+                System.out.println( "  pos " + pos);
                 i++;
             }
             div++;
@@ -88,6 +91,7 @@ public class Eratosthenes
     public boolean isSimple(int n)
     {
         if (n<2){ return true;}
+        System.out.println( "  simple " + sieve[n]);
         return sieve[n];
     }
 
