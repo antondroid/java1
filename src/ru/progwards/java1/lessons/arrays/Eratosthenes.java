@@ -64,7 +64,7 @@ public class Eratosthenes
         Arrays.toString(sieve); // - for output only, didn'change array itself!
         System.out.println("arr a_2_str - array itself  "+   sieve);
         System.out.println("arr a_2_str - function toString   "+   Arrays.toString(sieve));
-        sift();
+        //sift();
     }
    private void sift()
     {   int div=2;   //start divider number
