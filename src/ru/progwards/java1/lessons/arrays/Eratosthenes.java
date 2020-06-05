@@ -52,10 +52,10 @@ public boolean isSimple(int n)
  что бы можно было узнать, простое число n или составное
  */
 public class Eratosthenes
-{private boolean sieve[]; public int N;
+{private boolean sieve[]; int N;
  //static    int N=27;
     public Eratosthenes(){}
-    public Eratosthenes(boolean sieve[], int N)  //constructor
+    public Eratosthenes(int N)  //constructor
     {
         if(N < 2){return;}
         sieve = new boolean[N];
@@ -103,10 +103,10 @@ public class Eratosthenes
     {int N=0;
         //System.out.println( Eratosthenes(N););
      //--------------------------------------------------
-        Eratosthenes amsieve = new Eratosthenes();
+       // Eratosthenes amsieve = new Eratosthenes();
       //  int max2 =  amsieve.sift();
      //--------------------------------------------------
-        Eratosthenes amsieve1 = new Eratosthenes();
+        Eratosthenes amsieve1 = new Eratosthenes(22);
         amsieve1.sift();
 
 
