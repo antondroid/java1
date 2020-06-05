@@ -58,16 +58,16 @@ public class Eratosthenes
     public Eratosthenes(int N)  //constructor
     {
         if(N < 2){return;}
-        sieve = new boolean[N];
+        sieve = new boolean[N+1];
         System.out.println("arr sieve before - init  function toString   "+   Arrays.toString(sieve));
         Arrays.fill(sieve,true);
         Arrays.toString(sieve); // - for output only, didn'change array itself!
         System.out.println("arr sieve after - function toString   "+   Arrays.toString(sieve));
 //--------------------------------------------------------------------------------------------------
 //---------------------------------------------------------------------------------------------------
-        sift();
+        sift(N);
     }
-  private  void  sift()
+  private  void  sift(int N)
     {   int div=2;   //start divider number
         System.out.println("arr a_2_str - array itself  "+   sieve);
         System.out.println("arr a_2_str - function toString   "+   Arrays.toString(sieve));
@@ -77,13 +77,15 @@ public class Eratosthenes
             int pos = 0;   //arrays pointer
             while (pos <= N)
             {
+                sieve[pos] = false;
+
                 pos = div * i; //complicate number position which has divider == div
-                System.out.println( " pos " + pos);
                 if (pos > N)
                 {
-                    System.out.println("the & of array had reached");
+                    System.out.println("the & of array had reached");break;
                 }
-                sieve[pos] = false;
+
+                System.out.println( " pos " + pos);
                 System.out.println( "  simple " + sieve[pos]);
                 System.out.println( "  pos " + pos);
                 i++;
@@ -95,19 +97,20 @@ public class Eratosthenes
     public boolean isSimple(int n)
     {
         if (n<2){ return true;}
-        System.out.println( "  simple " + sieve[n]);
+        System.out.println( n + "  simple " + sieve[n]);
         return sieve[n];
     }
 
     public static void main(String[] args)
-    {int N=0;
+    {int N=0; int n=0;
         //System.out.println( Eratosthenes(N););
      //--------------------------------------------------
        // Eratosthenes amsieve = new Eratosthenes();
       //  int max2 =  amsieve.sift();
      //--------------------------------------------------
-        Eratosthenes amsieve1 = new Eratosthenes(22);
-        amsieve1.sift();
+        Eratosthenes amsieve1 = new Eratosthenes(12);
+        //amsieve1.sift(N);
+        amsieve1.isSimple(8);
 
 
         //--------------------------------------------------
