@@ -52,32 +52,20 @@ public boolean isSimple(int n)
  что бы можно было узнать, простое число n или составное
  */
 public class Eratosthenes
-{private boolean sieve[];  //remove static when send to check
-//static int N;
- static    int N=27;
+{private boolean sieve[]; public int N;
+ //static    int N=27;
     public Eratosthenes(){}
-    public Eratosthenes(int N)  //constructor
+    public Eratosthenes(boolean sieve[], int N)  //constructor
     {
         if(N < 2){return;}
-        boolean[] sieve = new boolean[N];
-        System.out.println("arr sieve before - function toString   "+   Arrays.toString(sieve));
+        sieve = new boolean[N];
+        System.out.println("arr sieve before - init  function toString   "+   Arrays.toString(sieve));
         Arrays.fill(sieve,true);
         Arrays.toString(sieve); // - for output only, didn'change array itself!
-        System.out.println(" array itself  "+   sieve);
         System.out.println("arr sieve after - function toString   "+   Arrays.toString(sieve));
 //--------------------------------------------------------------------------------------------------
-        //public int arraySiTest(int N)
-        {
-            int b=0;
-            boolean sieve1[]=new boolean[6];
-            System.out.println("arr sieve1 -  init    "+   Arrays.toString(sieve1));
-            Arrays.fill(sieve1,true);
-            System.out.println("arr sieve1 after   "+   Arrays.toString(sieve1));
-           // return b;
-        }
 //---------------------------------------------------------------------------------------------------
-
-        //sift();
+        sift();
     }
   private  void  sift()
     {   int div=2;   //start divider number
