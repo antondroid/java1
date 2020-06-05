@@ -52,22 +52,37 @@ public boolean isSimple(int n)
  что бы можно было узнать, простое число n или составное
  */
 public class Eratosthenes
-{private boolean[] sieve;  //remove static when send to check
-//int N;
-    int N=27;
+{private boolean sieve[];  //remove static when send to check
+//static int N;
+ static    int N=27;
     public Eratosthenes(){}
     public Eratosthenes(int N)  //constructor
     {
         if(N < 2){return;}
         boolean[] sieve = new boolean[N];
-        Arrays.fill(sieve, true);
+        System.out.println("arr sieve before - function toString   "+   Arrays.toString(sieve));
+        Arrays.fill(sieve,true);
         Arrays.toString(sieve); // - for output only, didn'change array itself!
-        System.out.println("arr a_2_str - array itself  "+   sieve);
-        System.out.println("arr a_2_str - function toString   "+   Arrays.toString(sieve));
+        System.out.println(" array itself  "+   sieve);
+        System.out.println("arr sieve after - function toString   "+   Arrays.toString(sieve));
+//--------------------------------------------------------------------------------------------------
+        //public int arraySiTest(int N)
+        {
+            int b=0;
+            boolean sieve1[]=new boolean[6];
+            System.out.println("arr sieve1 -  init    "+   Arrays.toString(sieve1));
+            Arrays.fill(sieve1,true);
+            System.out.println("arr sieve1 after   "+   Arrays.toString(sieve1));
+           // return b;
+        }
+//---------------------------------------------------------------------------------------------------
+
         //sift();
     }
-   private void sift()
+  private  void  sift()
     {   int div=2;   //start divider number
+        System.out.println("arr a_2_str - array itself  "+   sieve);
+        System.out.println("arr a_2_str - function toString   "+   Arrays.toString(sieve));
         while(div<(N/2))
         {
             int i = 2;     //step counter (at least 2 times more than div number)
@@ -87,6 +102,7 @@ public class Eratosthenes
             }
             div++;
         }
+
     }
     public boolean isSimple(int n)
     {
@@ -96,8 +112,19 @@ public class Eratosthenes
     }
 
     public static void main(String[] args)
-    {
+    {int N=0;
         //System.out.println( Eratosthenes(N););
-       // sift();
+     //--------------------------------------------------
+        Eratosthenes amsieve = new Eratosthenes();
+      //  int max2 =  amsieve.sift();
+     //--------------------------------------------------
+        Eratosthenes amsieve1 = new Eratosthenes();
+        amsieve1.sift();
+
+
+        //--------------------------------------------------
+       //sift();
     }
 }
+    /*ArrayMax amsieve = new ArrayMax();
+    int max2 =amsieve.arraySiTest(N);*/
