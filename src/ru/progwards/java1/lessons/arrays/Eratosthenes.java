@@ -99,21 +99,25 @@ public class Eratosthenes
     }
     public boolean isSimple(int n)
     {
-        if (n<2){ return true;}
+        if (n<2)
+        {   System.out.println( n + "  less than 2 " + sieve[n]);
+            System.exit(3);
+        }
         System.out.println( n + "  simple " + sieve[n]);
         return sieve[n];
     }
 
     public static void main(String[] args)
-        {int N=0; int n=0;
+        {
+            //int N=0; int n=0;
         //System.out.println( Eratosthenes(N););
      //--------------------------------------------------
        // Eratosthenes amsieve = new Eratosthenes();
       //  int max2 =  amsieve.sift();
      //--------------------------------------------------
-        Eratosthenes amsieve1 = new Eratosthenes(0);
+        Eratosthenes amsieve1 = new Eratosthenes(999);
         //amsieve1.sift(N);
-        amsieve1.isSimple(1);
+        amsieve1.isSimple(293);
 
 
         //--------------------------------------------------
