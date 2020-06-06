@@ -57,6 +57,7 @@ public class Eratosthenes
     public Eratosthenes(){}
     public Eratosthenes(int N)  //constructor
     {
+        this.N=N;
         if(N < 2){return;}
         sieve = new boolean[N+1];
         System.out.println("arr sieve before - init  function toString   "+   Arrays.toString(sieve));
@@ -65,9 +66,10 @@ public class Eratosthenes
         System.out.println("arr sieve after - function toString   "+   Arrays.toString(sieve));
 //--------------------------------------------------------------------------------------------------
 //---------------------------------------------------------------------------------------------------
-        sift(N);
+        sift();
     }
-  private  void  sift(int N)
+    private  void  sift()
+    //private  void  sift(int N)
     {   int div=2;   //start divider number
         System.out.println("arr a_2_str - array itself  "+   sieve);
         System.out.println("arr a_2_str - function toString   "+   Arrays.toString(sieve));
