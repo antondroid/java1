@@ -42,7 +42,7 @@ public class DIntArray
     private int arrayInt[];//3.1 в классе разместить private переменную - массив целых чисел
     public int a1[]; //output array
     public DIntArray(){} //3.2 конструктор - по умолчанию.
-    public DIntArray(int pos,int num,int N)
+    public DIntArray(int pos,int num,int N,int a_length)
     {
         this.pos=pos;
         this.num=num;
@@ -128,10 +128,10 @@ public void atDelete(int pos)
 
 
        System.out.println(" -------- the Start of atDelete output  ---------");
+       System.out.println("      print a1                                   " +Arrays.toString(a1));
 
 
 
-       
        System.out.println(" -------- the end of atDelete output  -----------");
        
    }
@@ -145,6 +145,9 @@ public int at(int pos)
 public int at(int pos)
 {
     System.out.println(" ---------- the Start of at output  -------------");
+    System.out.println("      print a1                                   " +Arrays.toString(a1));
+
+
     System.out.println(" ---------- the end of at output  ---------------");
 return pos;
 
@@ -155,8 +158,8 @@ return pos;
     public static void main(String[] args)
     {
     //int N=5;int num=4;int pos=2;
-    DIntArray testD=new DIntArray(2,7,5);
-    //testD.add(12);
+    DIntArray testD=new DIntArray(2,7,5,9);
+    testD.add(12);
     testD.atInsert(4,8);
     testD.atDelete(4);
     testD.at(4);

@@ -60,10 +60,10 @@ public class Eratosthenes
         this.N=N;
         if(N < 2){System.exit(2);}
         sieve = new boolean[N+1];
-        System.out.println("arr sieve before - init  function toString   "+   Arrays.toString(sieve));
+        //System.out.println("arr sieve before - init  function toString   "+   Arrays.toString(sieve));
         Arrays.fill(sieve,true);
         Arrays.toString(sieve); // - for output only, didn'change array itself!
-        System.out.println("arr sieve after - function toString   "+   Arrays.toString(sieve));
+        //System.out.println("arr sieve after - function toString   "+   Arrays.toString(sieve));
 //--------------------------------------------------------------------------------------------------
 //---------------------------------------------------------------------------------------------------
         sift();
@@ -72,8 +72,8 @@ public class Eratosthenes
     private  void  sift()
     //private  void  sift(int N)
     {   int div=2;   //start divider number
-        System.out.println("arr a_2_str - array itself  "+   sieve);
-        System.out.println("arr a_2_str - function toString   "+   Arrays.toString(sieve));
+        //System.out.println("arr a_2_str - array itself  "+   sieve);
+        //System.out.println("arr a_2_str - function toString   "+   Arrays.toString(sieve));
         while(div<(N/2))
         {
             int i = 2;     //step counter (at least 2 times more than div number)
@@ -85,12 +85,12 @@ public class Eratosthenes
                 pos = div * i; //complicate number position which has divider == div
                 if (pos > N)
                 {
-                    System.out.println("the & of array had reached");break;
+                    //System.out.println("the & of array had reached");break;
                 }
 
-                System.out.println( " pos " + pos);
-                System.out.println( "  simple " + sieve[pos]);
-                System.out.println( "  pos " + pos);
+                //System.out.println( " pos " + pos);
+                //System.out.println( "  simple " + sieve[pos]);
+                //System.out.println( "  pos " + pos);
                 i++;
             }
             div++;
@@ -100,7 +100,7 @@ public class Eratosthenes
     public boolean isSimple(int n)
     {
         if (n<2)
-        {   System.out.println( n + "  less than 2 " + sieve[n]);
+        {   //System.out.println( n + "  less than 2 " + sieve[n]);
             System.exit(3);
         }
         System.out.println( n + "  simple " + sieve[n]);
