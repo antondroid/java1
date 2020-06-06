@@ -58,7 +58,7 @@ public class Eratosthenes
     public Eratosthenes(int N)  //constructor
     {
         this.N=N;
-        if(N < 2){return;}
+        if(N < 2){System.exit(2);}
         sieve = new boolean[N+1];
         System.out.println("arr sieve before - init  function toString   "+   Arrays.toString(sieve));
         Arrays.fill(sieve,true);
@@ -67,6 +67,7 @@ public class Eratosthenes
 //--------------------------------------------------------------------------------------------------
 //---------------------------------------------------------------------------------------------------
         sift();
+
     }
     private  void  sift()
     //private  void  sift(int N)
@@ -104,15 +105,15 @@ public class Eratosthenes
     }
 
     public static void main(String[] args)
-    {int N=0; int n=0;
+        {int N=0; int n=0;
         //System.out.println( Eratosthenes(N););
      //--------------------------------------------------
        // Eratosthenes amsieve = new Eratosthenes();
       //  int max2 =  amsieve.sift();
      //--------------------------------------------------
-        Eratosthenes amsieve1 = new Eratosthenes(12);
+        Eratosthenes amsieve1 = new Eratosthenes(0);
         //amsieve1.sift(N);
-        amsieve1.isSimple(8);
+        amsieve1.isSimple(1);
 
 
         //--------------------------------------------------
