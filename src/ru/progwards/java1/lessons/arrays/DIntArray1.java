@@ -36,22 +36,17 @@ public int at(int pos)
 
  - возвращает элемент по индексу pos.
  */
-public class DIntArray
+public class DIntArray1
 {
-    private int arrayInt[];//3.1 в классе разместить private переменную - массив целых чисел
     int pos,num,N;
-
+    private int arrayInt[];//3.1 в классе разместить private переменную - массив целых чисел
     public int a1[]; //output array
-    public DIntArray(){} //3.2 конструктор - по умолчанию.
-    public DIntArray(int arrayInt[], int pos,int num,int N)
-
-
+    public DIntArray1(){} //3.2 конструктор - по умолчанию.
+    public DIntArray1(int pos, int num, int N)
     {
-        this.arrayInt=arrayInt;
         this.pos=pos;
         this.num=num;
         this.N=N;
-        System.out.println("print arrayInt before filling                    " +Arrays.toString(arrayInt));
         //this.a_length=a_length;
         /*if (a_length<0)
         {
@@ -68,18 +63,17 @@ public class DIntArray
             //System.out.println(pos+" pos out of array size "+N);
             System.exit(2);
         }
-//---------------------------------------create artificial array--------------------------------------------
-        /*arrayInt=new int[N];
+//-----------------------------------------------------------------------------------
+        arrayInt=new int[N];
         int i=0;  //cell counter
         while(i<N)//until pos reached
         {
             arrayInt[i]=i;i++;
         }
-        int a_length = arrayInt.length;*/
-//--------------------------------------end of create array ----------------------------------------------
         int a_length = arrayInt.length;
+//------------------------------------------------------------------------------------
         //a_length++;
-        System.out.println("print a_length after filling                     " +(a_length));
+        //System.out.println("print a_length after filling                     " +(a_length));
         //System.out.println("print arrayInt before filling                    " +Arrays.toString(arrayInt));
         //Arrays.fill(arrayInt,num);
         //System.out.println("print arrayInt after filling                     " +Arrays.toString(arrayInt));
@@ -98,15 +92,15 @@ public class DIntArray
     {
         //System.out.println(" -------- the Start of add output  ---------");
 //-----------------------------------------------------------------------------------
-        /*arrayInt=new int[N];
+        arrayInt=new int[N];
         int i=0;  //cell counter
         while(i<N)//until pos reached
         {
             arrayInt[i]=i;i++;
         }
-        int a_length = arrayInt.length;*/
-//------------------------------------------------------------------------------------
         int a_length = arrayInt.length;
+//------------------------------------------------------------------------------------
+        //int a_length = arrayInt.length;
         a_length++;
         int a1[] = new int [a_length];
         //System.out.println("after init a1                                    "+Arrays.toString(a1));
@@ -269,12 +263,12 @@ public int testNeg()    //try to test it for outbunds
     public static void main(String[] args)
     {
     //int N=5;int num=4;int pos=2;
-    DIntArray testD=new DIntArray(new int[]{1,-3,2,12,9,11,7,-5},2,7,8);
+    DIntArray1 testD=new DIntArray1(2,7,8);
     testD.add(12);
     testD.atInsert(4,8);
     testD.atDelete(5);
     testD.at(4);
-//testD.sort(new int[]{1,-3,2,9,7,-5});  //input array modelling
+
     }
 
 }
