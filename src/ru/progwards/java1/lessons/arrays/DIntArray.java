@@ -51,6 +51,7 @@ public class DIntArray
         this.pos=pos;
         this.num=num;
         this.N=N;
+        int a_length = arrayInt.length;
         System.out.println("print arrayInt before filling                    " +Arrays.toString(arrayInt));
         //this.a_length=a_length;
         /*if (a_length<0)
@@ -63,9 +64,9 @@ public class DIntArray
             //System.out.println(pos+" nor pos nor size cant be the negative "+N);
             System.exit(3);
         }
-        if (pos>N)
+        if (pos>a_length)
         {
-            //System.out.println(pos+" pos out of array size "+N);
+            System.out.println(pos+" pos out of array size "+N);
             System.exit(2);
         }
 //---------------------------------------create artificial array--------------------------------------------
@@ -77,7 +78,12 @@ public class DIntArray
         }
         int a_length = arrayInt.length;*/
 //--------------------------------------end of create array ----------------------------------------------
-        int a_length = arrayInt.length;
+
+        if(a_length<1)
+        {
+            //System.out.println(pos+" nor pos nor size cant be the negative "+N);
+            System.exit(3);
+        }
         //a_length++;
         System.out.println("print a_length after filling                     " +(a_length));
         //System.out.println("print arrayInt before filling                    " +Arrays.toString(arrayInt));
@@ -268,13 +274,14 @@ public int testNeg()    //try to test it for outbunds
 
     public static void main(String[] args)
     {
-    //int N=5;int num=4;int pos=2;
-    DIntArray testD=new DIntArray(new int[]{1,-3,2,12,9,11,7,-5},2,7,8);
-    testD.add(12);
-    testD.atInsert(4,8);
-    testD.atDelete(5);
-    testD.at(4);
-//testD.sort(new int[]{1,-3,2,9,7,-5});  //input array modelling
+        //int N=5;int num=4;int pos=2;
+        //DIntArray testD=new DIntArray(new int[]{1,-3,2,12,9,11,7,-5},2,7,8);
+        DIntArray testD=new DIntArray(new int[]{3},2,7,8);
+        testD.add(12);
+        testD.atInsert(4,8);
+        testD.atDelete(5);
+        testD.at(4);
+        //testD.sort(new int[]{1,-3,2,9,7,-5});  //input array modelling
     }
 
 }
