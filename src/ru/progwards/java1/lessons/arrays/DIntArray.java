@@ -109,7 +109,7 @@ public class DIntArray
        // System.out.println("print arrayInt                                   " +Arrays.toString(arrayInt));
        // System.out.println("after copy arrayInt 2 a1                         "+Arrays.toString(a1));
         a1[a_length-1] = num;
-        //System.out.println("print a1 after add the  num value 2 the last cell"+Arrays.toString(a1));
+        System.out.println("a1 after add the  num value 2 the last cell      "+Arrays.toString(a1));
         //System.out.println(" ----------the end of add output  ---------------");
     }
     //--------------------------------------------------------------------------
@@ -136,16 +136,16 @@ num в позицию pos массива, при этом размер масс�
 
 //-----------------------------copy the  nose cells   ---------------------------------------
         int i=0;  //cell counter
-        while(i<pos-1)//until pos reached
+        while(i<pos)//until pos reached
         {
             a1[i]=arrayInt[i];i++;
         }
 //----------------------------insert the  target cell --------------------------------------
         //System.out.println("      print a1                                   " +Arrays.toString(a1));
-        a1[pos-1]=num;
-        //System.out.println("      print a1  after insertion pos                    " +Arrays.toString(a1));
+        a1[pos]=num;
+        System.out.println("      print a1  after insertion pos              " +Arrays.toString(a1));
 //----------------------------fill the rest cells ------------------------------------------
-        i=pos-1;
+        i=pos;
         while(i<(a_length))
         {
             a1[i+1]=arrayInt[i];i++;
@@ -155,7 +155,7 @@ num в позицию pos массива, при этом размер масс�
 //----------------------------end of filling ----------------------------------------------
 
         //System.out.println("      print a1   after fill the tail             " +Arrays.toString(a1));
-       // System.out.println("      print a1 after num has put                 " +Arrays.toString(a1));
+       System.out.println("      print a1 after num has put                 " +Arrays.toString(a1));
         //System.out.println(" -------- the end of atInsert output  -----------");
     }
 //-------------------------------------------------------------------
@@ -198,7 +198,7 @@ public void atDelete(int pos)
        //System.out.println("      print a2                                   " +Arrays.toString(a2));
 //-----------------------------copy the  nose cells   ---------------------------------------
        int i=0;  //cell counter
-       while(i<pos-1)//until pos reached
+       while(i<pos)//until pos reached
        {
            a2[i]=arrayInt[i];i++;
        }
@@ -215,7 +215,7 @@ public void atDelete(int pos)
        }
 
 //----------------------------end of filling ----------------------------------------------
-       //System.out.println("      print a2   after deleting inside           " +Arrays.toString(a2));
+       System.out.println("      print a2   after deleting inside           " +Arrays.toString(a2));
        //System.out.println(" -------- the end of atDelete output  -----------");
    }
 
@@ -240,8 +240,8 @@ public int at(int pos)
     }
 //---------------------------------------------------------------------------
     //System.out.println("      print a1                                   " +Arrays.toString(arrayInt));
-    int value=  arrayInt[pos-1];
-    //System.out.println("      print value                                   " +value);
+    int value=  arrayInt[pos];
+    System.out.println("      print value                                " +value);
     //System.out.println(" ---------- the end of at output  ---------------");
 return value;
 
@@ -263,7 +263,7 @@ public int testNeg()    //try to test it for outbunds
     public static void main(String[] args)
     {
     //int N=5;int num=4;int pos=2;
-    DIntArray testD=new DIntArray(2,7,6);
+    DIntArray testD=new DIntArray(2,7,8);
     testD.add(12);
     testD.atInsert(4,8);
     testD.atDelete(5);
