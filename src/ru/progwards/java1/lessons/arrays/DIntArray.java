@@ -44,7 +44,7 @@ public class DIntArray
 
     public int a1[]; //output array
     public DIntArray(){} //3.2 конструктор - по умолчанию.
-    public DIntArray(int arrayInt[], int pos,int num,int N)
+    public DIntArray(@org.jetbrains.annotations.NotNull int arrayInt[], int pos, int num, int N)
 
 
     {
