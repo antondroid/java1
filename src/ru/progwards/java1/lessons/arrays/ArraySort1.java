@@ -18,32 +18,28 @@ public static void sort(int[] a), по следующему алгоритму:
  внешний по i и внутренний по j. Внутренний цикл начинается от i+1,
   и если a[i] > a[j], то нужно поменять элементы a[i] и a[j] местами.
  */
-public class ArraySort {
+public class ArraySort1 {
     int a[];
     private static int N;
-    ArraySort(){}
-    ArraySort(int a[], int N)
+    ArraySort1(){}
+    ArraySort1(int[] a, int N)
     {
     this.N=N;
-    this.a=a;
     }
     public static void sort(int[] a) {
-        System.out.println("print arrayInt after input                     " + Arrays.toString(a));
         //-----------------------------------------------------------------------------------
-        //a = new int[N];
+        a = new int[N];
         int a_length = a.length;
-        N=a_length;
-        //----------------------------------------create own array----------------------------------------------------
         int i = 0;  //cell counter
-       /* int cellValue = N;
+        int cellValue = N;
         while (i < N)//until pos reached
         {
             a[i] = cellValue;
             i++;
             cellValue--;
-        }*/
+        }
         System.out.println("print arrayInt after filling                     " + Arrays.toString(a));
-        //----------------------------------------------end of create array-------------------------------------
+        //-----------------------------------------------------------------------------------
         i = 0;
         int x,y;
         while (i < N)
@@ -65,10 +61,10 @@ public class ArraySort {
             }
     }
     public static void main(String[] args) {
-       // int a[]=new int[]{1};     //this is transfer array from main to method sort (if uncommented)
+        int a[]=new int[]{1};     //this is transfer array from main to method sort (if uncommented)
 
-        ArraySort testD=new ArraySort(new int[]{1},6); //these parameter not mentioned it'just for took place
-        testD.sort(new int[]{1,-3,2,9,7,-5});  //input array modelling
+        ArraySort1 testD=new ArraySort1(new int[]{1},6);
+        testD.sort(new int[]{1});
 
 
     }
