@@ -55,12 +55,12 @@ public class DIntArray
         //System.out.println(" -------- the Start of const output  ---------");
         if((N<0)|(pos<0))
         {
-            System.out.println(pos+" nor pos nor size cant be the negative "+N);
+            //System.out.println(pos+" nor pos nor size cant be the negative "+N);
             System.exit(3);
         }
         if (pos>N)
         {
-            System.out.println(pos+" pos out of array size "+N);
+            //System.out.println(pos+" pos out of array size "+N);
             System.exit(2);
         }
 //-----------------------------------------------------------------------------------
@@ -182,12 +182,12 @@ public void atDelete(int pos)
 //--------------------------------------------outof boundcheck-----------------------------------
        if((N<0)|(pos<0))
        {
-           System.out.println(pos+" nor pos nor size cant be the negative "+N);
+           //System.out.println(pos+" nor pos nor size cant be the negative "+N);
            System.exit(3);
        }
        if (pos>N)
        {
-           System.out.println(pos+" pos out of array size "+N);
+           //System.out.println(pos+" pos out of array size "+N);
            System.exit(2);
        }
 //--------------------------------------------check & -------------------------------------------
@@ -230,12 +230,12 @@ public int at(int pos)
     //System.out.println(" -------- the Start of at output  ---------");
     if((N<0)|(pos<=0))
     {
-        System.out.println(pos+" nor pos nor size cant be the negative and position started from 1 " +N);
+        //System.out.println(pos+" nor pos nor size cant be the negative and position started from 1 " +N);
         System.exit(3);
     }
     if (pos>N)
     {
-        System.out.println(pos+" pos out of array size "+N);
+        //System.out.println(pos+" pos out of array size "+N);
         System.exit(2);
     }
 //---------------------------------------------------------------------------
