@@ -69,7 +69,12 @@ public class DIntArray
             System.out.println(pos+" pos out of array size "+N);
             System.exit(2);
         }
-//---------------------------------------create artificial array--------------------------------------------
+        if(a_length<1)
+        {
+            //System.out.println(pos+" nor pos nor size cant be the negative "+N);
+            System.exit(3);
+        }
+        //---------------------------------------create artificial array--------------------------------------------
         /*arrayInt=new int[N];
         int i=0;  //cell counter
         while(i<N)//until pos reached
@@ -79,11 +84,7 @@ public class DIntArray
         int a_length = arrayInt.length;*/
 //--------------------------------------end of create array ----------------------------------------------
 
-        if(a_length<1)
-        {
-            //System.out.println(pos+" nor pos nor size cant be the negative "+N);
-            System.exit(3);
-        }
+
         //a_length++;
         System.out.println("print a_length after filling                     " +(a_length));
         //System.out.println("print arrayInt before filling                    " +Arrays.toString(arrayInt));
@@ -113,6 +114,16 @@ public class DIntArray
         int a_length = arrayInt.length;*/
 //------------------------------------------------------------------------------------
         int a_length = arrayInt.length;
+        if (pos>a_length)
+        {
+            System.out.println(pos+" pos out of array size "+N);
+            System.exit(2);
+        }
+        if(a_length<1)
+        {
+            //System.out.println(pos+" nor pos nor size cant be the negative "+N);
+            System.exit(3);
+        }
         a_length++;
         int a1[] = new int [a_length];
         //System.out.println("after init a1                                    "+Arrays.toString(a1));
