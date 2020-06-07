@@ -1,5 +1,6 @@
 package ru.progwards.java1.lessons.arrays;
 
+import javax.validation.constraints.Null;
 import java.util.Arrays;
 
 /*
@@ -51,7 +52,13 @@ public class DIntArray
         this.pos=pos;
         this.num=num;
         this.N=N;
-        int a_length = arrayInt.length;
+        int a_length = 0;
+        if ((arrayInt == null )|(arrayInt.length == 0))
+        {
+            System.out.println(" arrayInt is empty "+arrayInt);
+            System.exit(13);
+        }
+        a_length=arrayInt.length;
         System.out.println("print arrayInt before filling                    " +Arrays.toString(arrayInt));
         //this.a_length=a_length;
         /*if (a_length<0)
@@ -149,7 +156,22 @@ num в позицию pos массива, при этом размер масс�
 
     public void atInsert(int pos, int num)
     {   //System.out.println(" -------- the Start of atInsert output  ---------");
+        if ((arrayInt == null )|(arrayInt.length == 0))
+        {
+            System.out.println(" arrayInt is empty "+arrayInt);
+            System.exit(13);
+        }
         int a_length = arrayInt.length;
+        if (pos>a_length)
+        {
+            System.out.println(pos+" pos out of array size "+N);
+            System.exit(2);
+        }
+        if(a_length<1)
+        {
+            //System.out.println(pos+" nor pos nor size cant be the negative "+N);
+            System.exit(3);
+        }
        // System.out.println("print a_length after filling                     " +(a_length));
        // System.out.println("print arrayInt                                   " +Arrays.toString(arrayInt));
         a1=new int[a_length+1]; //create new output array nose part
@@ -261,6 +283,7 @@ public int at(int pos)
         //System.out.println(pos+" pos out of array size "+N);
         System.exit(2);
     }
+
 //---------------------------------------------------------------------------
     //System.out.println("      print a1                                   " +Arrays.toString(arrayInt));
     int value=  arrayInt[pos];
@@ -287,7 +310,7 @@ public int testNeg()    //try to test it for outbunds
     {
         //int N=5;int num=4;int pos=2;
         //DIntArray testD=new DIntArray(new int[]{1,-3,2,12,9,11,7,-5},2,7,8);
-        DIntArray testD=new DIntArray(new int[]{},0,7,8);
+        DIntArray testD=new DIntArray(new int[]{0},0,7,8);
         testD.add(12);
         testD.atInsert(4,8);
         testD.atDelete(5);
