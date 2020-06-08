@@ -119,8 +119,14 @@ public class DIntArray
         }
         int a_length = arrayInt.length;*/
 //------------------------------------------------------------------------------------
+
+        if ((arrayInt == null )|(arrayInt.length == 0))
+        {
+            System.out.println(" arrayInt is empty "+arrayInt);
+            System.exit(13);
+        }
         int a_length = arrayInt.length;
-        if (pos>a_length)
+        if (a_length<pos)
         {
             System.out.println(pos+" pos out of array size "+N);
             System.exit(2);
@@ -130,6 +136,8 @@ public class DIntArray
             //System.out.println(pos+" nor pos nor size cant be the negative "+N);
             System.exit(3);
         }
+
+
         a_length++;
         int a1[] = new int [a_length];
         //System.out.println("after init a1                                    "+Arrays.toString(a1));
