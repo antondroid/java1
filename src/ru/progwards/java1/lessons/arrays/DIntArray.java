@@ -160,7 +160,7 @@ public class DIntArray
 
 
         a_length++;
-        int a1[] = new int [a_length];
+        a1 = new int [a_length];
         //System.out.println("after init a1                                    "+Arrays.toString(a1));
         //AtomicInteger[] arrayIntCopy = Arrays. copyOf(arrayInt, arrayInt. length);
         a1 = Arrays.copyOf(arrayInt,a_length);
