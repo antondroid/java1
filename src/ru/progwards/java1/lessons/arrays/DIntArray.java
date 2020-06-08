@@ -119,7 +119,8 @@ public class DIntArray
         }
         int a_length = arrayInt.length;*/
 //------------------------------------------------------------------------------------
-        int a_length=0;
+
+        System.out.println(" arrayInt is empty "+a_length);
         if ((arrayInt == null )|(arrayInt.length == 0))
         {
             System.out.println(" arrayInt is empty "+arrayInt);
@@ -168,7 +169,7 @@ num в позицию pos массива, при этом размер масс�
             System.out.println(" arrayInt is empty "+arrayInt);
             System.exit(13);
         }
-        int a_length = arrayInt.length;
+        a_length = arrayInt.length;
         if (pos>a_length)
         {
             System.out.println(pos+" pos out of array size "+N);
