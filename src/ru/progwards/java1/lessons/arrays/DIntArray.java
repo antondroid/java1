@@ -39,11 +39,11 @@ public int at(int pos)
 public class DIntArray
 {
     private int arrayInt[];//3.1 в классе разместить private переменную - массив целых чисел
-    int pos,num,N;
+    int pos,num,N,a_length;
 
     public int a1[]; //output array
     public DIntArray(){} //3.2 конструктор - по умолчанию.
-    public DIntArray(int arrayInt[], int pos, int num, int N)
+    public DIntArray(int arrayInt[], int pos, int num, int N,int a_length)
 
 
     {
@@ -51,7 +51,7 @@ public class DIntArray
         this.pos=pos;
         this.num=num;
         this.N=N;
-        int a_length = 0;
+     this.a_length = a_length;
         if ((arrayInt == null )|(arrayInt.length == 0))
         {
             System.out.println(" arrayInt is empty "+arrayInt);
@@ -317,7 +317,7 @@ public int testNeg()    //try to test it for outbunds
     {
         //int N=5;int num=4;int pos=2;
         //DIntArray testD=new DIntArray(new int[]{1,-3,2,12,9,11,7,-5},2,7,8);
-        DIntArray testD=new DIntArray(new int[]{ , },0,7,8);
+        DIntArray testD=new DIntArray(new int[]{ , },0,7,8,9);
         testD.add(12);
         testD.atInsert(4,8);
         testD.atDelete(5);
