@@ -1,6 +1,5 @@
 package ru.progwards.java1.lessons.arrays;
 
-import javax.validation.constraints.Null;
 import java.util.Arrays;
 
 /*
