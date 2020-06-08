@@ -40,25 +40,26 @@ public class DIntArray
 {
     private int arrayInt[];//3.1 в классе разместить private переменную - массив целых чисел
     int pos,num,N,a_length;
-
     public int a1[]; //output array
     public DIntArray(){} //3.2 конструктор - по умолчанию.
     public DIntArray(int arrayInt[], int pos, int num, int N,int a_length)
-
-
     {
         this.arrayInt=arrayInt;
         this.pos=pos;
         this.num=num;
         this.N=N;
-     this.a_length = a_length;
+        this.a_length = a_length;
+        System.out.println(" arrayInt is empty the length is  "+arrayInt.length);
+        System.out.println("print arrayInt before filling " + "                   " +Arrays.toString(arrayInt));
 //-----------------------------check null empty var ----------------
         if ((arrayInt == null ))
+            //|(arrayInt == [ ] ))
         {
             System.out.println(" arrayInt is empty "+arrayInt);
             System.out.println("print arrayInt before filling " + "                   " +Arrays.toString(arrayInt));
             //System.exit(13);
-            a_length=0;
+            arrayInt=new int[0];
+                    a_length=0;
         }
         else{
             a_length=arrayInt.length;
@@ -114,14 +115,14 @@ public class DIntArray
         }
         int a_length = arrayInt.length;*/
 //------------------------------------------------------------------------------------
-
+        System.out.println("print arrayInt                                   " +Arrays.toString(arrayInt));
         System.out.println(" a_length "+a_length);
         a_length++;
         a1 = new int [a_length];
         //System.out.println("after init a1                                    "+Arrays.toString(a1));
         //AtomicInteger[] arrayIntCopy = Arrays. copyOf(arrayInt, arrayInt. length);
         a1 = Arrays.copyOf(arrayInt,a_length);
-       // System.out.println("print arrayInt                                   " +Arrays.toString(arrayInt));
+       //
        // System.out.println("after copy arrayInt 2 a1                         "+Arrays.toString(a1));
         a1[a_length-1] = num;
         System.out.println("a1 after add the  num value 2 the last cell      "+Arrays.toString(a1));
@@ -278,7 +279,7 @@ public int testNeg()    //try to test it for outbunds
     {
         //int N=5;int num=4;int pos=2;
         //DIntArray testD=new DIntArray(new int[]{1,-3,2,12,9,11,7,-5},2,7,8,9);
-        DIntArray testD=new DIntArray(new int[]{ , },0,7,8,0);
+        DIntArray testD=new DIntArray(new int[]{ , }, 0,7,8,0);
         testD.add(12);
         testD.atInsert(4,8);
         testD.atDelete(5);
