@@ -53,13 +53,16 @@ public class DIntArray
         this.N=N;
      this.a_length = a_length;
 //-----------------------------check null empty var ----------------
-        if ((arrayInt == null )|(arrayInt.length == 0))
+        if ((arrayInt == null ))
         {
             System.out.println(" arrayInt is empty "+arrayInt);
-            System.out.println("print arrayInt before filling                    " +Arrays.toString(arrayInt));
-            System.exit(13);
+            System.out.println("print arrayInt before filling " + "                   " +Arrays.toString(arrayInt));
+            //System.exit(13);
+            a_length=0;
         }
-
+        else{
+            a_length=arrayInt.length;
+            }
         if (a_length<pos)
         {
             System.out.println(pos+" pos out of array size "+N);
@@ -71,35 +74,7 @@ public class DIntArray
             System.exit(3);
         }
 //-----------------------------end check ---------------------------
-        a_length = arrayInt.length;
-     if ((arrayInt == null )|(arrayInt.length == 0))
-        {
-            System.out.println(" arrayInt is empty "+arrayInt);
-            System.exit(13);
-        }
 
-        System.out.println("print arrayInt before filling                    " +Arrays.toString(arrayInt));
-        //this.a_length=a_length;
-        /*if (a_length<0)
-        {
-            System.exit(3);
-        }*/
-        //System.out.println(" -------- the Start of const output  ---------");
-        if((N<0)|(pos<0))
-        {
-            //System.out.println(pos+" nor pos nor size cant be the negative "+N);
-            System.exit(3);
-        }
-        if (a_length<pos)
-        {
-            System.out.println(pos+" pos out of array size "+N);
-            System.exit(2);
-        }
-        if(a_length<1)
-        {
-            //System.out.println(pos+" nor pos nor size cant be the negative "+N);
-            System.exit(3);
-        }
         //---------------------------------------create artificial array--------------------------------------------
         /*arrayInt=new int[N];
         int i=0;  //cell counter
@@ -140,25 +115,7 @@ public class DIntArray
         int a_length = arrayInt.length;*/
 //------------------------------------------------------------------------------------
 
-        System.out.println(" arrayInt is empty "+a_length);
-        /*if ((arrayInt == null )|(arrayInt.length == 0))
-        {
-            System.out.println(" arrayInt is empty "+arrayInt);
-            System.exit(13);
-        }
-        a_length = arrayInt.length;
-        if (a_length<pos)
-        {
-            System.out.println(pos+" pos out of array size "+N);
-            System.exit(2);
-        }
-        if(a_length<1)
-        {
-            //System.out.println(pos+" nor pos nor size cant be the negative "+N);
-            System.exit(3);
-        }*/
-
-
+        System.out.println(" a_length "+a_length);
         a_length++;
         a1 = new int [a_length];
         //System.out.println("after init a1                                    "+Arrays.toString(a1));
@@ -200,7 +157,7 @@ num в позицию pos массива, при этом размер масс�
             //System.out.println(pos+" nor pos nor size cant be the negative "+N);
             System.exit(3);
         }*/
-        a_length = arrayInt.length;
+        //a_length = arrayInt.length;
 
        // System.out.println("print a_length after filling                     " +(a_length));
        // System.out.println("print arrayInt                                   " +Arrays.toString(arrayInt));
@@ -255,19 +212,10 @@ public void atDelete(int pos)
        //System.out.println(" -------- the Start of atDelete output  ---------");
        //System.out.println("      print a1                                   " +Arrays.toString(a1));
 //--------------------------------------------outof boundcheck-----------------------------------
-     /*  if((N<0)|(pos<0))
-       {
-           //System.out.println(pos+" nor pos nor size cant be the negative "+N);
-           System.exit(3);
-       }
-       if (pos>N)
-       {
-           //System.out.println(pos+" pos out of array size "+N);
-           System.exit(2);
-       }*/
+
 //--------------------------------------------check & -------------------------------------------
        int a2_length=arrayInt.length-1;
-       int a_length=arrayInt.length;
+       //int a_length=arrayInt.length;
        //System.out.println("      pos ="  +pos  +"     a_length="  + a2_length);
        int a2[] =new int [a2_length];
        //System.out.println("      print a2                                   " +Arrays.toString(a2));
@@ -303,16 +251,6 @@ public int at(int pos)
 public int at(int pos)
 {
     //System.out.println(" -------- the Start of at output  ---------");
-    if((N<0)|(pos<=0))
-    {
-        //System.out.println(pos+" nor pos nor size cant be the negative and position started from 1 " +N);
-        System.exit(3);
-    }
-    if (pos>N)
-    {
-        //System.out.println(pos+" pos out of array size "+N);
-        System.exit(2);
-    }
 
 //---------------------------------------------------------------------------
     //System.out.println("      print a1                                   " +Arrays.toString(arrayInt));
@@ -339,8 +277,8 @@ public int testNeg()    //try to test it for outbunds
     public static void main(String[] args)
     {
         //int N=5;int num=4;int pos=2;
-        DIntArray testD=new DIntArray(new int[]{1,-3,2,12,9,11,7,-5},2,7,8,9);
-        //DIntArray testD=new DIntArray(new int[]{ , },0,7,8,9);
+        //DIntArray testD=new DIntArray(new int[]{1,-3,2,12,9,11,7,-5},2,7,8,9);
+        DIntArray testD=new DIntArray(new int[]{ , },0,7,8,0);
         testD.add(12);
         testD.atInsert(4,8);
         testD.atDelete(5);
