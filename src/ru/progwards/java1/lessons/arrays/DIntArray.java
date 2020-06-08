@@ -71,7 +71,7 @@ public class DIntArray
         }
         if(a_length<1)
         {
-            //System.out.println(pos+" nor pos nor size cant be the negative "+N);
+            System.out.println(pos+" nor pos nor size cant be the negative "+N);
             System.exit(3);
         }
 //-----------------------------end check ---------------------------
@@ -281,7 +281,7 @@ public int testNeg()    //try to test it for outbunds
         //DIntArray testD=new DIntArray(new int[]{1,-3,2,12,9,11,7,-5},2,7,8,9);
         DIntArray testD=new DIntArray(new int[]{ , }, 0,7,8,0);
         testD.add(12);
-        testD.atInsert(4,8);
+        testD.atInsert(0,8);
         testD.atDelete(5);
         testD.at(4);
         //testD.sort(new int[]{1,-3,2,9,7,-5});  //input array modelling
