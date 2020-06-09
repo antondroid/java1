@@ -45,7 +45,7 @@ public class DIntArray
     public int a2[]; //output array2
     public DIntArray()//3.2 конструктор - по умолчанию.  remove 1
     {
-     //this.();
+
     }
     public DIntArray(int arrayInt[], int pos, int num)
     //public DIntArray()
@@ -338,7 +338,7 @@ public int testNeg()    //try to test it for outbunds
             dia.atDelete(ia[i]);
             dia.at(ia[i]);
         }
-//----------------------------------------------------------------------
+//-----------------------------test3-----------------------------------------
         DIntArray testD=new DIntArray(ia, 3,7);
         testD.add(12);
         testD.add(10);
@@ -350,8 +350,20 @@ public int testNeg()    //try to test it for outbunds
         testD.atInsert(0,8);
         testD.atDelete(5);
         testD.at(4);
-//----------------------------------------------------------------------
-        //testD.sort(new int[]{1,-3,2,9,7,-5});  //input array modelling
+//--------------------------------------test4 --------------------------------
+       /* DIntArray testD=new DIntArray();
+        testD.add(12);
+        testD.add(10);
+        testD.add(8);
+        testD.add(6);
+        testD.add(5);
+        testD.add(2);
+        testD.add(8);
+        testD.atInsert(0,8);
+        testD.atDelete(5);
+        testD.at(4);*/
+// -------------------------------------------------------------------------
+// testD.sort(new int[]{1,-3,2,9,7,-5});  //input array modelling
     }
 
 }
