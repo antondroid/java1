@@ -45,8 +45,8 @@ public class DIntArray
     public int a2[]; //output array2
     public DIntArray()//3.2 конструктор - по умолчанию.  remove 1
     {
-
-    }
+        this.arrayInt=new int [0];
+            }
     public DIntArray(int arrayInt[], int pos, int num)
     //public DIntArray()
     {
@@ -115,22 +115,15 @@ public class DIntArray
     // скопировать в него старый, и добавить в хвост элемент num.
     public void add(int num)
     {
-        //System.out.println("print arrayInt                                   " +Arrays.toString(arrayInt));
-        //System.out.println(" -------- the Start of add output  ---------");
-//-----------------------------------------------------------------------------------
-        /*arrayInt=new int[N];
-        int i=0;  //cell counter
-        while(i<N)//until pos reached
-        {
-            arrayInt[i]=i;i++;
-        }
-        int a_length = arrayInt.length;*/
-//------------------------------------------------------------------------------------
+        System.out.println("arrayInt                               " +Arrays.toString(arrayInt));
+        System.out.println(" --- the Start of add output  ---------");
+        this.arrayInt=arrayInt;
 
-        //System.out.println("print arrayInt                                   " +Arrays.toString(arrayInt));
+        //System.out.println("print arrayInt" +Arrays.toString(arrayInt));
+
         int a_length = arrayInt.length;
-        System.out.println("arrayInt                                   " +Arrays.toString(arrayInt));
-        System.out.println(" a_length                                  "+a_length);
+        System.out.println("arrayInt                               " +Arrays.toString(arrayInt));
+        System.out.println(" a_length                              "+a_length);
         a_length++;
         a1 = new int [a_length];
         //System.out.println("after init a1                                    "+Arrays.toString(a1));
@@ -139,8 +132,8 @@ public class DIntArray
        //
        // System.out.println("after copy arrayInt 2 a1                         "+Arrays.toString(a1));
         a1[a_length-1] = num;
-        System.out.println("a1 after add the  num value 2 the end      "+Arrays.toString(a1));
-        //System.out.println(" ----------the end of add output  ---------------");
+        System.out.println("a1 after add the  num value 2 the end  "+Arrays.toString(a1));
+        System.out.println(" ----------the end of add output  -----");
     }
     //--------------------------------------------------------------------------
 /*
@@ -186,11 +179,19 @@ num в позицию pos массива, при этом размер масс�
         int i=0;  //cell counter
         while(i<pos)//until pos reached
         {
-            a1[i]=arrayInt[i];i++;
+            if (i<a_length){
+
+                a1[i]=arrayInt[i];i++;
+            }
+            else{System.out.println("      position is out of bound a1 " +Arrays.toString(a1));
+            break;
+
+            }
+
+
         }
 //----------------------------insert the  target cell --------------------------------------
-        //System.out.println("      print a1
-        // " +Arrays.toString(a1));
+        //System.out.println("      print a1 " +Arrays.toString(a1));
         if (pos<=a_length) {
             a1[pos] = num;
         }else {
@@ -238,7 +239,16 @@ public void atDelete(int pos)
        int a2_length=arrayInt.length-1;
        //int a_length=arrayInt.length;
        //System.out.println("      pos ="  +pos  +"     a_length="  + a2_length);
-       int a2[] =new int [a2_length];
+
+       if (a2_length>0)
+       {
+           int a2[] = new int[a2_length];
+       }
+       else
+           {
+               System.out.println("      pos ="  +pos  +"     a_length="  + a2_length);
+            }
+
        //System.out.println("      print a2                                   " +Arrays.toString(a2));
 //-----------------------------copy the  nose cells   ---------------------------------------
        int i=0;  //cell counter
@@ -328,18 +338,19 @@ public int testNeg()    //try to test it for outbunds
 //-----------------------------test2 ------------------------------------------
         //int[] ia = {1, 2, 3, 4, 5,6};
         int[] ia = {1, 2, 3};
-        DIntArray dia = new DIntArray(ia, 1,7);
+        // DIntArray dia = new DIntArray(ia, 1,7);
+        DIntArray dia = new DIntArray();
 
         //for (int i = 0; i< ia.length-1; i++) //w/o errors but robot give nullpoint exeption
             for (int i = 0; i< ia.length; i++)
         {
             dia.add(ia[i]);
-            dia.atInsert(ia[i], ia[i]);
-            dia.atDelete(ia[i]);
-            dia.at(ia[i]);
+            //dia.atInsert(ia[i], ia[i]);
+            //dia.atDelete(ia[i]);
+            //dia.at(ia[i]);
         }
 //-----------------------------test3-----------------------------------------
-        DIntArray testD=new DIntArray(ia, 3,7);
+        /*DIntArray testD=new DIntArray(ia, 3,7);
         testD.add(12);
         testD.add(10);
         testD.add(8);
@@ -349,7 +360,7 @@ public int testNeg()    //try to test it for outbunds
         testD.add(8);
         testD.atInsert(0,8);
         testD.atDelete(5);
-        testD.at(4);
+        testD.at(4);*/
 //--------------------------------------test4 --------------------------------
        /* DIntArray testD=new DIntArray();
         testD.add(12);
