@@ -46,7 +46,8 @@ public class DIntArray
     public DIntArray()//3.2 конструктор - по умолчанию.  remove 1
     {
         this.arrayInt=new int [0];
-            }
+
+    }
     public DIntArray(int arrayInt[], int pos, int num)
     //public DIntArray()
     {
