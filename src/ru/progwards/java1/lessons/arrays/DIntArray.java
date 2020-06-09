@@ -39,16 +39,19 @@ public int at(int pos)
 public class DIntArray
 {
     private int arrayInt[];//3.1 в классе разместить private переменную - массив целых чисел
-    int pos,num,N,a_length;
+    //int pos,num,N,a_length;
+    int pos,num,N;
     public int a1[]; //output array
-    public DIntArray(){} //3.2 конструктор - по умолчанию.
-    public DIntArray(int arrayInt[], int pos, int num, int N,int a_length)
+    //public DIntArray(){} //3.2 конструктор - по умолчанию.
+    //public DIntArray(int arrayInt[], int pos, int num, int N,int a_length)
+    public DIntArray(int arrayInt[], int pos, int num, int N)
     {
         this.arrayInt=arrayInt;
         this.pos=pos;
         this.num=num;
         this.N=N;
-        this.a_length = a_length;
+        //this.a_length = a_length;
+        int a_length=0;
         System.out.println(" arrayInt is empty the length is  "+arrayInt.length);
         System.out.println("print arrayInt before filling " + "                   " +Arrays.toString(arrayInt));
 //-----------------------------check null empty var ----------------
@@ -58,8 +61,9 @@ public class DIntArray
             System.out.println(" arrayInt is empty "+arrayInt);
             System.out.println("print arrayInt before filling " + "                   " +Arrays.toString(arrayInt));
             //System.exit(13);
-            arrayInt=new int[0];
-                    a_length=0;
+            arrayInt=new int[1];
+            arrayInt[1]=0;
+            a_length=0;
         }
         else{
             a_length=arrayInt.length;
@@ -105,6 +109,7 @@ public class DIntArray
     // скопировать в него старый, и добавить в хвост элемент num.
     public void add(int num)
     {
+        System.out.println("print arrayInt                                   " +Arrays.toString(arrayInt));
         //System.out.println(" -------- the Start of add output  ---------");
 //-----------------------------------------------------------------------------------
         /*arrayInt=new int[N];
@@ -115,6 +120,10 @@ public class DIntArray
         }
         int a_length = arrayInt.length;*/
 //------------------------------------------------------------------------------------
+
+       this.arrayInt=arrayInt;
+        System.out.println("print arrayInt                                   " +Arrays.toString(arrayInt));
+        int a_length = arrayInt.length;
         System.out.println("print arrayInt                                   " +Arrays.toString(arrayInt));
         System.out.println(" a_length "+a_length);
         a_length++;
@@ -162,6 +171,7 @@ num в позицию pos массива, при этом размер масс�
 
        // System.out.println("print a_length after filling                     " +(a_length));
        // System.out.println("print arrayInt                                   " +Arrays.toString(arrayInt));
+        int a_length = arrayInt.length;
         a1=new int[a_length+1]; //create new output array nose part
         //int a1_length=a1.length;
         //a1 = Arrays.copyOf(arrayInt,(a_length+1)  ); //copy first part to output array
@@ -215,6 +225,7 @@ public void atDelete(int pos)
 //--------------------------------------------outof boundcheck-----------------------------------
 
 //--------------------------------------------check & -------------------------------------------
+       int a_length = arrayInt.length;
        int a2_length=arrayInt.length-1;
        //int a_length=arrayInt.length;
        //System.out.println("      pos ="  +pos  +"     a_length="  + a2_length);
@@ -277,13 +288,32 @@ public int testNeg()    //try to test it for outbunds
 
     public static void main(String[] args)
     {
+//-------------------------------test 0---------------------------------------
         //int N=5;int num=4;int pos=2;
-        //DIntArray testD=new DIntArray(new int[]{1,-3,2,12,9,11,7,-5},2,7,8,9);
-        DIntArray testD=new DIntArray(new int[]{ , }, 0,7,8,0);
+        /*DIntArray testD=new DIntArray(new int[]{1,-3,2,12,9,11,7,-5},2,7,8);
         testD.add(12);
         testD.atInsert(0,8);
         testD.atDelete(5);
-        testD.at(4);
+        testD.at(4);*/
+//--------------------------------test1 ---------------------------------------------
+       // DIntArray testD=new DIntArray(new int[]{ , }, 0,7,8);
+        //testD.add(12);
+        //testD.atInsert(0,8);
+        //testD.atDelete(5);
+        //testD.at(4);
+
+//-----------------------------test2 ------------------------------------------
+        int[] ia = {1, 2, 3, 4, 5};
+        DIntArray dia = new DIntArray(ia,3,4,5);
+
+        for (int i = 0; i < ia.length; i++)
+        {
+            dia.add(ia[i]);
+            dia.atInsert(ia[i], ia[i]);
+            dia.atDelete(ia[i]);
+            dia.at(ia[i]);
+        }
+//----------------------------------------------------------------------
         //testD.sort(new int[]{1,-3,2,9,7,-5});  //input array modelling
     }
 
