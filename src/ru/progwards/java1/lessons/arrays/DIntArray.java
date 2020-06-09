@@ -43,13 +43,13 @@ public class DIntArray
     int pos,num,N;
     public int a1[]; //output array1
     public int a2[]; //output array2
-    public DIntArray(){} //3.2 конструктор - по умолчанию.
+    //public DIntArray(){} //3.2 конструктор - по умолчанию.  remove 1
     //public DIntArray(int arrayInt[], int pos, int num, int N,int a_length)
     //public DIntArray(int arrayInt[], int pos, int num, int N)
     public DIntArray(int arrayInt[], int pos, int num)
     //public DIntArray()
     {
-        this();
+        //this(); //remove 1
         this.arrayInt=arrayInt;
         this.pos=pos;
         this.num=num;
@@ -126,7 +126,6 @@ public class DIntArray
         int a_length = arrayInt.length;*/
 //------------------------------------------------------------------------------------
 
-       this.arrayInt=arrayInt;
         //System.out.println("print arrayInt                                   " +Arrays.toString(arrayInt));
         int a_length = arrayInt.length;
         System.out.println("arrayInt                                   " +Arrays.toString(arrayInt));
