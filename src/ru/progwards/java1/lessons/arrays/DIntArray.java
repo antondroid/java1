@@ -41,25 +41,30 @@ public class DIntArray
     private int arrayInt[];//3.1 в классе разместить private переменную - массив целых чисел
     //int pos,num,N,a_length;
     int pos,num,N;
-    public int a1[]; //output array
-    //public DIntArray(){} //3.2 конструктор - по умолчанию.
+    public int a1[]; //output array1
+    public int a2[]; //output array2
+    public DIntArray(){} //3.2 конструктор - по умолчанию.
     //public DIntArray(int arrayInt[], int pos, int num, int N,int a_length)
-    public DIntArray(int arrayInt[], int pos, int num, int N)
+    //public DIntArray(int arrayInt[], int pos, int num, int N)
+    public DIntArray(int arrayInt[], int pos, int num)
+    //public DIntArray()
     {
+        this();
         this.arrayInt=arrayInt;
         this.pos=pos;
         this.num=num;
-        this.N=N;
+        //zerg[a] = new Zerg(a);
+        //this.N=N;
         //this.a_length = a_length;
-        int a_length=0;
-        System.out.println(" arrayInt is empty the length is  "+arrayInt.length);
-        System.out.println("print arrayInt before filling " + "                   " +Arrays.toString(arrayInt));
+        int a_length=arrayInt.length;
+        //System.out.println("arrayInt original length is                "+arrayInt.length);
+        System.out.println("arrayInt original                          " +Arrays.toString(arrayInt));
 //-----------------------------check null empty var ----------------
         if ((arrayInt == null ))
             //|(arrayInt == [ ] ))
         {
             System.out.println(" arrayInt is empty "+arrayInt);
-            System.out.println("print arrayInt before filling " + "                   " +Arrays.toString(arrayInt));
+            System.out.println("arrayInt before filling " + "                   " +Arrays.toString(arrayInt));
             //System.exit(13);
             arrayInt=new int[1];
             arrayInt[1]=0;
@@ -92,7 +97,7 @@ public class DIntArray
 
 
         //a_length++;
-        System.out.println("print a_length after filling                     " +(a_length));
+        //System.out.println("a_length after filling                     " +(a_length));
         //System.out.println("print arrayInt before filling                    " +Arrays.toString(arrayInt));
         //Arrays.fill(arrayInt,num);
         //System.out.println("print arrayInt after filling                     " +Arrays.toString(arrayInt));
@@ -109,7 +114,7 @@ public class DIntArray
     // скопировать в него старый, и добавить в хвост элемент num.
     public void add(int num)
     {
-        System.out.println("print arrayInt                                   " +Arrays.toString(arrayInt));
+        //System.out.println("print arrayInt                                   " +Arrays.toString(arrayInt));
         //System.out.println(" -------- the Start of add output  ---------");
 //-----------------------------------------------------------------------------------
         /*arrayInt=new int[N];
@@ -122,10 +127,10 @@ public class DIntArray
 //------------------------------------------------------------------------------------
 
        this.arrayInt=arrayInt;
-        System.out.println("print arrayInt                                   " +Arrays.toString(arrayInt));
+        //System.out.println("print arrayInt                                   " +Arrays.toString(arrayInt));
         int a_length = arrayInt.length;
-        System.out.println("print arrayInt                                   " +Arrays.toString(arrayInt));
-        System.out.println(" a_length "+a_length);
+        System.out.println("arrayInt                                   " +Arrays.toString(arrayInt));
+        System.out.println(" a_length                                  "+a_length);
         a_length++;
         a1 = new int [a_length];
         //System.out.println("after init a1                                    "+Arrays.toString(a1));
@@ -134,7 +139,7 @@ public class DIntArray
        //
        // System.out.println("after copy arrayInt 2 a1                         "+Arrays.toString(a1));
         a1[a_length-1] = num;
-        System.out.println("a1 after add the  num value 2 the last cell      "+Arrays.toString(a1));
+        System.out.println("a1 after add the  num value 2 the end      "+Arrays.toString(a1));
         //System.out.println(" ----------the end of add output  ---------------");
     }
     //--------------------------------------------------------------------------
@@ -186,7 +191,7 @@ num в позицию pos массива, при этом размер масс�
 //----------------------------insert the  target cell --------------------------------------
         //System.out.println("      print a1                                   " +Arrays.toString(a1));
         a1[pos]=num;
-        System.out.println("      print a1  after insertion pos              " +Arrays.toString(a1));
+        System.out.println("      a1  after insertion pos              " +Arrays.toString(a1));
 //----------------------------fill the rest cells ------------------------------------------
         i=pos;
         while(i<(a_length))
@@ -198,7 +203,7 @@ num в позицию pos массива, при этом размер масс�
 //----------------------------end of filling ----------------------------------------------
 
         //System.out.println("      print a1   after fill the tail             " +Arrays.toString(a1));
-       System.out.println("      print a1 after num has put                 " +Arrays.toString(a1));
+       System.out.println("      a1 after num has put                 " +Arrays.toString(a1));
         //System.out.println(" -------- the end of atInsert output  -----------");
     }
 //-------------------------------------------------------------------
@@ -250,7 +255,7 @@ public void atDelete(int pos)
        }
 
 //----------------------------end of filling ----------------------------------------------
-       System.out.println("      print a2   after deleting inside           " +Arrays.toString(a2));
+       System.out.println("      a2   after deleting inside           " +Arrays.toString(a2));
        //System.out.println(" -------- the end of atDelete output  -----------");
    }
 
@@ -267,7 +272,7 @@ public int at(int pos)
 //---------------------------------------------------------------------------
     //System.out.println("      print a1                                   " +Arrays.toString(arrayInt));
     int value=  arrayInt[pos];
-    System.out.println("      print value                                " +value);
+    System.out.println("      value                                " +value);
     //System.out.println(" ---------- the end of at output  ---------------");
 return value;
 
@@ -304,9 +309,9 @@ public int testNeg()    //try to test it for outbunds
 
 //-----------------------------test2 ------------------------------------------
         int[] ia = {1, 2, 3, 4, 5};
-        DIntArray dia = new DIntArray(ia,3,4,5);
+        DIntArray dia = new DIntArray(ia, 3,7);
 
-        for (int i = 0; i < ia.length; i++)
+        for (int i = 0; i< ia.length-1; i++)
         {
             dia.add(ia[i]);
             dia.atInsert(ia[i], ia[i]);
