@@ -189,10 +189,14 @@ num в позицию pos массива, при этом размер масс�
             a1[i]=arrayInt[i];i++;
         }
 //----------------------------insert the  target cell --------------------------------------
-        //System.out.println("      print a1                                   " +Arrays.toString(a1));
-        a1[pos]=num;
-        System.out.println("      a1  after insertion pos              " +Arrays.toString(a1));
-//----------------------------fill the rest cells ------------------------------------------
+        //System.out.println("      print a1
+        // " +Arrays.toString(a1));
+        if (pos<=a_length) {
+            a1[pos] = num;
+        }else {
+            System.out.println("      a1  after insertion pos              " + Arrays.toString(a1));
+        }
+        //----------------------------fill the rest cells ------------------------------------------
         i=pos;
         while(i<(a_length))
         {
@@ -240,7 +244,13 @@ public void atDelete(int pos)
        int i=0;  //cell counter
        while(i<pos)//until pos reached
        {
-           a2[i]=arrayInt[i];i++;
+           if (i<a2_length) {
+               a2[i] = arrayInt[i];
+               i++;
+           }else{
+               System.out.println("      print a2                                   " +Arrays.toString(a2));
+               break;
+           }
        }
 //----------------------------insert the  target cell --------------------------------------
        //System.out.println("      print arrayInt                            " +Arrays.toString(arrayInt));
@@ -271,7 +281,15 @@ public int at(int pos)
 
 //---------------------------------------------------------------------------
     //System.out.println("      print a1                                   " +Arrays.toString(arrayInt));
-    int value=  arrayInt[pos];
+    int a_length=arrayInt.length;int value=0;
+    if (pos<a_length) {
+
+        value = arrayInt[pos];
+    }else {
+        System.out.println("      value   cannot be found from outside                             ");
+    }
+
+
     System.out.println("      value                                " +value);
     //System.out.println(" ---------- the end of at output  ---------------");
 return value;
@@ -308,10 +326,12 @@ public int testNeg()    //try to test it for outbunds
         //testD.at(4);
 
 //-----------------------------test2 ------------------------------------------
-        int[] ia = {1, 2, 3, 4, 5,6};
-        DIntArray dia = new DIntArray(ia, 3,7);
+        //int[] ia = {1, 2, 3, 4, 5,6};
+        int[] ia = {1, 2, 3};
+        DIntArray dia = new DIntArray(ia, 1,7);
 
-        for (int i = 0; i< ia.length-1; i++)
+        //for (int i = 0; i< ia.length-1; i++) //w/o errors but robot give nullpoint exeption
+            for (int i = 0; i< ia.length; i++)
         {
             dia.add(ia[i]);
             dia.atInsert(ia[i], ia[i]);
