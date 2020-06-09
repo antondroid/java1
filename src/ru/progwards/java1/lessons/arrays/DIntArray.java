@@ -116,6 +116,9 @@ public class DIntArray
     // скопировать в него старый, и добавить в хвост элемент num.
     public void add(int num)
     {
+        DIntArray dia = new DIntArray();
+        for (int i = 0; i< arrayInt.length; i++)
+        dia.add(arrayInt[i]);
         System.out.println("arrayInt                               " +Arrays.toString(arrayInt));
         System.out.println(" --- the Start of add output  ---------");
         this.arrayInt=arrayInt;
