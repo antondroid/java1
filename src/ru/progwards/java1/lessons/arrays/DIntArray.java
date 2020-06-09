@@ -46,7 +46,6 @@ public class DIntArray
     public DIntArray()//3.2 конструктор - по умолчанию.  remove 1
     {
         this.arrayInt=new int [0];
-
     }
     public DIntArray(int arrayInt[], int pos, int num)
     //public DIntArray()
@@ -116,27 +115,41 @@ public class DIntArray
     // скопировать в него старый, и добавить в хвост элемент num.
     public void add(int num)
     {
-        DIntArray dia = new DIntArray();
-        for (int i = 0; i< arrayInt.length; i++)
-        dia.add(arrayInt[i]);
+        //this.arrayInt   =arrayInt;
+        //DIntArray dia = new DIntArray();
+        //for (int i = 0; i< arrayInt.length; i++)
+        //dia.add(arrayInt[i]);
+        System.out.println("num                              " +num);
         System.out.println("arrayInt                               " +Arrays.toString(arrayInt));
         System.out.println(" --- the Start of add output  ---------");
-        this.arrayInt=arrayInt;
 
+        //---------------------------------------create artificial array--------------------------------------------
+        /*arrayInt=new int[N];
+        int i=0;  //cell counter
+        while(i<N)//until pos reached
+        {
+            arrayInt[i]=i;i++;
+        }*/
+        int a_length = arrayInt.length;
+        System.out.println("a_length 1                             " +a_length);
+//--------------------------------------end of create array ----------------------------------------------
         //System.out.println("print arrayInt" +Arrays.toString(arrayInt));
 
-        int a_length = arrayInt.length;
+        //int a_length = arrayInt.length;
         System.out.println("arrayInt                               " +Arrays.toString(arrayInt));
-        System.out.println(" a_length                              "+a_length);
         a_length++;
-        a1 = new int [a_length];
-        //System.out.println("after init a1                                    "+Arrays.toString(a1));
+        int a1_length= a_length ;
+        System.out.println(" a_length ++                           "+a_length);
+        a1 = new int [a1_length];  // create acc longer than arrayInt by 1
+        System.out.println("after init a1                                    "+Arrays.toString(a1));
         //AtomicInteger[] arrayIntCopy = Arrays. copyOf(arrayInt, arrayInt. length);
-        a1 = Arrays.copyOf(arrayInt,a_length);
-       //
-       // System.out.println("after copy arrayInt 2 a1                         "+Arrays.toString(a1));
-        a1[a_length-1] = num;
+        a1 = Arrays.copyOf(arrayInt, a1_length);
+        System.out.println("after copy arrayInt 2 a1                         "+Arrays.toString(a1));
+        a1[a1_length-1] = num;
         System.out.println("a1 after add the  num value 2 the end  "+Arrays.toString(a1));
+        arrayInt =new int[a1_length];
+        arrayInt = Arrays.copyOf(a1,a1_length);
+        System.out.println("arrayInt                               " +Arrays.toString(arrayInt));
         System.out.println(" ----------the end of add output  -----");
     }
     //--------------------------------------------------------------------------
@@ -152,7 +165,7 @@ num в позицию pos массива, при этом размер масс�
  */
 
     public void atInsert(int pos, int num)
-    {   //System.out.println(" -------- the Start of atInsert output  ---------");
+    {   System.out.println(" -------- the Start of atInsert output  ---------");
         /*if ((arrayInt == null )|(arrayInt.length == 0))
         {
             System.out.println(" arrayInt is empty "+arrayInt);
@@ -213,7 +226,7 @@ num в позицию pos массива, при этом размер масс�
 
         //System.out.println("      print a1   after fill the tail             " +Arrays.toString(a1));
        System.out.println("      a1 after num has put                 " +Arrays.toString(a1));
-        //System.out.println(" -------- the end of atInsert output  -----------");
+        System.out.println(" -------- the end of atInsert output  -----------");
     }
 //-------------------------------------------------------------------
 
