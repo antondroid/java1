@@ -43,13 +43,14 @@ public class DIntArray
     int pos,num,N;
     public int a1[]; //output array1
     public int a2[]; //output array2
-    //public DIntArray(){} //3.2 конструктор - по умолчанию.  remove 1
-    //public DIntArray(int arrayInt[], int pos, int num, int N,int a_length)
-    //public DIntArray(int arrayInt[], int pos, int num, int N)
+    public DIntArray()//3.2 конструктор - по умолчанию.  remove 1
+    {
+     //this.();
+    }
     public DIntArray(int arrayInt[], int pos, int num)
     //public DIntArray()
     {
-        //this(); //remove 1
+        this(); //remove 1
         this.arrayInt=arrayInt;
         this.pos=pos;
         this.num=num;
@@ -307,7 +308,7 @@ public int testNeg()    //try to test it for outbunds
         //testD.at(4);
 
 //-----------------------------test2 ------------------------------------------
-        int[] ia = {1, 2, 3, 4, 5};
+        int[] ia = {1, 2, 3, 4, 5,6};
         DIntArray dia = new DIntArray(ia, 3,7);
 
         for (int i = 0; i< ia.length-1; i++)
@@ -317,6 +318,18 @@ public int testNeg()    //try to test it for outbunds
             dia.atDelete(ia[i]);
             dia.at(ia[i]);
         }
+//----------------------------------------------------------------------
+        DIntArray testD=new DIntArray(ia, 3,7);
+        testD.add(12);
+        testD.add(10);
+        testD.add(8);
+        testD.add(6);
+        testD.add(5);
+        testD.add(2);
+        testD.add(8);
+        testD.atInsert(0,8);
+        testD.atDelete(5);
+        testD.at(4);
 //----------------------------------------------------------------------
         //testD.sort(new int[]{1,-3,2,9,7,-5});  //input array modelling
     }
