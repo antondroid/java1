@@ -119,8 +119,8 @@ public class DIntArray
         //DIntArray dia = new DIntArray();
         //for (int i = 0; i< arrayInt.length; i++)
         //dia.add(arrayInt[i]);
-        System.out.println("num                              " +num);
-        System.out.println("arrayInt                               " +Arrays.toString(arrayInt));
+        System.out.println("num                                  " +num);
+        System.out.println("arrayInt                             " +Arrays.toString(arrayInt));
         System.out.println(" --- the Start of add output  ---------");
 
         //---------------------------------------create artificial array--------------------------------------------
@@ -131,26 +131,26 @@ public class DIntArray
             arrayInt[i]=i;i++;
         }*/
         int a_length = arrayInt.length;
-        System.out.println("a_length 1                             " +a_length);
+        System.out.println("a_length 1                           " +a_length);
 //--------------------------------------end of create array ----------------------------------------------
         //System.out.println("print arrayInt" +Arrays.toString(arrayInt));
 
         //int a_length = arrayInt.length;
-        System.out.println("arrayInt                               " +Arrays.toString(arrayInt));
+        System.out.println("arrayInt                             " +Arrays.toString(arrayInt));
         a_length++;
         int a1_length= a_length ;
-        System.out.println(" a_length ++                           "+a_length);
+        System.out.println(" a_length ++                         "+a_length);
         a1 = new int [a1_length];  // create acc longer than arrayInt by 1
-        System.out.println("after init a1                                    "+Arrays.toString(a1));
+        System.out.println("after init a1                        "+Arrays.toString(a1));
         //AtomicInteger[] arrayIntCopy = Arrays. copyOf(arrayInt, arrayInt. length);
         a1 = Arrays.copyOf(arrayInt, a1_length);
-        System.out.println("after copy arrayInt 2 a1                         "+Arrays.toString(a1));
+        System.out.println("after copy arrayInt 2 a1             "+Arrays.toString(a1));
         a1[a1_length-1] = num;
-        System.out.println("a1 after add the  num value 2 the end  "+Arrays.toString(a1));
+        System.out.println("a1 after add the num value 2 the end "+Arrays.toString(a1));
         arrayInt =new int[a1_length];
         arrayInt = Arrays.copyOf(a1,a1_length);
-        System.out.println("arrayInt                               " +Arrays.toString(arrayInt));
-        System.out.println(" ----------the end of add output  -----");
+        System.out.println("arrayInt                             " +Arrays.toString(arrayInt));
+        System.out.println(" ----------the end of add output  -----------");
     }
     //--------------------------------------------------------------------------
 /*
@@ -185,7 +185,7 @@ num в позицию pos массива, при этом размер масс�
         //a_length = arrayInt.length;
 
        // System.out.println("print a_length after filling                     " +(a_length));
-        System.out.println("arrayInt                                   " +Arrays.toString(arrayInt));
+        System.out.println("arrayInt                             " +Arrays.toString(arrayInt));
         int a_length = arrayInt.length;
         a1=new int[a_length+1]; //create new output array nose part
         //int a1_length=a1.length;
@@ -226,9 +226,9 @@ num в позицию pos массива, при этом размер масс�
 //----------------------------end of filling ----------------------------------------------
 
         //System.out.println("      print a1   after fill the tail             " +Arrays.toString(a1));
-       System.out.println("      a1 after num has put                 " +Arrays.toString(a1));
+        System.out.println("      a1 after num has put           " +Arrays.toString(a1));
         arrayInt = Arrays.copyOf(a1,(a_length+1)  ); //copy first part to output array
-        System.out.println("arrayInt                                   " +Arrays.toString(arrayInt));
+        System.out.println("arrayInt                             " +Arrays.toString(arrayInt));
         System.out.println(" -------- the end of atInsert output  -----------");
     }
 //-------------------------------------------------------------------
@@ -249,7 +249,7 @@ public void atDelete(int pos)
    public void atDelete(int pos)
    {
        System.out.println(" -------- the Start of atDelete output  ---------");
-       System.out.println("      arrayInt                            " +Arrays.toString(arrayInt));
+       System.out.println("      arrayInt                        " +Arrays.toString(arrayInt));
 
        //System.out.println("      print a1                                   " +Arrays.toString(a1));
 //--------------------------------------------outof boundcheck-----------------------------------
@@ -269,10 +269,10 @@ public void atDelete(int pos)
        else
            {
                a2 = new int[a2_length];
-               System.out.println("      print a2                                   " +Arrays.toString(a2));
+               System.out.println("      print a2                        " +Arrays.toString(a2));
             }
 
-       System.out.println("      print a2                                   " +Arrays.toString(a2));
+       System.out.println("      print a2                        " +Arrays.toString(a2));
 //-----------------------------copy the  nose cells   ---------------------------------------
        int i=0;  //cell counter
        while(i<pos)//until pos reached
@@ -300,10 +300,10 @@ public void atDelete(int pos)
        }
 
 //----------------------------end of filling ----------------------------------------------
-       System.out.println("      a2   after deleting inside          " +Arrays.toString(a2));
+       System.out.println("      a2   after deleting inside      " +Arrays.toString(a2));
         arrayInt = new int[a2_length];
        arrayInt = Arrays.copyOf(a2,a2_length); //copy first part to output array
-       System.out.println("      arrayInt                            " +Arrays.toString(arrayInt));
+       System.out.println("      arrayInt                        " +Arrays.toString(arrayInt));
        //System.out.println(" -------- the end of atDelete output  -----------");
    }
 
@@ -315,21 +315,24 @@ public int at(int pos)
  - возвращает элемент по индексу pos. */
 public int at(int pos)
 {
-    //System.out.println(" -------- the Start of at output  ---------");
+    System.out.println(" -------- the Start of at output  ---------");
 
 //---------------------------------------------------------------------------
     //System.out.println("      print a1                                   " +Arrays.toString(arrayInt));
     int a_length=arrayInt.length;int value=0;
-    if (pos<a_length) {
-
-        value = arrayInt[pos];
-    }else {
-        System.out.println("      value   cannot be found from outside                             ");
-    }
-
+    if (pos<0) System.out.println("      value   cannot be negative                             ");
+       else {
+                if (pos < a_length)
+                    {
+                        value = arrayInt[pos];
+                    }
+                    else {
+                            System.out.println("      value   cannot be found from outside                             ");
+                    }
+            }
 
     System.out.println("      value                                " +value);
-    //System.out.println(" ---------- the end of at output  ---------------");
+    System.out.println(" ---------- the end of at output  ---------------");
 return value;
 
 }
@@ -376,7 +379,7 @@ public int testNeg()    //try to test it for outbunds
             }
             dia.atInsert(3, 88);
             dia.atDelete(4);
-            dia.at(3);
+            dia.at(7);
 
 //-----------------------------test3-----------------------------------------
         /*DIntArray testD=new DIntArray(ia, 3,7);
