@@ -33,9 +33,9 @@ public class SumBits {
     public static void main(String[] args) {
         SumBits test1=new SumBits();
         byte value;
-        test1.sumBits((byte) 0b00000111);
-        test1.sumBits((byte) 0b01101011);
-        test1.sumBits((byte) 0b00000000);
+        test1.sumBits((byte) 0b00000011);
+        test1.sumBits((byte) 0b01111011);
         test1.sumBits((byte) ~0b00000000);
+        test1.sumBits((byte) 0b00000000);
     }
 }

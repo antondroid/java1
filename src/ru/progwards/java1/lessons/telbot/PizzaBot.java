@@ -2,7 +2,7 @@ package ru.progwards.java1.lessons.telbot;
 
 import org.telegram.telegrambots.ApiContextInitializer;
 import ru.progwards.java1.telegrambot.ProgwardsTelegramBot;
-
+//import ru.progwards.java1.testlesson.ProgwardsTelegramBot; //the new one line created by manually while conversation 11june
 public class PizzaBot extends ProgwardsTelegramBot {
 
 
