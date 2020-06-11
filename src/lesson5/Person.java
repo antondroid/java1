@@ -47,7 +47,7 @@ public class Person //Создайте класс Person, содержащий
         }
 
     public static void main(String[] args) {
-        //System.out.println(getAge());
+        System.out.println();
     }
 }
 
