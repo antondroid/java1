@@ -14,25 +14,16 @@ public String toString(), который возвращает
 -1: "11111111"*/
 public class Binary {
     byte num;
-
     public Binary(byte num)   //constructor
     {
       this.num=num;
-
-
     }
     public String toString()
     {
-
         String result="+num ";
         byte a2[];
         a2 = new byte[8];
         System.out.println("----------------- & of Demo printout  -------------");
-        if((num>127)|(num<-127))
-        {
-            System.out.println(num + "num is out of bound of 1 byte    ");
-            return result;
-        }
 //-----------------------------------------------------------------------------
         int j=0;int j1=7;
         byte sum =0;
@@ -45,7 +36,7 @@ public class Binary {
             j++;j1--;
         }
 //-----------------------------------------------------------------------------
-        //String s2 = ("\""+a2[0]+a2[1]+a2[2]+a2[3]+ a2[4]+a2[5]+a2[6]+a2[7]+"\" ");
+        //String s2 = ("\""+a2[0]+a2[1]+a2[2]+a2[3]+ a2[4]+a2[5]+a2[6]+a2[7]+"\" ");  // "11110000"
         String s2 = (""+a2[0]+a2[1]+a2[2]+a2[3]+ a2[4]+a2[5]+a2[6]+a2[7]+"");
         System.out.println(s2);
         result=s2;
@@ -54,7 +45,8 @@ public class Binary {
 
     public static void main(String[] args) {
         byte num=0;
-        Binary test1 = new Binary((byte) 0b11111100);
+        //Binary test1 = new Binary((byte) 0b11111100);
+        Binary test1 = new Binary((byte) -1);
         test1.toString();
     }
 }
