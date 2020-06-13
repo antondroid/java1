@@ -58,7 +58,7 @@ public class Rectangle
         Double rect1 = this.area();
         //Double rect2 = Object anObject.area();
         //int result = 0;
-        b=(this.area().equals (anObject.area()));
+     //   b=(this.area().equals (anObject.area()));
         //b=(boolean)(this.area().equals (anObject.area()));//try this - same not work
         //= Double.equals(this.area(), anObject.area());// try this same not work
 
