@@ -12,13 +12,13 @@ public String toString(), который возвращает
 127: "01111111"
 -128: "10000000"
 -1: "11111111"*/
-public class Binary {
+public class Binary2 {
     byte num;
-    public Binary(byte num)   //constructor
+    public Binary2(byte num)   //constructor
     {
       this.num=num;
     }
-    public String toString()
+/*    public String toString()
     {
         String result="+num ";
         byte a2[];
@@ -35,15 +35,8 @@ public class Binary {
             num = (byte) (num>>1);
             j++;j1--;
         }
-//------------------------------sample 2-----
-/*
-        public String toString(){
-        String res = "";
-        for(byte i = 7; i >=0; i--){
-            res += Byte.toString((byte)((num >>> i)&1));
-        }
-        return res;
-    }*/
+//-----------------------------------
+
 
 
 // ------------------------------------------
@@ -52,12 +45,23 @@ public class Binary {
         System.out.println(s2);
         result=s2;
         return  result;
+    }*/
+//--------------------------------------------------------------------------------
+
+    public String toString(){
+        String res = "";
+        for(byte i = 7; i >=0; i--){
+            res += Byte.toString((byte)((num >>> i)&1));
+        }
+        System.out.println(res);
+        return res;
     }
+//--------------------------------------------------------------------------------
 
     public static void main(String[] args) {
         byte num=0;
         //Binary test1 = new Binary((byte) 0b11111100);
-        Binary test1 = new Binary((byte) -1);
+        Binary2 test1 = new Binary2((byte) 9);
         test1.toString();
     }
 }
