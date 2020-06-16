@@ -1,10 +1,11 @@
-/*
 package ru.progwards.java1.SeaBattle.win22n;
 
 
-        import ru.progwards.java1.SeaBattle.system.SeaBattle;
-        import ru.progwards.java1.SeaBattle.system.SeaBattle.FireResult;
+import ru.progwards.java1.SeaBattle.SeaBattle;
 
+/*import ru.progwards.java1.SeaBattle.system.SeaBattle;
+        import ru.progwards.java1.SeaBattle.system.SeaBattle.FireResult;
+*/
 public class SeaBattleAlg {
     // Тестовое поле создаётся конструктором
     //     SeaBattle seaBattle = new SeaBattle(true);
@@ -51,4 +52,3 @@ public class SeaBattleAlg {
     }
 }
 
-*/

@@ -1,4 +1,8 @@
+/*
 package ru.progwards.java1.telegrambot;  //path after dummy class was created by myself
+*/
+/**//*
+
 //package ru.progwards.java1.telegrambot; //it's own path
 
 
@@ -17,9 +21,11 @@ import org.telegram.telegrambots.meta.exceptions.TelegramApiRequestException;
 
 import com.google.common.collect.TreeMultimap;
 
+*/
 /**
  * Класс-обработчик поступающих к боту сообщений.
- */
+ *//*
+
 public class ProgwardsTelegramBot extends TelegramLongPollingBot {
 
     static class Association {
@@ -119,28 +125,34 @@ public class ProgwardsTelegramBot extends TelegramLongPollingBot {
         return new FoundTags(result);
     }
 
-    /**
+    */
+/**
      * Метод, который возвращает токен, выданный нам ботом @BotFather.
      * @return токен
-     */
+     *//*
+
     @Override
     public String getBotToken() {
         return token;
     }
 
-    /**
+    */
+/**
      * Метод, который возвращает имя пользователя бота.
      * @return имя пользователя
-     */
+     *//*
+
     @Override
     public String getBotUsername() {
         return username;
     }
 
-    /**
+    */
+/**
      * Метод-обработчик поступающих сообщений.
      * @param update объект, содержащий информацию о входящем сообщении
-     */
+     *//*
+
     @Override
     public void onUpdateReceived(Update update) {
         try {
@@ -180,3 +192,5 @@ public class ProgwardsTelegramBot extends TelegramLongPollingBot {
         }
     }
 }
+*/
+
