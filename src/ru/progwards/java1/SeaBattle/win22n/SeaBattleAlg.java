@@ -35,8 +35,8 @@ public class SeaBattleAlg {
     //         7|X|.|X|.|.|.|.|Х|.|X|
     //         8|X|.|.|.|.|.|.|X|.|.|
     //         9|X|.|.|.|X|.|.|.|.|.|
-
-    public void battleAlgorithm(SeaBattle seaBattle) {
+//--------------------------------------------------------------------------
+  /*  public void battleAlgorithm(SeaBattle seaBattle) {
         // пример алгоритма:
         // стрельба по всем квадратам поля полным перебором
         for (int y = 0; y < seaBattle.getSizeX(); y++) {
@@ -46,12 +46,14 @@ public class SeaBattleAlg {
             }
         }
     }
+*/
+    //--------------------------------------------------------------------
 
     int v             = 0;
     int h             = 0;
     String array1[][] = new String[10][10];
 
-    //--------------------------------------------------------------------
+
     public void Array1()   //
     {
         String put = ". ";//unknown square
@@ -98,20 +100,26 @@ public class SeaBattleAlg {
     //-------------------------------------------------------------------
     boolean dirHorisontal = false;
     boolean dirUp         = false;
+    boolean dirDown=false;
+    boolean dirLeft=false;
+    boolean dirRight=false;
     int     hitNumber     = 0;
-    int x1,x2,x3,x4,y1,y2,y3,y4;
+    int x0,x1,x2,x3,x4,y0,y1,y2,y3,y4;
+    int array_x[] ={x1,x2,x3,x4};
+    int array_y[]={y1,y2,y3,y4};
     //--------------------------------------case HIT  -----------------------------------
     public void caseHit(SeaBattle seaBattle) {
-        if (hitNumber == 0) {
+        /*if (hitNumber == 0) {
             hitNumber = 1;
         } else {
             hitNumber++;
-        }
+        }*/
+
         switch (hitNumber){
-            case 1: x1=x;y1=y;
-            case 2: x2=x;y2=y;
-            case 3: x3=x;y3=y;
-            case 4: x4=x;y4=y;
+            case 0: x1=x;y1=y;
+            case 1: x2=x;y2=y;
+            case 2: x3=x;y3=y;
+            case 3: x4=x;y4=y;
         }
         if ((hitNumber > 0) & (dirUp = true)&(x<9)) {
             array1[y][x + 1] = "C ";
@@ -120,13 +128,15 @@ public class SeaBattleAlg {
             array1[y][x - 1] = "C ";
         }
         array1[y][x] = "H ";  //put mark in our notepad
+        if (hitNumber==0) y0=y;  //keep original point
+       array_y[hitNumber]=y;  // array to find max cell
         //System.out.println("print arrayInt after filling                     " + (String)  Arrays.toString (array1 [y][x]));
         System.out.println("print arrayInt after filling                     " + (String) (array1[y][x]));
         //--------------------------------check vertical fire - try 2 fire below hit
         if (y < 9)   //check if it on down edge field
         {
-            y++; //  set hit point below 1st hit
-            System.out.println("y= " + y);
+            y++;//  set hit point below 1st hit
+            System.out.println("we go down y= " + y + "y0= "+ y0 );
             if ((array1[y][x] != "C ")) //check below 1st hit - if it was already checked, go up
             {
                 SeaBattle.FireResult fireResult = seaBattle.fire(x, y);
@@ -136,15 +146,17 @@ public class SeaBattleAlg {
                     case HIT:  //check which type we need
                         //array1[y][x]="H ";
                         System.out.println(fireResult + " switch casehit ");
+                        System.out.println(x + " x   y " + y);
                         caseHit(seaBattle);
                         break;
                     case DESTROYED: //check to close ship type
                         System.out.println(fireResult + " switch casehit ");
+                        System.out.println(x + " x   y " + y);
                         caseDestroyed(seaBattle);
                         break;
                     case MISS: //do nothing
                         System.out.println(fireResult + " switch casehit ");
-                        System.out.println(x + "  " + y);
+                        System.out.println(x + " x   y " + y);
                         caseMiss(seaBattle);
                         break;
                     default:   //do nothing
@@ -160,7 +172,7 @@ public class SeaBattleAlg {
             {
                 y--;   //  set hit point above 1st hit
                 dirUp = true;  // if below miss we must go up
-                System.out.println("print array1" + (array1[y][x]));
+                System.out.println("print array1 we go up" + (array1[y][x]));
                 if ((array1[y][x] != "C ")) //check up
                 {
                     SeaBattle.FireResult fireResult = seaBattle.fire(x, y);
@@ -170,16 +182,18 @@ public class SeaBattleAlg {
                     {
                         case HIT:  //check which type we need
                             //array1[y][x]="H ";
-                            System.out.println(fireResult + " switch casehit ");
+                            System.out.println(fireResult + " switch casehit go up ");
+                            System.out.println(x + " x   y " + y);
                             caseHit(seaBattle);
                             break;
                         case DESTROYED: //check to close ship type
-                            System.out.println(fireResult + " switch casehit ");
+                            System.out.println(fireResult + " switch casehit go up ");
+                            System.out.println(x + " x   y " + y);
                             caseDestroyed(seaBattle);
                             break;
                         case MISS: //do nothing
-                            System.out.println(fireResult + " switch casehit ");
-                            System.out.println(x + "  " + y);
+                            System.out.println(fireResult + " switch casehit go up");
+                            System.out.println(x + " x   y " + y);
                             caseMiss(seaBattle);
                             break;
                         default:   //do nothing
@@ -293,7 +307,7 @@ public class SeaBattleAlg {
     int x = 0;
     int y = 0;
 
-    public void battleAlgorithm1(SeaBattle seaBattle)
+    public void battleAlgorithm(SeaBattle seaBattle)
     {
         Array1();// 1.create firing notepad
         while (h < 10)
@@ -358,7 +372,7 @@ public class SeaBattleAlg {
         System.out.println("Sea battle");
 
         SeaBattle seaBattle = new SeaBattle(true);
-        new SeaBattleAlg().battleAlgorithm1(seaBattle);
+        new SeaBattleAlg().battleAlgorithm(seaBattle);
 
         System.out.println(seaBattle.getResult());
         System.out.println(seaBattle);
