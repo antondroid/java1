@@ -2,9 +2,8 @@ package ru.progwards.java1.SeaBattle.win22n;
 
 
 
-import Lesson6.CompareTo;
+
 import ru.progwards.java1.SeaBattle.SeaBattle;
-import ru.progwards.java1.lessons.arrays.ArraySort;
 
 import java.lang.reflect.Array;
 import java.util.Arrays;
