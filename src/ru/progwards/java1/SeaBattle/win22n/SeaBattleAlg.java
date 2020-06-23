@@ -83,10 +83,13 @@ public class SeaBattleAlg {
         //String put = "N ";//unknown square
         int v1 = 0;
         int h1 = 0;
-        System.out.println(" array 2");
+        System.out.println("  ");
+        System.out.println("   X  0  1  2  3  4  5  6  7  8  9  ---- array 2");
+        System.out.println("Y  ");
         while ((v1 < 10)) {
+            System.out.print(v1+"     ");
             while ((h1 < 10)) {
-                //array1[v][h];
+
                 System.out.print(array1[v1][h1] + " ");
                 h1++;
 
@@ -119,6 +122,7 @@ public class SeaBattleAlg {
     int x0,x1,x2,x3,x4,x5,x6,y0,y1,y2,y3,y4,y5,y6;
     int array_x[] ={x1,x2,x3,x4,x5};
     int array_y[]={y1,y2,y3,y4,y5};
+    int ship1,ship2,ship3,ship4,ship5;
     //--------------------------------------case HIT  -----------------------------------
     public void caseHit(SeaBattle seaBattle) {
         if (hitNumber==1)// we find the new ship
@@ -139,7 +143,7 @@ public class SeaBattleAlg {
         {
             y++;//  set hit point below 1st hit
             System.out.println("we go down y= " + y + "y0= "+ y0 );
-            if ((array1[y][x] != "C ")) //check below 1st hit - if it was already checked, go up
+            if ((array1[y][x] != "C ")&(array1[y][x] != "H ")&(array1[y][x] != "D ") ) //check below 1st hit - if it was already checked, go up
             {
                 dirVertical=true;dirDown=true;  //    dirDown probably!
                 SeaBattle.FireResult fireResult = seaBattle.fire(x, y);
@@ -171,10 +175,7 @@ public class SeaBattleAlg {
                     default:   //do nothing
                         break;
                 }Array2();
-
-
-            }
-
+            }else {checkedDown=true;  x=x0;y=y0; }
         }
 //------------------------------------         // if below already miss we must go up
 
@@ -182,7 +183,7 @@ public class SeaBattleAlg {
             {
                 y--;   //  set hit point above 1st hit
                 System.out.println("print array1 we go up" + (array1[y][x]));
-                if ((array1[y][x] != "C ")) //check up
+                if ((array1[y][x] != "C ")&(array1[y][x] != "H ")&(array1[y][x] != "D ")) //check up
                 {   dirVertical=true;
                     dirUp = true;  // if below miss probably we must go up
                     SeaBattle.FireResult fireResult = seaBattle.fire(x, y);
@@ -191,7 +192,7 @@ public class SeaBattleAlg {
                     switch (fireResult)
                     {
                         case HIT:  //check which type we need
-                            array1[y][x]="H ";hitNumber++;
+                            array1[y][x]="H ";hitNumber++;Array2();
                             //System.out.println(fireResult + " switch case hit go up ");
                             System.out.println(x + " x   y " + y);
                             caseHit(seaBattle);
@@ -211,20 +212,15 @@ public class SeaBattleAlg {
                             break;
                         default:   //do nothing
                             break;
-                    }
-                    Array2();
-                    //call check horisontal now
-                }
+                    }Array2();
+                }else {checkedUp=true;  x=x0;y=y0; }
             }
-        //
-         //we will check horizontal direction
-
-//--------- go right ---------------------------------------
+//--------- go right ----------------//we will check horizontal direction//call check horizontal now-----------------------
             if ((x<9) &(checkedRight==false ))
             {
                 x++;
                 System.out.println("we go right y= " + y + "y0= "+ y0 );
-                if ((array1[y][x] != "C ")) //check right of 1st hit - if it was already checked, go left
+                if ((array1[y][x] != "C ") &(array1[y][x] != "H ")&(array1[y][x] != "D ")) //check right of 1st hit - if it was already checked, go left
                 {
                     dirHorisontal=true;dirRight=true;  //    dirRight probably! try left then.
                     SeaBattle.FireResult fireResult = seaBattle.fire(x, y);
@@ -260,7 +256,7 @@ public class SeaBattleAlg {
             {
                 x--;
                 System.out.println("we go right y= " + y + "y0= "+ y0 );
-                if ((array1[y][x] != "C ")) //check 2 the left from the 1st hit - if it was already checked, it's the end.
+                if ((array1[y][x] != "C ")&(array1[y][x] != "H ")&(array1[y][x] != "D ") ) //check 2 the left from the 1st hit - if it was already checked, it's the end.
                 {
                     dirHorisontal=true;dirLeft=true;  //    dirRight probably! try left then.
                     SeaBattle.FireResult fireResult = seaBattle.fire(x, y);
@@ -289,14 +285,15 @@ public class SeaBattleAlg {
                         default:   //do nothing
                             break;
                     }
-                }
+                }else {checkedLeft=true;  x=x0;y=y0; }
             }
 
     }
 //-------------------------- & case HIT ---------------------------------------------
 
     //--------------------------- DESTROYED ---------------------------------------------
-    public void caseDestroyed(SeaBattle seaBattle) {
+    public void caseDestroyed(SeaBattle seaBattle)
+    {
         hitNumber++;
         array1[y][x] = "D ";
         Array2();
@@ -307,7 +304,7 @@ public class SeaBattleAlg {
         System.out.println(Arrays.toString(array_x)+ "  x");
         Arrays.sort(array_x);
         System.out.println(Arrays.toString(array_x)+ "x sorted" );
-
+        dirHorisontal=dirVertical=false;
         int result1 = Double.compare(array_x[3],array_x[4]);
         switch (result1)
         {
@@ -332,17 +329,17 @@ public class SeaBattleAlg {
 //-------------------- set side points for vertical ship
         int length1 = hitNumber ;     //ship length
         int maxLine=array_y[4] ;// max y  line
-        int minLine=maxLine-hitNumber;
+        //int minLine=maxLine-hitNumber+1;
         int botLine=maxLine+1;
         int topLine=maxLine-hitNumber;
-        if((dirHorisontal==false))
+        if((dirVertical==true))
         {
 //------------------------- bot line --------------------------
             if ((botLine <= 9) & (dirVertical == true)) {
                 array1[botLine][(x)] = "C ";
                 if (x < 9) array1[botLine][(x + 1)] = "C ";
                 if (x > 0) array1[botLine][(x - 1)] = "C ";
-            }
+            }Array2();
 //-------------------------top line --------------------------------
             if ((topLine >= 0) & (dirVertical == true)) {
                 array1[topLine][(x)] = "C ";
@@ -352,30 +349,85 @@ public class SeaBattleAlg {
             Array2();
 //-------------------------right side   ---------------------------
             if ((dirVertical == true) & (x < 9)) {
-                int i = length1;
+                int i = length1;int j=maxLine;
                 while (i >= 0) {
-                    array1[maxLine][(x + 1)] = "C ";   //right top field
-                    maxLine--;
-                    i--;
+                    array1[j][(x + 1)] = "C ";   //right top field
+                    j--;i--;
                 }Array2();
             }
 //-------------------- left side ----------------------------------
             if ((dirVertical == true) & (x > 0)) {
-                int i = length1;
+                int i = length1;int j=maxLine;
                 while (i >= 0) {
-                    array1[maxLine][(x - 1)] = "C ";   //right top field
-                    maxLine--;
-                    i--;
+                    array1[j][(x - 1)] = "C ";   //right top field
+                    j--;i--;Array2();
                 }
 
-            }Array2();
+            }
 
         }
 //----------------------& set side points for vertical ship ------------------------------
 
-//---------------------- set top / bottom points for vertical ship --------------------------
+//---------------------- set top / bottom points for horizontal ship --------------------------
+        //int length1 = hitNumber ;     //ship length
+        int maxColumn=array_x[4] ;// max x line
+        int minColumn=maxColumn-hitNumber+1;
+        int rightSide=maxColumn+1;
+        int leftSide=minColumn-1;
+        int botLineHor=maxLine+1;
+        int topLineHor=maxLine-1;
+        if((dirHorisontal==true))
+        {
+            //-------------------------top line --------------------------------
+            if ((topLineHor >= 0))
+            {
+                int i=length1; int j=maxColumn;
+                while ((i>0) )
+                    {
+                        array1[topLineHor][(j)] = "C ";
+                        j--;
+                        i--;
+                    }
+            }Array2();
+            //------------------------- bot line --------------------------
+            if ((botLineHor <= 9))
+            {
+                int i=length1;int j=maxColumn;
+                while  ((i>0))
+                {
+                    array1[botLineHor][(j)] = "C ";
+                    j--;
+                    i--;
+                    Array2();
+                }
+            }
+    //-------------------------right side   ---------------------------
+            if ((rightSide <= 9))
+            {
+                if ((topLineHor>=0))array1[topLineHor][(rightSide)] = "C ";   //left top field
+                array1[maxLine][(rightSide)] = "C ";   //right top field
+                if ((botLineHor<=9))array1[botLineHor][(rightSide)] = "C ";   //left top field
+                Array2();
+            }
+    //-------------------- left side ----------------------------------
+            if ((leftSide >= 0))
+            {
+                if ((topLineHor>=0))array1[topLineHor][(leftSide)] = "C ";   //left top field
+                array1[maxLine][(leftSide)] = "C ";   //right top field
+                if ((botLineHor<=9))array1[botLineHor][(leftSide)] = "C ";   //left bot field
+                Array2();
+            }
+        }
 
-//------------------------  & set top / bottom points for vertical ship
+//------------------------  & set top / bottom points for horizontal ship
+switch (hitNumber)
+{
+    case 1: ship1++;break;
+    case 2: ship2++;break;
+    case 3: ship3++;break;
+    case 4: ship4++;break;
+}
+        System.out.println( "repeated shot  ship1= "+ ship1+"  ship2="+ship2+"  ship3="+ship3 +"  ship4="+ship4     );
 
 //-----------------clear buffer------------------------------------
         hitNumber=4;
@@ -399,8 +451,8 @@ public class SeaBattleAlg {
     public void caseMiss(SeaBattle seaBattle)
     {
         array1[y][x] = "C ";   //little c - from firing, big C - from sophisticated
-        /*Array2();
-        if ((checkedAll==false)& (shipServicing==true) &(checkedLeft==false))
+        Array2();
+        /*if ((checkedAll==false)& (shipServicing==true) &(checkedLeft==false))
             {x=x0;y=y0;caseHit(seaBattle); }  //go up
         else
             {x=x0;y=y0;}//do nothing//do nothing*/
@@ -436,78 +488,105 @@ public class SeaBattleAlg {
     //SeaBattle seaBattle;
     int x = 0;
     int y = 0;
-
+    int d=1;
     public void battleAlgorithm(SeaBattle seaBattle)
     {
         Array1();// 1.create firing notepad
-        while (h < 10)
+        while ((ship1<4)| (ship2<3)|(ship3<2)|(ship4<1))
+        //while ((d<=3))
         {
-            System.out.println(v + "  " + h);
-            if (h > 0) v = ~(h) + 1;
-            System.out.println(v + "  " + h);
-            v -= 1;
-            System.out.println(v);
-            while ((v < 10) | (y < 10))
+            while (h < 10)
             {
-                if (v < -8)
+                System.out.println(v + "  " + h);
+                if (h > 0) v = ~(h) + 1;
+                System.out.println(v + "  " + h);
+                //v -= 1;
+                v -= d;
+                System.out.println(v);
+//-------------------------------------------------------------------------
+                while ((v < 10) | (y < 10))
                 {
-                    v = v + 8;
-                }
-                else {
-                        if (v < -4)
-                            {
-                             v = v + 4;
-                            }
-                     }
-                v = v + 4;
-                if (v > 9) break;
-                x = h;
-                y = v;
-                if ((array1[y][x] != "C ")) //check up
-                {
-                    SeaBattle.FireResult fireResult = seaBattle.fire(x, y);
-                    System.out.println(fireResult);
-                    checkedAll=checkedLeft=checkedRight=checkedUp=checkedDown=false;
+                    /*switch(v)
+                    {
+                        case -4: v = v + 4;break;
+                        case -5: v = v + 4;break;
+                        case -6: v = v + 4;break;
+                        case -7: v = v + 4;break;
+                        case -8:v = v + 8;break;
+                        case -9:v = v + 8;break;
+                        case -10:v = v + 8;break;
+                        case -12: v = v + 8;break;
+                        case -13:v = v + 12;break;
+                        case -14:v = v + 12;break;
+                        case -15:v = v + 12;break;
+                        case -16: v = v + 12;break;
+                        default: break;
+                    }*/
+                    if ((v < -12)) v = v + 12;
 
-                    switch (fireResult) {
-                        case HIT:  //check which type we need
-                            System.out.println(fireResult + " switch main");
-                            array1[y][x] = "H ";//put mark in our notepad
-                            hitNumber++;
-                            caseHit(seaBattle);
-                            break;
-                        case DESTROYED: //check to close ship type
-                            System.out.println(fireResult + " switch");
-                            caseDestroyed(seaBattle);
-                            break;
-                        case MISS: //do nothing
-                            System.out.println(fireResult + " switch");
-                            System.out.println(x + "  " + y);
-                            caseMiss(seaBattle);
-                            //v=v+4;
-                            break;
-                        default:   //do nothing
-                            break;
+                    else if (v < -8) {
+                        v = v + 8;
+                    } else {
+                        if (v < -4) {
+                            v = v + 4;
+                        }
                     }
+                    v = v + 4;
+                    //v++;
+                    if (v > 9) break;
+                    x = h;
+                    y = v;
+                    if ((array1[y][x] != "C ") & (array1[y][x] != "H ") & (array1[y][x] != "D ")) //check up
+                    {
+                        SeaBattle.FireResult fireResult = seaBattle.fire(x, y);
+                        System.out.println(fireResult);
+                        checkedAll = checkedLeft = checkedRight = checkedUp = checkedDown = false;
+
+                        switch (fireResult) {
+                            case HIT:  //check which type we need
+                                System.out.println(fireResult + " switch main");
+                                array1[y][x] = "H ";//put mark in our notepad
+                                hitNumber++;
+                                caseHit(seaBattle);
+                                break;
+                            case DESTROYED: //check to close ship type
+                                System.out.println(fireResult + " switch");
+                                caseDestroyed(seaBattle);
+                                break;
+                            case MISS: //do nothing
+                                System.out.println(fireResult + " switch");
+                                System.out.println(x + "  " + y);
+                                caseMiss(seaBattle);
+                                //v=v+4;
+                                break;
+                            default:   //do nothing
+                                break;
+                        }
+                    } else
+                        System.out.println("repeated shot d="+d + " x=" + x + " y=" + y + "  ship1= " + ship1 + "  ship2=" + ship2 + "  ship3=" + ship3 + "  ship4=" + ship4);
                 }
-            }
-            h++;
+                h++;
+            }System.out.println( "inside killed  ship1= "+ ship1+"  ship2="+ship2+"  ship3="+ship3 +"  ship4="+ship4     );
+            d=d+1;h=v=0;
+            //if (d>5) d=d+1;
+
         }
 
-        Array2();
+            Array2();
+            System.out.println( "killed  ship1= "+ ship1+"  ship2="+ship2+"  ship3="+ship3 +"  ship4="+ship4     );
     }
 
 
     // функция для отладки
     public static void main(String[] args)
         {
-        System.out.println("Sea battle");
+            System.out.println("Sea battle");
 
-        SeaBattle seaBattle = new SeaBattle(true);
-        new SeaBattleAlg().battleAlgorithm(seaBattle);
+            SeaBattle seaBattle = new SeaBattle(true);
+            new SeaBattleAlg().battleAlgorithm(seaBattle);
 
-        System.out.println(seaBattle.getResult());
-        System.out.println(seaBattle);
+            System.out.println(seaBattle.getResult());
+            System.out.println(seaBattle);
         }
 }
 
