@@ -65,7 +65,6 @@ public class SeaBattleAlg {
                 array1[v][h] = put;
                 h++;
                 System.out.print(put + " ");
-                //System.out.print(array1[v][h]+" ");
             }
             System.out.println();
             v++;
@@ -132,17 +131,17 @@ public class SeaBattleAlg {
 
        array_y[hitNumber]=y;  // array to find max cell
         array_x[hitNumber]=x;
-        System.out.println(Arrays.toString(array_y) + "  y" );
-        System.out.println(Arrays.toString(array_x)+ "  x");
+        //System.out.println(Arrays.toString(array_y) + "  y" );
+        //System.out.println(Arrays.toString(array_x)+ "  x");
 
         //System.out.println("print arrayInt after filling                     " + (String)  Arrays.toString (array1 [y][x]));
-        System.out.println(" arrayInt point" + (String) (array1[y][x]));
+        //System.out.println(" arrayInt point" + (String) (array1[y][x]));
         Array2();
 //-------------        //--------------------------------check vertical fire - try 2 fire below hit
         if ((y < 9)&(checkedDown==false))   //check if it on down edge field
         {
             y++;//  set hit point below 1st hit
-            System.out.println("we go down y= " + y + "y0= "+ y0 );
+            //System.out.println("we go down y= " + y + "y0= "+ y0 );
             if ((array1[y][x] != "C ")&(array1[y][x] != "H ")&(array1[y][x] != "D ") ) //check below 1st hit - if it was already checked, go up
             {
                 dirVertical=true;dirDown=true;  //    dirDown probably!
@@ -152,15 +151,15 @@ public class SeaBattleAlg {
                 {
                     case HIT:  //check which type we need
                         //array1[y][x]="H ";
-                        System.out.println(fireResult + " switch case hit ");
-                        System.out.println(x + " x   y " + y);
+                        /*System.out.println(fireResult + " switch case hit ");
+                        System.out.println(x + " x   y " + y);*/
                         array1[y][x] = "H ";//put mark in our notepad
                         hitNumber++;
                         caseHit(seaBattle);
                         break;
                     case DESTROYED: //check to close ship type
-                        System.out.println(fireResult + " switch case hit destroyed ");
-                        System.out.println(x + " x   y " + y);
+                       /* System.out.println(fireResult + " switch case hit destroyed ");
+                        System.out.println(x + " x   y " + y);*/
                         caseDestroyed(seaBattle);
                         break;
                     case MISS: //do nothing
