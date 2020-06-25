@@ -53,6 +53,7 @@ public class SeaBattleAlg {
     /*VERSION 0.1  with the most comments. this version get 178 points
      0.2 - totally removed all messages and arrays, keep one only. 178 points 56 shots
      0.3 - add some messages, and checked with random ships config
+     0.4.corrected get 192 or 185 points (uncommented fire)
     *
     *
     *
@@ -88,6 +89,7 @@ public class SeaBattleAlg {
             System.out.println();
             v++;
             h = 0;
+
         }
 
         v = 0;
@@ -116,7 +118,8 @@ public class SeaBattleAlg {
             v1++;
             h1 = 0;
         }
-
+        System.out.println("shot " + totalShot + " d=" + d + " x=" + x + " y=" + y + " killed  ship1= " + ship1 + "  ship2=" + ship2 + "  ship3=" + ship3 + "  ship4=" + ship4);
+        // System.out.println("hitNumberF   " + hitNumberF);
         //v=0;h=0;
     }
 
@@ -136,72 +139,134 @@ public class SeaBattleAlg {
     boolean checkedVert=false;
     boolean checkedAll=false;
     boolean shipServicing=false;
+    boolean changedDirection=false;
     int     hitNumber     = 0;
     int hitNumberF;
     int x0,x1,x2,x3,x4,x5,x6,y0,y1,y2,y3,y4,y5,y6;
-    int array_x[] ={x1,x2,x3,x4,x5};
-    int array_y[]={y1,y2,y3,y4,y5};
+    int array_x[] ={x1,x2,x3,x4,x5,x6};
+    int array_y[]={y1,y2,y3,y4,y5,y6};
     int ship1,ship2,ship3,ship4,ship5;
     //--------------------------------------case HIT  -----------------------------------
-    public void caseHit(SeaBattle seaBattle) {
-        if (hitNumber==1)// we find the new ship
-        {shipServicing=true; y0=y;x0=x; } //keep original point
-        //else hitNumber++;
-        //shipServicing=true;
-
-       array_y[hitNumber]=y;  // array to find max cell
-        array_x[hitNumber]=x;
-        //System.out.println(Arrays.toString(array_y) + "  y" );
+    public void caseHit(SeaBattle seaBattle)
+    {
+        if (hitNumber == 1)// we find the new ship
+        {
+            shipServicing = true;
+            y0 = y;
+            x0 = x;
+        } //keep original point
         //System.out.println(Arrays.toString(array_x)+ "  x");
-
         //System.out.println("print arrayInt " + (String)  Arrays.toString (array1 [y][x]));
-        //System.out.println(" arrayInt point" + (String) (array1[y][x]));
         Array2();
-//-------------        //--------------------------------check vertical fire - try 2 fire below hit
+        //------------------------------flag settings -----------------------------------------
+        if ((y==9)) checkedDown=true;
+        if ((y==0)) checkedUp=true;
+        if ((x==9)) checkedUp=true;
+
+        //------------------------------& flag settings ------------------------------------
+
+        //-------------        //--------------------------------check vertical fire - try 2 fire below hit
+        if ((y < 9) & (checkedDown == false))   //check if it on down edge field
+        {
+            y++;//  set hit point below 1st hit
+            System.out.println("we go down y= " + y + "y0= " + y0);
+            if ((y >= 0) & (y <= 9) & (x >= 0) & (x <= 9) & (array1[y][x] != "c ") & (array1[y][x] != "C ") & (array1[y][x] != "H ") & (array1[y][x] != "D ")) //check below 1st hit - if it was already checked, go up
+            {
+                dirVertical = true;
+                dirDown = true;  //    dirDown probably!
+                SeaBattle.FireResult fireResult = seaBattle.fire(x, y);
+                totalShot++;
+                switch (fireResult) {
+                    case HIT:  //check which type we need
+                        // -----------------------------------array to find max cell
+                        hitNumber++;
+                        array_y[hitNumber] = y;
+                        array_x[hitNumber] = x;
+                        array1[y][x] = "H ";//put mark in our notepad
+                        Array2();
+                        caseHit(seaBattle);
+                        break;
+                    case DESTROYED: //check to close ship type
+                        caseDestroyed(seaBattle);
+                        break;
+                    case MISS: //do nothing
+                        checkedDown = true;
+                        array1[y][x] = "C ";
+                        Array2();
+                    {
+                        x = x0;
+                        y = (y0);
+                        checkedDown = true;
+                        changedDirection = true;
+                        caseHit(seaBattle);
+                    } //if we go down, & miss, it mean, that we start from the middle
+                    //so we turn back and start from original point +1 to accordingly direction
+                    break;
+                    default:   //do nothing
+                        break;
+                }
+            } else {
+                checkedDown = true;
+                x = x0;
+                y = y0;
+            }
+        } else {
+            checkedDown = true;
+            changedDirection = true;
+            x = x0;
+            y = y0;
+        } //we come here because of the edge and continue to fire, so coordinates don't reset
+
+
+    }
+//------------------------------------         // if below already miss we must go up ---------------------------
+/*
+-------------        //--------------------------------check vertical fire - try 2 fire below hit
         if ((y < 9)&(checkedDown==false))   //check if it on down edge field
         {
             y++;//  set hit point below 1st hit
-            //System.out.println("we go down y= " + y + "y0= "+ y0 );
+            System.out.println("we go down y= " + y + "y0= "+ y0 );
             if ( (y>=0)&(y<=9)&(x>=0)&(x<=9)&(array1[y][x] != "c ") & (array1[y][x] != "C ")&(array1[y][x] != "H ")&(array1[y][x] != "D ") ) //check below 1st hit - if it was already checked, go up
             {
                 dirVertical=true;dirDown=true;  //    dirDown probably!
                 SeaBattle.FireResult fireResult = seaBattle.fire(x, y);
                 totalShot++;
-               // System.out.println(fireResult);
                 switch (fireResult)
                 {
                     case HIT:  //check which type we need
-                        //array1[y][x]="H ";
-                        /*System.out.println(fireResult + " switch case hit ");
-                        System.out.println(x + " x   y " + y);*/
-                        array1[y][x] = "H ";//put mark in our notepad
+                        // -----------------------------------array to find max cell
                         hitNumber++;
+                        array_y[hitNumber]=y;
+                        array_x[hitNumber]=x;
+                        array1[y][x] = "H ";//put mark in our notepad
+                        Array2();
                         caseHit(seaBattle);
                         break;
                     case DESTROYED: //check to close ship type
-                       /* System.out.println(fireResult + " switch case hit destroyed ");
-                        System.out.println(x + " x   y " + y);*/
                         caseDestroyed(seaBattle);
                         break;
                     case MISS: //do nothing
-                        //System.out.println(fireResult + " switch casehit ");
-                        //System.out.println(x + " x   y " + y);
-                        //array1[y][x] = "c ";//put mark in our notepad
                         checkedDown=true;
                         array1[y][x] = "C ";
-                        if ((checkedAll==false)){x=x0;y=y0;caseHit(seaBattle); }
-                        //caseMiss(seaBattle);
+                        Array2();
+                        {x=x0;y=(y0);checkedDown=true; changedDirection=true; caseHit(seaBattle); } //if we go down, & miss, it mean, that we start from the middle
+                        //so we turn back and start from original point +1 to accordingly direction
                         break;
                     default:   //do nothing
                         break;
-                }//Array2();
+                }
             }else {checkedDown=true;  x=x0;y=y0; }
-        }
-//------------------------------------         // if below already miss we must go up
+        }else {checkedDown=true;changedDirection=true;x=x0;y=y0; } //we come here because of the edge and continue to fire, so coordinates don't reset
+
+
+
+//------------------------------------         // if below already miss we must go up*//*
 
             if  ((y > 0)& (checkedUp==false) )        //check if it on upper edge field
             {
-                y--;   //  set hit point above 1st hit
+                //if ((changedDirection==false)&(shipServicing==false) )  {y--;}
+                y--;
+                 //  set hit point above 1st hit
                 //System.out.println("print array1 we go up" + (array1[y][x]));
                 if ((y>=0)&(y<=9)&(x>=0)&(x<=9)&(array1[y][x] != "c ") & (array1[y][x] != "C ")&(array1[y][x] != "H ")&(array1[y][x] != "D ")) //check up
                 {   dirVertical=true;
@@ -210,30 +275,29 @@ public class SeaBattleAlg {
                     switch (fireResult)
                     {
                         case HIT:  //check which type we need
-                            array1[y][x]="H ";hitNumber++;
+                            hitNumber++;
+                            array_y[hitNumber]=y;
+                            array_x[hitNumber]=x;
+                            array1[y][x]="H ";
                             Array2();
                             caseHit(seaBattle);
                             break;
                         case DESTROYED: //check to close ship type
-                            //System.out.println(fireResult + " switch case dest go up ");
-                           // System.out.println(x + " x   y " + y);
                             caseDestroyed(seaBattle);
                             break;
                         case MISS: //do nothing
-                            //System.out.println(fireResult + " switch case miss go up");
-                            //System.out.println(x + " x   y " + y);
                             checkedUp=true;
                             array1[y][x] = "C ";
                             Array2();
-                            if ((checkedAll==false)){x=x0;y=y0;caseHit(seaBattle); }
-                            //caseMiss(seaBattle);
+                        {x=x0;y=(y0);checkedDown=true; changedDirection=true; caseHit(seaBattle); } //if we go down, & miss, it mean, that we start from the middle
+                        //so we turn back and start from original point +1 to accordingly direction
                             break;
                         default:   //do nothing
                             break;
                     }
                     //Array2();
                 }else {checkedUp=true;  x=x0;y=y0; }
-            }
+            }else {checkedUp=true;changedDirection=true;x=x0;y=y0;  }  //we come here because of the edge and continue to fire, so coordinates don't reset
 //--------- go right ----------------//we will check horizontal direction//call check horizontal now-----------------------
             if ((x<9) &(checkedRight==false ))
             {
@@ -243,38 +307,34 @@ public class SeaBattleAlg {
                 {
                     dirHorisontal=true;dirRight=true;  //    dirRight probably! try left then.
                     SeaBattle.FireResult fireResult = seaBattle.fire(x, y);totalShot++;
-                   // System.out.println(fireResult);
                     switch (fireResult)
                     {
                         case HIT:  //check which type we need
-                            array1[y][x]="H ";hitNumber++;
-                          //  System.out.println(fireResult + " switch case hit go right  ");
-                           // System.out.println(x + " x   y " + y);
+                            hitNumber++;
+                            array_y[hitNumber]=y;
+                            array_x[hitNumber]=x;
+                            array1[y][x]="H ";
+                            Array2();
                             caseHit(seaBattle);
                             break;
                         case DESTROYED: //check to close ship type
-                           // System.out.println(fireResult + " switch case hi go right  ");
-                            //System.out.println(x + " x   y " + y);
                             caseDestroyed(seaBattle);
                             break;
                         case MISS: //do nothing
-                           // System.out.println(fireResult + " switch case hit go right");
-                           // System.out.println(x + " x   y " + y);
                             checkedRight=true;
                             array1[y][x] = "C ";
-                            if ((checkedAll==false)){x=x0;y=y0;caseHit(seaBattle); }
-                            //caseMiss(seaBattle);
+                            Array2();
+                            {changedDirection=true;x=x0;y=y0;caseHit(seaBattle); }
                             break;
                         default:   //do nothing
                             break;
                     }
-                }
-            }else {checkedRight=true;  x=x0;y=y0; }
+                }else {checkedRight=true;  x=x0;y=y0; }
+            }else {checkedRight=true; changedDirection=true;x=x0;y=y0;}   //we come here because of the edge and continue to fire, so coordinates don't reset
  //--------------------- check it left now ----------------------------------
             if  ((x>0)  &(checkedLeft==false))
             {
                 x--;
-               // System.out.println("we go right y= " + y + "y0= "+ y0 );
                 if ((y>=0)&(y<=9)&(x>=0)&(x<=9)&(array1[y][x] != "c ") & (array1[y][x] != "C ")&(array1[y][x] != "H ")&(array1[y][x] != "D ") ) //check 2 the left from the 1st hit - if it was already checked, it's the end.
                 {
                     dirHorisontal=true;dirLeft=true;  //    dirRight probably! try left then.
@@ -283,32 +343,27 @@ public class SeaBattleAlg {
                     switch (fireResult)
                     {
                         case HIT:  //check which type we need
-                            array1[y][x]="H ";hitNumber++;
-                          //  System.out.println(fireResult + " switch case hit go right  ");
-                          //  System.out.println(x + " x   y " + y);
+                            hitNumber++;
+                            array_y[hitNumber]=y;
+                            array_x[hitNumber]=x;
+                            array1[y][x]="H ";
                             caseHit(seaBattle);
                             break;
                         case DESTROYED: //check to close ship type
-                           // System.out.println(fireResult + " switch case hi go right  ");
-                           // System.out.println(x + " x   y " + y);
                             caseDestroyed(seaBattle);
                             break;
                         case MISS: //do nothing
-                          //  System.out.println(fireResult + " switch case hit go right");
-                          //  System.out.println(x + " x   y " + y);
                             checkedLeft=true;checkedAll=true;
                             array1[y][x] = "C ";
-                            //if ((checkedAll==false)){x=x0;y=y0;caseHit(seaBattle); }
-                            //caseMiss(seaBattle);
                             break;
                         default:   //do nothing
                             break;
                     }
                 }else {checkedLeft=true;  x=x0;y=y0; }
-            }
+            }else {checkedLeft=true; x=x0;y=y0; }  //we come here because of the edge and continue to fire, so coordinates don't reset
 
     }
-//-------------------------- & case HIT ---------------------------------------------
+//-------------------------- & case HIT ---------------------------------------------*/
 
     //--------------------------- DESTROYED ---------------------------------------------
     public void caseDestroyed(SeaBattle seaBattle)
@@ -316,15 +371,11 @@ public class SeaBattleAlg {
         hitNumber++;
         array1[y][x] = "D ";
         Array2();
-        //if (hitNumber==0) {y0=y;x0=x; }  //keep original point
         array_y[hitNumber]=y;  // array to find max cell
         array_x[hitNumber]=x;
-       // System.out.println(Arrays.toString(array_y) + "  y" );
-      //  System.out.println(Arrays.toString(array_x)+ "  x");
         Arrays.sort(array_x);
-       // System.out.println(Arrays.toString(array_x)+ "x sorted" );
         dirHorisontal=dirVertical=false;
-        int result1 = Double.compare(array_x[3],array_x[4]);
+        int result1 = Double.compare(array_x[4],array_x[5]);
         switch (result1)
         {
             case 0: dirVertical=true;break;
@@ -332,12 +383,8 @@ public class SeaBattleAlg {
             case -1: dirHorisontal=true;break;
 
         }
-        /*int result2 = Double.compare(array_x[1],array_x[2]);
-        int result3 = Double.compare(array_x[2],array_x[3]);*/
-       // result = Double.compare(this.area(), anRectangle.area()); // sample
         Arrays.sort(array_y);
-       // System.out.println(Arrays.toString(array_y)+ "y sorted");
-        int result2 = Double.compare(array_y[3],array_y[4]);
+        int result2 = Double.compare(array_y[4],array_y[5]);
         switch (result2)
         {
             case 0: dirHorisontal=true;break;
@@ -345,68 +392,67 @@ public class SeaBattleAlg {
             case -1: dirVertical=true;break;
 
         }
-//-------------------- set side points for vertical ship
-        int length1 = hitNumber ;     //ship length
-        int maxLine=array_y[4] ;// max y  line
-        //int minLine=maxLine-hitNumber+1;
-        int botLine=maxLine+1;
-        int topLine=maxLine-hitNumber;
+
         if((dirVertical==true))
         {
+            //-------------------- set side points for vertical ship
+            int length1 = hitNumber ;     //ship length
+            int maxLine=array_y[5] ;// max y  line
+            int botLine=maxLine+1;
+            int topLine=(maxLine)-hitNumber;
+
 //------------------------- bot line --------------------------
             if ((botLine <= 9) & (dirVertical == true)) {
-                array1[botLine][(x)] = "C ";
-                if (x < 9) array1[botLine][(x + 1)] = "C ";
-                if (x > 0) array1[botLine][(x - 1)] = "C ";
+                array1[botLine][(x)] = "c ";
+                if (x+1 <= 9) array1[botLine][(x + 1)] = "c ";
+                if (x-1 >= 0) array1[botLine][(x - 1)] = "c ";
             }
             Array2();
 //-------------------------top line --------------------------------
             if ((topLine >= 0) & (dirVertical == true)) {
-                array1[topLine][(x)] = "C ";
-                if (x < 9) array1[topLine][(x + 1)] = "C ";
-                if (x > 0) array1[topLine][(x - 1)] = "C ";
+                array1[topLine][(x)] = "c ";
+                if (x+1 <= 9) array1[topLine][(x + 1)] = "c ";
+                if (x-1 >= 0) array1[topLine][(x - 1)] = "c ";
             }
             Array2();
 //-------------------------right side   ---------------------------
-            if ((dirVertical == true) & (x < 9)) {
+            if ((dirVertical == true) & (x+1 <= 9)) {
                 int i = length1;int j=maxLine;
                 while (i >= 0) {
-                    array1[j][(x + 1)] = "C ";   //right top field
+                    array1[j][(x + 1)] = "c ";   //right top field
                     j--;i--;
                 }
                 Array2();
             }
 //-------------------- left side ----------------------------------
-            if ((dirVertical == true) & (x > 0)) {
+            if ((dirVertical == true) & (x-1 >= 0)) {
                 int i = length1;int j=maxLine;
                 while (i >= 0) {
-                    array1[j][(x - 1)] = "C ";   //right top field
+                    array1[j][(x - 1)] = "c ";   //right top field
                     j--;i--;
                     Array2();
                 }
-
             }
-
         }
 //----------------------& set side points for vertical ship ------------------------------
 
 //---------------------- set top / bottom points for horizontal ship --------------------------
-        //int length1 = hitNumber ;     //ship length
-        int maxColumn=array_x[4] ;// max x line
-        int minColumn=maxColumn-hitNumber+1;
-        int rightSide=maxColumn+1;
-        int leftSide=minColumn-1;
-        int botLineHor=maxLine+1;
-        int topLineHor=maxLine-1;
         if((dirHorisontal==true))
-        {
+        {   int length1 = hitNumber ;     //ship length
+            int maxLine=array_y[5] ;// max y  line
+            int maxColumn=array_x[5] ;// max x line
+            int minColumn=maxColumn-hitNumber+1;
+            int rightSide=maxColumn+1;
+            int leftSide=minColumn-1;
+            int botLineHor=maxLine+1;
+            int topLineHor=maxLine-1;
             //-------------------------top line --------------------------------
             if ((topLineHor >= 0))
             {
                 int i=length1; int j=maxColumn;
                 while ((i>0) )
                     {
-                        array1[topLineHor][(j)] = "C ";
+                        array1[topLineHor][(j)] = "c ";
                         j--;
                         i--;
                     }
@@ -417,7 +463,7 @@ public class SeaBattleAlg {
                 int i=length1;int j=maxColumn;
                 while  ((i>0))
                 {
-                    array1[botLineHor][(j)] = "C ";
+                    array1[botLineHor][(j)] = "c ";
                     j--;
                     i--;
                    Array2();
@@ -426,17 +472,17 @@ public class SeaBattleAlg {
     //-------------------------right side   ---------------------------
             if ((rightSide <= 9))
             {
-                if ((topLineHor>=0))array1[topLineHor][(rightSide)] = "C ";   //left top field
-                array1[maxLine][(rightSide)] = "C ";   //right top field
-                if ((botLineHor<=9))array1[botLineHor][(rightSide)] = "C ";   //left top field
+                if ((topLineHor>=0))array1[topLineHor][(rightSide)] = "c ";   //left top field
+                array1[maxLine][(rightSide)] = "c ";   //right top field
+                if ((botLineHor<=9))array1[botLineHor][(rightSide)] = "c ";   //left top field
                Array2();
             }
     //-------------------- left side ----------------------------------
             if ((leftSide >= 0))
             {
-                if ((topLineHor>=0))array1[topLineHor][(leftSide)] = "C ";   //left top field
-                array1[maxLine][(leftSide)] = "C ";   //right top field
-                if ((botLineHor<=9))array1[botLineHor][(leftSide)] = "C ";   //left bot field
+                if ((topLineHor>=0))array1[topLineHor][(leftSide)] = "c ";   //left top field
+                array1[maxLine][(leftSide)] = "c ";   //right top field
+                if ((botLineHor<=9))array1[botLineHor][(leftSide)] = "c ";   //left bot field
                 Array2();
             }
         }
@@ -452,32 +498,22 @@ switch (hitNumber)
        System.out.println( "repeated shot  ship1= "+ ship1+"  ship2="+ship2+"  ship3="+ship3 +"  ship4="+ship4     );
 
 //-----------------clear buffer------------------------------------
-        hitNumber=4;
+        hitNumber=5;
         while (hitNumber!=0)
         {
             array_x[hitNumber]=0;
             array_y[hitNumber]=0;
             hitNumber--;
         }
-       // System.out.println(Arrays.toString(array_x)+ "x sorted" );
-       // System.out.println(Arrays.toString(array_y)+ "y sorted");
         checkedAll=checkedLeft=checkedRight=checkedUp=checkedDown=true;
-
     }
-
-
-
 //---------------------------------- & DESTROYED -------------------------------------------
 
     //----------------------------  MISS -----------------------------------------------
     public void caseMiss(SeaBattle seaBattle)
     {
-        array1[y][x] = "C ";   //little c - from firing, big C - from sophisticated
+        array1[y][x] = "C ";   //little c -from sophisticated, big C -  from firing
         Array2();
-        /*if ((checkedAll==false)& (shipServicing==true) &(checkedLeft==false))
-            {x=x0;y=y0;caseHit(seaBattle); }  //go up
-        else
-            {x=x0;y=y0;}//do nothing//do nothing*/
     }
 
     //----------------------------- & MISS ---------------------------------------------
@@ -507,45 +543,23 @@ switch (hitNumber)
     }*/
 
 //------------------------- Decision -----------------------------------------
-    //SeaBattle seaBattle;
     int x = 0;
     int y = 0;
-    int d=1;
+    int d=3;
     int totalShot=0;
     public void battleAlgorithm(SeaBattle seaBattle)
     {
         Array1();// 1.create firing notepad
-        while ((ship1<4)| (ship2<3)|(ship3<2)|(ship4<1))    //original string
-        //while ((d<8))    //false firing string
-        //while ((d<=3))
+        label: while ( !((ship1==4)& (ship2==3)&(ship3==2)&(ship4==1)))    //original string
         {
             while (h <= 9)
             {
-               // System.out.println(v + "  " + h);
                 if (h > 0) v = ~(h) + 1;
-               // System.out.println(v + "  " + h);
-                //v -= 1;
                 v -= d;
-              //  System.out.println(v);
 //---------------------------------------vertical fire----------------------------------
                 while ((v <=9) | (y <= 9))
                 {
-                    /*switch(v)
-                    {
-                        case -4: v = v + 4;break;
-                        case -5: v = v + 4;break;
-                        case -6: v = v + 4;break;
-                        case -7: v = v + 4;break;
-                        case -8:v = v + 8;break;
-                        case -9:v = v + 8;break;
-                        case -10:v = v + 8;break;
-                        case -12: v = v + 8;break;
-                        case -13:v = v + 12;break;
-                        case -14:v = v + 12;break;
-                        case -15:v = v + 12;break;
-                        case -16: v = v + 12;break;
-                        default: break;
-                    }*/
+                    if (((ship1==4)& (ship2==3)&(ship3==2)&(ship4==1))) break label;
                     if ((v < -12)) v = v + 12;
 
                     else if (v < -8) {
@@ -556,7 +570,6 @@ switch (hitNumber)
                         }
                     }
                     v = v + 4;
-                    //v++;
                     if (v > 9) break;
                     x = h;
                     y = v;
@@ -565,24 +578,21 @@ switch (hitNumber)
                     {
                         SeaBattle.FireResult fireResult = seaBattle.fire(x, y);totalShot++;
                         checkedAll = checkedLeft = checkedRight = checkedUp = checkedDown = false;
-
                         switch (fireResult)
                             {
                                 case HIT:  //check which type we need
-                                  //  System.out.println(fireResult + " switch main");
-                                    array1[y][x] = "H ";//put mark in our notepad
                                     hitNumber++;
+                                    array_y[hitNumber]=y;
+                                    array_x[hitNumber]=x;
+                                    array1[y][x] = "H ";//put mark in our notepad
+                                    Array2();
                                     caseHit(seaBattle);
                                     break;
                                 case DESTROYED: //check to close ship type
-                                  //  System.out.println(fireResult + " switch");
                                     caseDestroyed(seaBattle);
                                     break;
                                 case MISS: //do nothing
-                                   // System.out.println(fireResult + " switch");
-                                  //  System.out.println(x + "  " + y);
                                     caseMiss(seaBattle);
-                                    //v=v+4;
                                     break;
                                 default:   //do nothing
                                     break;
@@ -594,96 +604,43 @@ switch (hitNumber)
                            if((totalShot>1))
                            {
                                System.out.println("repeated shot " + totalShot + " d=" + d + " x=" + x + " y=" + y + " killed  ship1= " + ship1 + "  ship2=" + ship2 + "  ship3=" + ship3 + "  ship4=" + ship4);
-                              // System.out.println("hitNumberF   " + hitNumberF);
                            }
-
-
-
 //---------------------------------------& firing------------------------------
 
-//--------------------------------------- false firing start ------------------------------
-
-               /*     //if ((y>=0)&(y<=9)&(x>=0)&(x<=9)&(array1[y][x] != "c ") &  (array1[y][x] != "C ") & (array1[y][x] != "H ") & (array1[y][x] != "D ")) //check up
-                    if ((y>=0)&(y<=9)&(x>=0)&(x<=9)) //check up
-                    {
-                        System.out.println( "d=" +d+ "  x=" + x +  "  y="+y + "  hitNumberF   " + hitNumberF);
-                        SeaBattle.FireResult fireResult = seaBattle.fire(x, y);totalShot++;
-                        checkedAll = checkedLeft = checkedRight = checkedUp = checkedDown = false;
-
-                        switch (fireResult)
-                        {
-                            case HIT:  //check which type we need
-                                //  System.out.println(fireResult + " switch main");
-                                array1[y][x] = "h ";//put mark in our notepad
-                                hitNumberF ++;
-                                //caseHit(seaBattle);
-                                break;
-                            case DESTROYED: //check to close ship type
-                                //  System.out.println(fireResult + " switch");
-                                array1[y][x] = "d ";//put mark in our notepad
-                                hitNumberF++;
-                                //caseDestroyed(seaBattle);
-                                break;
-                            case MISS: //do nothing
-                                // System.out.println(fireResult + " switch");
-
-                                //  System.out.println(x + "  " + y);
-                                array1[y][x] = "c ";//put mark in our notepad
-                                hitNumberF++;
-                                //caseMiss(seaBattle);
-                                //v=v+4;
-                                break;
-                            default:   //do nothing
-                                break;
-                        }
-                        Array2();
-                        System.out.println( "d=" +d+ "  x=" + x +  "  y="+y + "  hitNumberF   " + hitNumberF);
-                    }
-                    else
-                    if((totalShot>1))
-                    {
-                        Array2();
-                        System.out.println("repeated shot " + totalShot + " d=" + d + " x=" + x + " y=" + y + " killed  ship1= " + ship1 + "  ship2=" + ship2 + "  ship3=" + ship3 + "  ship4=" + ship4);
-                        System.out.println("hitNumberF   " + hitNumberF);
-
-                    }
-*/
-
-//---------------------------------------& false firing------------------------------
                 }
 //-----------------end vertical fire
                 h++;
             }
 //------------------------------------& horizontal fire cycle -------------------------
+            v=h=0;
             System.out.println( "inside killed  ship1= "+ ship1+"  ship2="+ship2+"  ship3="+ship3 +"  ship4="+ship4     );
             System.out.println( "d=" +d+ "  x=" + x +  "  y="+y + " horizontal fire cycle  hitNumberF   " + hitNumberF);
             switch (d)
             {
-                case 0:break;
+               /* case 0:break;
                 case 1: d=3;break;
                 case 3: d=4;break;
                 case 4: d=2;break;
+                default: d=8; break; //do nothing 178*/
+                case 0: d=8;break;
+                case 3: d=1;break;
+                case 1: d=2;break;
+                case 2: d=0;break;
                 default: d=8; break; //do nothing
             }
             System.out.println( "d=" +d+ "  x=" + x +  "  y="+y + "  hitNumberF   " + hitNumberF);
-            v=h=0;
+
         }
-
-
             Array2();
-            //System.out.println( "killed  ship1= "+ ship1+"  ship2="+ship2+"  ship3="+ship3 +"  ship4="+ship4     );
     }
 
 
     // функция для отладки
     public static void main(String[] args)
         {
-           // System.out.println("Sea battle");
-
-           SeaBattle seaBattle = new SeaBattle(true);    //true config
-           //SeaBattle seaBattle = new SeaBattle();      //random config
+         SeaBattle seaBattle = new SeaBattle(true);    //true config
+         //SeaBattle seaBattle = new SeaBattle();      //random config
             new SeaBattleAlg().battleAlgorithm(seaBattle);
-
             System.out.println(seaBattle.getResult());
             System.out.println(seaBattle);
         }
