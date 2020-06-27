@@ -5,17 +5,12 @@ package ru.progwards.java1.SeaBattle.win22n;
 
 import ru.progwards.java1.SeaBattle.SeaBattle;
 
-import java.lang.reflect.Array;
 import java.util.Arrays;
-
-import static ru.progwards.java1.SeaBattle.SeaBattle.FireResult.MISS;
-import static ru.progwards.java1.SeaBattle.SeaBattle.FireResult.HIT;
-import static ru.progwards.java1.SeaBattle.SeaBattle.FireResult.DESTROYED;
 
 /*import ru.progwards.java1.SeaBattle.system.SeaBattle;
         import ru.progwards.java1.SeaBattle.system.SeaBattle.FireResult;
 */
-public class SeaBattleAlg {
+public class SeaBattleAlg0 {
     // Тестовое поле создаётся конструктором
     //     SeaBattle seaBattle = new SeaBattle(true);
     //
@@ -59,7 +54,10 @@ public class SeaBattleAlg {
      0.3 - add some messages, and checked with random ships config
      0.4.corrected get 192 or 185 points (uncommented fire)
      0.5 upto 227 points
-     0.6 upto 242 points + stack clear
+     0.6 upto 242 points + stack clear -  less fail, but exist yet (1 of 8 running fails)
+     ALg0- the copy of 0.6 version
+     Alg1 - the same w/0 print output arrays. // removing doesn/t help.
+     Alg2 - made of Alg0 removed HIT point defining from switch case directly. ()
     *
     *
     *
@@ -586,7 +584,7 @@ switch (hitNumber)
         {
          //SeaBattle seaBattle = new SeaBattle(true);    //true config
          SeaBattle seaBattle = new SeaBattle();      //random config
-            new SeaBattleAlg().battleAlgorithm(seaBattle);
+            new SeaBattleAlg0().battleAlgorithm(seaBattle);
             System.out.println(seaBattle.getResult());
             System.out.println(seaBattle);
         }

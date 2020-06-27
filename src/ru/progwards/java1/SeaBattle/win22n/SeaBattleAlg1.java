@@ -5,17 +5,12 @@ package ru.progwards.java1.SeaBattle.win22n;
 
 import ru.progwards.java1.SeaBattle.SeaBattle;
 
-import java.lang.reflect.Array;
 import java.util.Arrays;
-
-import static ru.progwards.java1.SeaBattle.SeaBattle.FireResult.MISS;
-import static ru.progwards.java1.SeaBattle.SeaBattle.FireResult.HIT;
-import static ru.progwards.java1.SeaBattle.SeaBattle.FireResult.DESTROYED;
 
 /*import ru.progwards.java1.SeaBattle.system.SeaBattle;
         import ru.progwards.java1.SeaBattle.system.SeaBattle.FireResult;
 */
-public class SeaBattleAlg {
+public class SeaBattleAlg1 {
     // Тестовое поле создаётся конструктором
     //     SeaBattle seaBattle = new SeaBattle(true);
     //
@@ -166,7 +161,7 @@ public class SeaBattleAlg {
             changedDirection = false;
             //System.out.println(Arrays.toString(array_x)+ "  x");
             //System.out.println("print arrayInt " + (String)  Arrays.toString (array1 [y][x]));
-            Array2();
+            //Array2();
             //------------------------------flag settings -----------------------------------------
 
 
@@ -244,7 +239,7 @@ public class SeaBattleAlg {
                     break;
                 case MISS: //do nothing
                     array1[y][x] = "C ";
-                    Array2();
+                    //Array2();
                     if ((dirDown == true)) {
                         checkedDown = true;
                         changedDirection = true;
@@ -308,7 +303,7 @@ return;
     {
         hitNumber++;
         array1[y][x] = "D ";
-        Array2();
+        //Array2();
         array_y[hitNumber]=y;  // array to find max cell
         array_x[hitNumber]=x;
         Arrays.sort(array_x);
@@ -530,7 +525,7 @@ switch (hitNumber)
                                     array_y[hitNumber]=y;
                                     array_x[hitNumber]=x;
                                     array1[y][x] = "H ";//put mark in our notepad
-                                    Array2();
+                                   // Array2();
                                     caseHit(seaBattle);
                                     break;
                                 case DESTROYED: //check to close ship type
@@ -542,7 +537,7 @@ switch (hitNumber)
                                 default:   //do nothing
                                     break;
                             }
-                            Array2();
+                            //Array2();
                             System.out.println( "d=" +d+ "  x=" + x +  "  y="+y + "  hitNumberF   " + hitNumberF);
                     }
                     else
@@ -586,7 +581,7 @@ switch (hitNumber)
         {
          //SeaBattle seaBattle = new SeaBattle(true);    //true config
          SeaBattle seaBattle = new SeaBattle();      //random config
-            new SeaBattleAlg().battleAlgorithm(seaBattle);
+            new SeaBattleAlg1().battleAlgorithm(seaBattle);
             System.out.println(seaBattle.getResult());
             System.out.println(seaBattle);
         }
