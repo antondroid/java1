@@ -10,7 +10,7 @@ import java.util.Arrays;
 /*import ru.progwards.java1.SeaBattle.system.SeaBattle;
         import ru.progwards.java1.SeaBattle.system.SeaBattle.FireResult;
 */
-public class SeaBattleAlg {
+public class SeaBattleAlg2 {
     // Тестовое поле создаётся конструктором
     //     SeaBattle seaBattle = new SeaBattle(true);
     //
@@ -58,7 +58,6 @@ public class SeaBattleAlg {
      ALg0- the copy of 0.6 version
      Alg1 - the same w/0 print output arrays. // removing doesn/t help.
      Alg2 - made of Alg0 removed HIT point defining from switch case directly. ()
-     0.7 Alg2 ==> Alg
     *
     *
     *
@@ -613,7 +612,7 @@ switch (hitNumber)
         {
          //SeaBattle seaBattle = new SeaBattle(true);    //true config
          SeaBattle seaBattle = new SeaBattle();      //random config
-            new SeaBattleAlg().battleAlgorithm(seaBattle);
+            new SeaBattleAlg2().battleAlgorithm(seaBattle);
             System.out.println(seaBattle.getResult());
             System.out.println(seaBattle);
         }
