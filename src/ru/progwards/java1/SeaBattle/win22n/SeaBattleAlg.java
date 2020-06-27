@@ -58,7 +58,6 @@ public class SeaBattleAlg {
      ALg0- the copy of 0.6 version
      Alg1 - the same w/0 print output arrays. // removing doesn/t help.
      Alg2 - made of Alg0 removed HIT point defining from switch case directly. ()
-     0.7 Alg2 ==> Alg
     *
     *
     *
@@ -123,8 +122,8 @@ public class SeaBattleAlg {
             v1++;
             h1 = 0;
         }
-        System.out.println("shot " + totalShot + " d=" + d + " x=" + x + " y=" + y + " killed  ship1= " + ship1 + "  ship2=" + ship2 + "  ship3=" + ship3 + "  ship4=" + ship4);
-        // System.out.println("hitNumberF   " + hitNumberF);
+        System.out.println("shot " + totalShot + " d=" + d + " x=" + x + " y=" + y + " killed  ");
+        System.out.println("ship1=" + ship1 + "  ship2=" + ship2 + "  ship3=" + ship3 + "  ship4=" + ship4);
         //v=0;h=0;
     }
 
@@ -149,6 +148,7 @@ public class SeaBattleAlg {
     boolean changedDirection = false;
     int     hitNumber        = 0;
     int     hitNumberF;
+    int missCount;
     int     x0, x1, x2, x3, x4, x5, x6, y0, y1, y2, y3, y4, y5, y6;
     int array_x[] = {x1, x2, x3, x4, x5, x6};
     int array_y[] = {y1, y2, y3, y4, y5, y6};
@@ -166,7 +166,7 @@ public class SeaBattleAlg {
                 x = x0;//innsert h for x0 y0
             }else
                 {
-                    if (((y>=0)&(y<=9)&(x>=0)&(x<=9)&(array1[y][x] != "c ") &  (array1[y][x] != "C ") & (array1[y][x] != "H ") & (array1[y][x] != "D "))) //check up)
+                    if (((y >-1) & (y <10) & (x > -1) & (x < 10)&(array1[y][x] != "c ") &  (array1[y][x] != "C ") & (array1[y][x] != "H ") & (array1[y][x] != "D "))) //check up)
                     {
                         array1[y][x] = "H ";//put mark in our notepad
                         hitNumber++;
@@ -189,7 +189,7 @@ public class SeaBattleAlg {
                 //------------------------------flag settings -----------------------------------------
                 if ((y == 9)) checkedDown = true;
                 if ((y == 0)) checkedUp = true;
-                if ((x == 9)) checkedUp = true;
+                if ((x == 9)) checkedRight = true;
                 if ((x == 0)) checkedLeft = true;
             }
 
@@ -239,9 +239,12 @@ public class SeaBattleAlg {
                 }
             }
 // -------------------------------------------firing 1 ----------------------------------------------------------------------------------------
-            array1[y][x] = "? "; Array2();
+            if ((y >-1) & (y <10) & (x > -1) & (x < 10)&(array1[y][x] != "c ") & (array1[y][x] != "C ") & (array1[y][x] != "H ") & (array1[y][x] != "D ")) {
+                array1[y][x] = "? ";
+                Array2();
+            }
             System.out.println(" y=" + y + " x=" + x + " y0=" + y0 + "  x0=" + x0);
-            if ((array1[y][x] != "c ") & (array1[y][x] != "C ") & (array1[y][x] != "H ") & (array1[y][x] != "D "))
+            if ((y >-1) & (y <10) & (x > -1) & (x < 10)&(array1[y][x] != "c ") & (array1[y][x] != "C ") & (array1[y][x] != "H ") & (array1[y][x] != "D "))
          // check below 1st hit - if it was already checked, go up
             //    if ((y >= 0) & (y <= 9) & (x >= 0) & (x <= 9) & (array1[y][x] != "c ") & (array1[y][x] != "C ") & (array1[y][x] != "H ") & (array1[y][x] != "D ")) //check below 1st hit - if it was already checked, go up
             {
@@ -475,7 +478,9 @@ switch (hitNumber)
     public void caseMiss(SeaBattle seaBattle)
     {
         array1[y][x] = "C ";   //little c -from sophisticated, big C -  from firing
-        //Array2();
+        checkedAll=checkedLeft=checkedRight=checkedUp=checkedDown=shipServicing=dirVertical=dirHorisontal = false;
+        dirLeft=dirRight=dirUp=dirDown=gotocaseHit=changedDirection=false;
+        Array2();
     }
 
     //----------------------------- & MISS ---------------------------------------------
@@ -535,15 +540,18 @@ switch (hitNumber)
                     }
                     v = v + 4;
                     if ((v > 9)&(over==true)) break label2;
+                    if (missCount>20) over=true;
                     if ((v > 9)) break;
                     x = h;
                     y = v;
 //--------------------------------- firing -------------------------------------------------------
                     //if ((y>=0)&(y<=9)&(x>=0)&(x<=9)&(array1[y][x] != "c ") &  (array1[y][x] != "C ") & (array1[y][x] != "H ") & (array1[y][x] != "D ")) //check up
-                        if ((array1[y][x] != "c ") &  (array1[y][x] != "C ") & (array1[y][x] != "H ") & (array1[y][x] != "D ")) //check up
+                        if ((y >-1) & (y <10) & (x > -1) & (x < 10)&(array1[y][x] != "c ") &  (array1[y][x] != "C ") & (array1[y][x] != "H ") & (array1[y][x] != "D ")) //check up
                         {
                             SeaBattle.FireResult fireResult = seaBattle.fire(x, y);totalShot++;
                             checkedAll = checkedLeft = checkedRight = checkedUp = checkedDown = false;
+                            checkedAll=checkedLeft=checkedRight=checkedUp=checkedDown=shipServicing=dirVertical=dirHorisontal = false;
+                            dirLeft=dirRight=dirUp=dirDown=gotocaseHit=changedDirection=false;
                             switch (fireResult)
                             {
                                 case HIT:  //check which type we need
@@ -563,9 +571,11 @@ switch (hitNumber)
                             System.out.println( "d=" +d+ "  x=" + x +  "  y="+y + "  hitNumberF   " + hitNumberF);
                         }
                         else
-                           if((totalShot>1))
+                           if((totalShot>40)&(d==4) )
                            {
-                               System.out.println("repeated shot main firing " + totalShot + " d=" + d + " x=" + x + " y=" + y + " killed  ship1= " + ship1 + "  ship2=" + ship2 + "  ship3=" + ship3 + "  ship4=" + ship4);
+                               missCount++;
+                               System.out.println("msg1 shot 2 busy point  " +missCount+"   totalShot=" + totalShot + " d=" + d + " x=" + x + " y=" + y );
+                               if ((missCount>20)) return;
                            }
 //---------------------------------------& firing------------------------------
 //---------------------------------false  firing -------------------------------------------------------
@@ -586,8 +596,8 @@ switch (hitNumber)
             }
 //------------------------------------& horizontal fire cycle -------------------------
             v=h=0;
-            System.out.println( "inside killed  ship1= "+ ship1+"  ship2="+ship2+"  ship3="+ship3 +"  ship4="+ship4     );
-            System.out.println( "d=" +d+ "  x=" + x +  "  y="+y + " horizontal fire cycle  hitNumberF   " + hitNumberF);
+            System.out.println( "d change "+d+ "ship1= "+ ship1+"  ship2="+ship2+"  ship3="+ship3 +"  ship4="+ship4     );
+
             switch (d)
             {
                /* case 0:break;
