@@ -248,13 +248,12 @@ public class SeaBattleAlg2 {
             }
             ifNdef("msg 4 y=" + y + " x=" + x + " y0=" + y0 + "  x0=" + x0);
             if ((y >-1) & (y <10) & (x > -1) & (x < 10)&(array1[y][x] != "c ") & (array1[y][x] != "C ") & (array1[y][x] != "H ") & (array1[y][x] != "D "))
-         // check below 1st hit - if it was already checked, go up
-            //    if ((y >= 0) & (y <= 9) & (x >= 0) & (x <= 9) & (array1[y][x] != "c ") & (array1[y][x] != "C ") & (array1[y][x] != "H ") & (array1[y][x] != "D ")) //check below 1st hit - if it was already checked, go up
             {
                 totalShot++;
                 if ((totalShot>77))over=true;
                 SeaBattle.FireResult fireResult = seaBattle.fire(x, y);
-                switch (fireResult) {
+                switch (fireResult)
+                {
                     case HIT:  //check which type we need
                         // -----------------------------------array to find max cell
                     /*hitNumber++;
@@ -528,7 +527,7 @@ public void ifNdef(String str)
     int totalShot=0;
 
     public void battleAlgorithm(SeaBattle seaBattle)
-    {   outPut=0;
+    {
         Array1();// 1.create firing notepad
         label: while ( !((ship1==4)& (ship2==3)&(ship3==2)&(ship4==1)))    //original string
         {
@@ -557,8 +556,7 @@ public void ifNdef(String str)
                     if ((v > 9)) break;
                     x = h;
                     y = v;
-//--------------------------------- firing -------------------------------------------------------
-                    //if ((y>=0)&(y<=9)&(x>=0)&(x<=9)&(array1[y][x] != "c ") &  (array1[y][x] != "C ") & (array1[y][x] != "H ") & (array1[y][x] != "D ")) //check up
+//--------------------------------- main firing -------------------------------------------------------
                         if ((y >-1) & (y <10) & (x > -1) & (x < 10)&(array1[y][x] != "c ") &  (array1[y][x] != "C ") & (array1[y][x] != "H ") & (array1[y][x] != "D ")) //check up
                         {
                             SeaBattle.FireResult fireResult = seaBattle.fire(x, y);totalShot++;
@@ -581,15 +579,16 @@ public void ifNdef(String str)
                                     break;
                             }
                             Array2();
-                            ifNdef( "msg 2      d=" +d+ "  x=" + x +  "  y="+y + "  hitNumberF   " + hitNumberF);
+                            ifNdef( "msg2      d=" +d+ "  x=" + x +  "  y="+y + "  hitNumberF   " + hitNumberF);
                         }
-                        else
-                           if((totalShot>40)&(d==4) )
-                           {
-                               missCount++;
-                               ifNdef("msg1 shot 2 busy point  " +missCount+"   totalShot=" + totalShot + " d=" + d + " x=" + x + " y=" + y );
-                               if ((missCount>15)) return;
-                           }
+                        else {
+                                if ((totalShot > 40) & (d == 4))
+                                {
+                                    missCount++;
+                                    ifNdef("msg1 shot 2 busy point miss  " + missCount + "   totalShot=" + totalShot + " d=" + d + " x=" + x + " y=" + y);
+                                    if ((missCount > 25)) return;
+                                }
+                            }
 //---------------------------------------& firing------------------------------
 //---------------------------------false  firing -------------------------------------------------------
                     /*if ((array1[y][x] != "c ") &  (array1[y][x] != "C ") & (array1[y][x] != "H ") & (array1[y][x] != "D ")) //check up
@@ -603,13 +602,13 @@ public void ifNdef(String str)
 //---------------------------------------& false firing------------------------------
 
                 }
-                over=false;
+
 //-----------------end vertical fire
-                h++;
+                h++;over=false;
             }
 //------------------------------------& horizontal fire cycle -------------------------
             v=h=0;
-            ifNdef( "msg 5      d change "+d+ "ship1= "+ ship1+"  ship2="+ship2+"  ship3="+ship3 +"  ship4="+ship4     );
+            ifNdef( "msg5      d change "+d+ "ship1= "+ ship1+"  ship2="+ship2+"  ship3="+ship3 +"  ship4="+ship4     );
 
             switch (d)
             {
@@ -635,7 +634,7 @@ public void ifNdef(String str)
     public static void main(String[] args)
         { int i=1; double result=0;double resultAverage=0;
          //SeaBattle seaBattle = new SeaBattle(true);    //true config
-
+            outPut=0;
             int divider=1111;
             while (i<=divider)
                 {

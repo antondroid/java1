@@ -635,8 +635,8 @@ public void ifNdef(String str)
     public static void main(String[] args)
         { int i=1; double result=0;double resultAverage=0;
          //SeaBattle seaBattle = new SeaBattle(true);    //true config
-
-            int divider=1111;
+              outPut=1;
+            int divider=1;
             while (i<=divider)
                 {
                     SeaBattle seaBattle = new SeaBattle();      //random config
