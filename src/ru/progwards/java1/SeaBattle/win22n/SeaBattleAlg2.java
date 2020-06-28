@@ -58,7 +58,7 @@ public class SeaBattleAlg2 {
      ALg0- the copy of 0.6 version
      Alg1 - the same w/0 print output arrays. // removing doesn/t help.
      Alg2 - made of Alg0 removed HIT point defining from switch case directly. ()
-    *
+     0.7 output removed 1111 runs 136 in average
     *
     *
     *
@@ -102,31 +102,32 @@ public class SeaBattleAlg2 {
 //--------------------------------------------------------------------
 
     //--------------------------------------------------------------------
-    public void Array2()   //
+    public void Array2()
     {
-        //String put = "N ";//unknown square
-        int v1 = 0;
-        int h1 = 0;
-        System.out.println("  ");
-        System.out.println("   X  0  1  2  3  4  5  6  7  8  9  ---- array 2");
-        System.out.println("Y  ");
-        while ((v1 < 10)) {
-            System.out.print(v1 + "     ");
-            while ((h1 < 10)) {
-
-                System.out.print(array1[v1][h1] + " ");
-                h1++;
-
+        //outPut=a;
+        if ((outPut == 1)|(outPut2==2) )
+        {
+            //String put = "N ";//unknown square
+            int v1 = 0;
+            int h1 = 0;
+            System.out.println("  ");
+            System.out.println("   X  0  1  2  3  4  5  6  7  8  9  ---- array 2");
+            System.out.println("Y  ");
+            while ((v1 < 10)) {
+                System.out.print(v1 + "     ");
+                while ((h1 < 10))
+                {
+                    System.out.print(array1[v1][h1] + " ");
+                    h1++;
+                }
+                System.out.println();
+                v1++;
+                h1 = 0;
             }
-            System.out.println();
-            v1++;
-            h1 = 0;
+            System.out.println("shot " + totalShot + " d=" + d + " x=" + x + " y=" + y + " killed  ");
+            System.out.println("ship1=" + ship1 + "  ship2=" + ship2 + "  ship3=" + ship3 + "  ship4=" + ship4);
         }
-        System.out.println("shot " + totalShot + " d=" + d + " x=" + x + " y=" + y + " killed  ");
-        System.out.println("ship1=" + ship1 + "  ship2=" + ship2 + "  ship3=" + ship3 + "  ship4=" + ship4);
-        //v=0;h=0;
     }
-
     //-------------------------------------------------------------------
     boolean dirHorisontal    = false;
     boolean dirVertical      = false;
@@ -153,6 +154,8 @@ public class SeaBattleAlg2 {
     int array_x[] = {x1, x2, x3, x4, x5, x6};
     int array_y[] = {y1, y2, y3, y4, y5, y6};
     int ship1, ship2, ship3, ship4, ship5;
+    static int outPut=0;
+    static int outPut2;
     SeaBattle.FireResult fireResult;
 
     //--------------------------------------case HIT  -----------------------------------
@@ -243,7 +246,7 @@ public class SeaBattleAlg2 {
                 array1[y][x] = "? ";
                 Array2();
             }
-            System.out.println(" y=" + y + " x=" + x + " y0=" + y0 + "  x0=" + x0);
+            ifNdef("msg 4 y=" + y + " x=" + x + " y0=" + y0 + "  x0=" + x0);
             if ((y >-1) & (y <10) & (x > -1) & (x < 10)&(array1[y][x] != "c ") & (array1[y][x] != "C ") & (array1[y][x] != "H ") & (array1[y][x] != "D "))
          // check below 1st hit - if it was already checked, go up
             //    if ((y >= 0) & (y <= 9) & (x >= 0) & (x <= 9) & (array1[y][x] != "c ") & (array1[y][x] != "C ") & (array1[y][x] != "H ") & (array1[y][x] != "D ")) //check below 1st hit - if it was already checked, go up
@@ -457,7 +460,7 @@ switch (hitNumber)
     case 3: ship3++;break;
     case 4: ship4++;break;
 }
-       System.out.println( "repeated shot switch hit number"+totalShot+  " ship1= "+ ship1+"  ship2="+ship2+"  ship3="+ship3 +"  ship4="+ship4     );
+       ifNdef( "msg 3      repeated shot switch hit number"+totalShot+  " ship1= "+ ship1+"  ship2="+ship2+"  ship3="+ship3 +"  ship4="+ship4     );
 
 //-----------------clear buffer------------------------------------
         hitNumber=5;
@@ -480,6 +483,7 @@ switch (hitNumber)
         array1[y][x] = "C ";   //little c -from sophisticated, big C -  from firing
         checkedAll=checkedLeft=checkedRight=checkedUp=checkedDown=shipServicing=dirVertical=dirHorisontal = false;
         dirLeft=dirRight=dirUp=dirDown=gotocaseHit=changedDirection=false;
+        ifNdef( "msg 0 test ifndef - case miss   "  );
         Array2();
     }
 
@@ -509,6 +513,14 @@ switch (hitNumber)
         }
     }*/
 
+public void ifNdef(String str)
+    {
+        if ((outPut==1))
+        {
+            System.out.println(  str );
+        }
+    }
+
 //------------------------- Decision -----------------------------------------
     int x = 0;
     int y = 0;
@@ -516,7 +528,7 @@ switch (hitNumber)
     int totalShot=0;
 
     public void battleAlgorithm(SeaBattle seaBattle)
-    {
+    {   outPut=0;
         Array1();// 1.create firing notepad
         label: while ( !((ship1==4)& (ship2==3)&(ship3==2)&(ship4==1)))    //original string
         {
@@ -539,8 +551,9 @@ switch (hitNumber)
                         }
                     }
                     v = v + 4;
+                    if (missCount>30) over=true;
                     if ((v > 9)&(over==true)) break label2;
-                    if (missCount>20) over=true;
+
                     if ((v > 9)) break;
                     x = h;
                     y = v;
@@ -568,14 +581,14 @@ switch (hitNumber)
                                     break;
                             }
                             Array2();
-                            System.out.println( "d=" +d+ "  x=" + x +  "  y="+y + "  hitNumberF   " + hitNumberF);
+                            ifNdef( "msg 2      d=" +d+ "  x=" + x +  "  y="+y + "  hitNumberF   " + hitNumberF);
                         }
                         else
                            if((totalShot>40)&(d==4) )
                            {
                                missCount++;
-                               System.out.println("msg1 shot 2 busy point  " +missCount+"   totalShot=" + totalShot + " d=" + d + " x=" + x + " y=" + y );
-                               if ((missCount>20)) return;
+                               ifNdef("msg1 shot 2 busy point  " +missCount+"   totalShot=" + totalShot + " d=" + d + " x=" + x + " y=" + y );
+                               if ((missCount>15)) return;
                            }
 //---------------------------------------& firing------------------------------
 //---------------------------------false  firing -------------------------------------------------------
@@ -584,7 +597,7 @@ switch (hitNumber)
                         totalShot++;
                         if (totalShot>100) return;
                         array1[y][x]=(" " +d) ;
-                        Array2();
+                        Array2(2);
                         System.out.println( "d=" +d+ "  x=" + x +  "  y="+y + "  hitNumberF   " + hitNumberF);
                     }*/
 //---------------------------------------& false firing------------------------------
@@ -596,7 +609,7 @@ switch (hitNumber)
             }
 //------------------------------------& horizontal fire cycle -------------------------
             v=h=0;
-            System.out.println( "d change "+d+ "ship1= "+ ship1+"  ship2="+ship2+"  ship3="+ship3 +"  ship4="+ship4     );
+            ifNdef( "msg 5      d change "+d+ "ship1= "+ ship1+"  ship2="+ship2+"  ship3="+ship3 +"  ship4="+ship4     );
 
             switch (d)
             {
@@ -611,21 +624,35 @@ switch (hitNumber)
                 case 2: d=4;break;
                 default: break; //do nothing
             }
-            System.out.println( "d=" +d+ "  x=" + x +  "  y="+y + "  hitNumberF   " + hitNumberF);
+            ifNdef( " msg 6 d=" +d+ "  x=" + x +  "  y="+y + "  hitNumberF   " + hitNumberF);
 
         }
-            //Array2();
+            Array2();
     }
 
 
     // функция для отладки
     public static void main(String[] args)
-        {
+        { int i=1; double result=0;double resultAverage=0;
          //SeaBattle seaBattle = new SeaBattle(true);    //true config
-         SeaBattle seaBattle = new SeaBattle();      //random config
-            new SeaBattleAlg2().battleAlgorithm(seaBattle);
-            System.out.println(seaBattle.getResult());
-            System.out.println(seaBattle);
+
+            int divider=1111;
+            while (i<=divider)
+                {
+                    SeaBattle seaBattle = new SeaBattle();      //random config
+
+                    new SeaBattleAlg2().battleAlgorithm(seaBattle);
+
+                    result = (result + seaBattle.getResult());
+
+                    System.out.println(seaBattle.getResult());
+                    System.out.println(seaBattle);
+                    i++;
+                }
+                    resultAverage = result / divider;
+
+
+            System.out.println(resultAverage);
         }
 }
 
