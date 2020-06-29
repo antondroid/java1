@@ -158,7 +158,7 @@ public class SeaBattleAlg {
     int array_x[] = {x1, x2, x3, x4, x5, x6};
     int array_y[] = {y1, y2, y3, y4, y5, y6};
     int ship1, ship2, ship3, ship4, ship5;
-    static int outPut=1;
+    static int outPut=0;
     static int outPut2;
     SeaBattle.FireResult fireResult;
 
@@ -545,7 +545,7 @@ public void ifNdef(String str)
       label2:   while ((v <=9) | (y <= 9))
                 {
 
-                    if (((ship1==4)& (ship2==3)&(ship3==2)&(ship4==1) |((ship1>4))))
+                    if (((ship1==4)& (ship2==3)&(ship3==2)&(ship4==1) |((ship1>4)|(ship2>3)|(ship3>2)|(ship4>1))))
                     {
                         ship1=ship2=ship3=ship4=0;
                         checkedAll = checkedLeft = checkedRight = checkedUp = checkedDown = over= false;
