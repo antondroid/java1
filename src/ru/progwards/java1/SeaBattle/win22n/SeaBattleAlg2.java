@@ -11,6 +11,9 @@ import java.util.Arrays;
         import ru.progwards.java1.SeaBattle.system.SeaBattle.FireResult;
 */
 public class SeaBattleAlg2 {
+   /* public SeaBattleAlg2(){
+        SeaBattle seaBattle = new SeaBattle();
+    }*/
     // Тестовое поле создаётся конструктором
     //     SeaBattle seaBattle = new SeaBattle(true);
     //
@@ -74,6 +77,7 @@ public class SeaBattleAlg2 {
     *
     *
     * */
+   //static SeaBattleAlg2 alg = new SeaBattleAlg2();
 
     int    v          = 0;
     int    h          = 0;
@@ -154,7 +158,7 @@ public class SeaBattleAlg2 {
     int array_x[] = {x1, x2, x3, x4, x5, x6};
     int array_y[] = {y1, y2, y3, y4, y5, y6};
     int ship1, ship2, ship3, ship4, ship5;
-    static int outPut=0;
+    static int outPut=1;
     static int outPut2;
     SeaBattle.FireResult fireResult;
 
@@ -472,6 +476,7 @@ switch (hitNumber)
         checkedAll=checkedLeft=checkedRight=checkedUp=checkedDown=shipServicing=dirVertical=dirHorisontal = false;
         dirLeft=dirRight=dirUp=dirDown=gotocaseHit=changedDirection=false;
         over =true;
+        if (((ship1==4)& (ship2==3)&(ship3==2)&(ship4==1))) return;
         return;
     }
 //---------------------------------- & DESTROYED -------------------------------------------
@@ -528,6 +533,7 @@ public void ifNdef(String str)
 
     public void battleAlgorithm(SeaBattle seaBattle)
     {
+
         Array1();// 1.create firing notepad
         label: while ( !((ship1==4)& (ship2==3)&(ship3==2)&(ship4==1)))    //original string
         {
@@ -538,7 +544,18 @@ public void ifNdef(String str)
 //---------------------------------------vertical fire----------------------------------
       label2:   while ((v <=9) | (y <= 9))
                 {
-                    if (((ship1==4)& (ship2==3)&(ship3==2)&(ship4==1))) break label;
+
+                    if (((ship1==4)& (ship2==3)&(ship3==2)&(ship4==1) |((ship1>4))))
+                    {
+                        ship1=ship2=ship3=ship4=0;
+                        checkedAll = checkedLeft = checkedRight = checkedUp = checkedDown = over= false;
+                        checkedAll=checkedLeft=checkedRight=checkedUp=checkedDown=shipServicing=dirVertical=dirHorisontal = false;
+                        dirLeft=dirRight=dirUp=dirDown=gotocaseHit=changedDirection=false;
+                        Array1();
+                        missCount=totalShot=hitNumber = x= y= 0;
+                        d=3;
+                        break label;
+                    }
                     //if ((d==3)&(over==true)&(v>9) ) break label2;
                     if ((v < -12)) v = v + 12;
 
@@ -586,7 +603,7 @@ public void ifNdef(String str)
                                 {
                                     missCount++;
                                     ifNdef("msg1 shot 2 busy point miss  " + missCount + "   totalShot=" + totalShot + " d=" + d + " x=" + x + " y=" + y);
-                                    if ((missCount > 25)) return;
+                                    if ((missCount > 30)) return;
                                 }
                             }
 //---------------------------------------& firing------------------------------
@@ -617,7 +634,7 @@ public void ifNdef(String str)
                 case 3: d=4;break;
                 case 4: d=2;break;
                 default: d=8; break; //do nothing 178*/
-                case 0: ;break;
+                case 4: break;
                 case 3: d=1;break;
                 case 1: d=2;break;
                 case 2: d=4;break;
@@ -631,7 +648,7 @@ public void ifNdef(String str)
 
 
     // функция для отладки
-    public static void main(String[] args)
+ /*   public static void main(String[] args)
         { int i=1; double result=0;double resultAverage=0;
          //SeaBattle seaBattle = new SeaBattle(true);    //true config
             outPut=0;
@@ -652,6 +669,23 @@ public void ifNdef(String str)
 
 
             System.out.println(resultAverage);
+        }*/
+    public static void main(String[] args)
+    {
+        // System.out.println("Sea battle");
+        int divider=1111;
+        double result = 0;
+        SeaBattleAlg2 alg = new SeaBattleAlg2();
+        for (int i=1; i<=divider; i++) {
+            SeaBattle seaBattle = new SeaBattle();      //random config
+            alg.battleAlgorithm(seaBattle);
+            result += seaBattle.getResult();
         }
+        System.out.println(result/divider);
+    }
+
+
+
+
 }
 
