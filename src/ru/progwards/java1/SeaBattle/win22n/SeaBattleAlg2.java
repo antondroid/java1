@@ -567,7 +567,7 @@ public void ifNdef(String str)
                         }
                     }
                     v = v + 4;
-                    if (missCount>30) over=true;
+                    if (missCount>40) over=true;
                     if ((v > 9)&(over==true)) break label2;
 
                     if ((v > 9)) break;
@@ -595,15 +595,14 @@ public void ifNdef(String str)
                                 default:   //do nothing
                                     break;
                             }
-                            Array2();
-                            ifNdef( "msg2      d=" +d+ "  x=" + x +  "  y="+y + "  hitNumberF   " + hitNumberF);
+                            ifNdef( "msg2  d=" +d+ "  x=" + x +  "  y="+y +" h=" +h+   "v="+v + "H/D/C shot"+ totalShot);
                         }
                         else {
                                 if ((totalShot > 40) & (d == 4))
                                 {
                                     missCount++;
-                                    ifNdef("msg1 shot 2 busy point miss  " + missCount + "   totalShot=" + totalShot + " d=" + d + " x=" + x + " y=" + y);
-                                    if ((missCount > 30)) return;
+                                    ifNdef("msg1 -misscount=" + missCount + "   totalShot=" + totalShot + " d=" + d + " x=" + x + " y=" + y +  " h=" +h+   " v="+v+ " ");
+                                    if ((missCount > 35)) return;
                                 }
                             }
 //---------------------------------------& firing------------------------------
@@ -673,13 +672,15 @@ public void ifNdef(String str)
     public static void main(String[] args)
     {
         // System.out.println("Sea battle");
-        int divider=1111;
+        int divider=11;
+        outPut=0;
         double result = 0;
         SeaBattleAlg2 alg = new SeaBattleAlg2();
         for (int i=1; i<=divider; i++) {
             SeaBattle seaBattle = new SeaBattle();      //random config
             alg.battleAlgorithm(seaBattle);
             result += seaBattle.getResult();
+            System.out.println(seaBattle);
         }
         System.out.println(result/divider);
     }
