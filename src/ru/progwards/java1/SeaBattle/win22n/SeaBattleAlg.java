@@ -62,6 +62,7 @@ public class SeaBattleAlg {
      Alg1 - the same w/0 print output arrays. // removing doesn/t help.
      Alg2 - made of Alg0 removed HIT point defining from switch case directly. ()
      0.7 output removed 1111 runs 136 in average
+     0.8 makeBorder created 180 points
     *
     *
     *
@@ -160,55 +161,53 @@ public class SeaBattleAlg {
     int ship1, ship2, ship3, ship4, ship5;
     static int outPut=0;
     static int outPut2;
+    String shipState="Z"; //ship did'nt found yet
     SeaBattle.FireResult fireResult;
 
     //--------------------------------------case HIT  -----------------------------------
-    public void caseHit(SeaBattle seaBattle) {
+    public void caseHit(SeaBattle seaBattle)
+    {
         //while((fireResult != SeaBattle.FireResult.DESTROYED))
-        while((over != true))
+        //while((over != true))
+        while((shipState != "D" ))
         {
+
 //-------------------------initial -------------------------------------------------------
-            if ((shipServicing == true) & (changedDirection == true)) {
-                y = y0;
-                x = x0;//innsert h for x0 y0
-            }else
-                {
-                    if (((y >-1) & (y <10) & (x > -1) & (x < 10)&(array1[y][x] != "c ") &  (array1[y][x] != "C ") & (array1[y][x] != "H ") & (array1[y][x] != "D "))) //check up)
-                    {
-                        array1[y][x] = "H ";//put mark in our notepad
-                        hitNumber++;
-                        array_y[hitNumber] = y;
-                        array_x[hitNumber] = x;
-                    }
-                }
-
-
-            Array2();
-//------------------------end initial------------------------------------------------------
-            if ((hitNumber == 1) & (shipServicing == false))// we find the new ship
+            if ((hitNumber == 0) & (shipServicing == false))// we find the new ship
             {//keep original point
                 shipServicing = true;
                 y0 = y;
                 x0 = x;
                 changedDirection = false;
-                //System.out.println(Arrays.toString(array_x)+ "  x");
-                //System.out.println("print arrayInt " + (String)  Arrays.toString (array1 [y][x]));
                 //------------------------------flag settings -----------------------------------------
                 if ((y == 9)) checkedDown = true;
                 if ((y == 0)) checkedUp = true;
                 if ((x == 9)) checkedRight = true;
                 if ((x == 0)) checkedLeft = true;
             }
-
             //------------------------------& flag settings ------------------------------------
+//------------------------end initial------------------------------------------------------
+            if ((y >-1) & (y <10) & (x > -1) & (x < 10)&(array1[y][x] != "c ") & (array1[y][x] != "C ") & (array1[y][x] != "H ") & (array1[y][x] != "D "))
+            {
+                array1[y][x] = "H ";//put mark in our notepad
+                Array2();
+                hitNumber++;
+                array_y[hitNumber] = y;
+                array_x[hitNumber] = x;
+            }
+            if ((shipServicing == true) & (changedDirection == true))
+            {
+                y = y0;
+                x = x0;//innsert h for x0 y0
+            }
             gotocaseHit = changedDirection = over = false;
-            //-----------------------------------start  vertical fire - try 2 fire below hit  \|/
+            //-----------------------------------start fire vertical below  \/
             if ((y < 9) & (checkedDown == false))   // DOWN   check if it on down edge field
             {
                 y++;//  set hit point below 1st hit
                 dirDown = true;
             } else {
-                if ((y > 0) & (checkedUp == false)) // UP --
+                if ((y > 0) & (checkedUp == false)) // UP -- /\
                 {
                     if ((checkedDown == false)) {
                         y = y0;
@@ -220,7 +219,7 @@ public class SeaBattleAlg {
                     //if ((changedDirection==true)){ y= y0;}
                     y--;
                 } else {
-                    if ((x < 9) & (checkedRight == false)) // RIGHT
+                    if ((x < 9) & (checkedRight == false)) // RIGHT >>
                     {
                         if ((checkedUp == false)) {
                             y = y0;
@@ -231,7 +230,7 @@ public class SeaBattleAlg {
                         x++;
                         // if ((x>9)){}
                     } else {
-                        if ((x > 0) & (checkedLeft == false)) // LEFT
+                        if ((x > 0) & (checkedLeft == false)) // LEFT  <<
                         {
                             if ((checkedRight == false)) {
                                 y = y0;
@@ -246,11 +245,12 @@ public class SeaBattleAlg {
                 }
             }
 // -------------------------------------------firing 1 ----------------------------------------------------------------------------------------
-            if ((y >-1) & (y <10) & (x > -1) & (x < 10)&(array1[y][x] != "c ") & (array1[y][x] != "C ") & (array1[y][x] != "H ") & (array1[y][x] != "D ")) {
-                array1[y][x] = "? ";
+            if ((y >-1) & (y <10) & (x > -1) & (x < 10)&(array1[y][x] != "c ") & (array1[y][x] != "C ") & (array1[y][x] != "H ") & (array1[y][x] != "D "))
+            {
+                //array1[y][x] = "? ";
                 Array2();
             }
-            ifNdef("msg 4 y=" + y + " x=" + x + " y0=" + y0 + "  x0=" + x0);
+            ifNdef("msg4 start main firing  y=" + y + " x=" + x + " y0=" + y0 + "  x0=" + x0);
             if ((y >-1) & (y <10) & (x > -1) & (x < 10)&(array1[y][x] != "c ") & (array1[y][x] != "C ") & (array1[y][x] != "H ") & (array1[y][x] != "D "))
             {
                 totalShot++;
@@ -269,6 +269,7 @@ public class SeaBattleAlg {
                         break;
                     case DESTROYED: //check to close ship type
                         caseDestroyed(seaBattle);
+                        // shipState="Z";
                         break;
                     case MISS: //do nothing
                         array1[y][x] = "C ";
@@ -325,7 +326,7 @@ public class SeaBattleAlg {
 
             //we come here because of the edge and continue to fire, so coordinates don't reset
             //return;
-        }   // EOF  while((fireResult== SeaBattle.FireResult.DESTROYED))
+        }   // EOF  while
 }//   end of method ==   caseHit ==  //we come here because of the edge and continue to fire, so coordinates don't reset
 //----------------------------end firing 1 ----------------------------------------------------------------------
 
@@ -341,120 +342,7 @@ public class SeaBattleAlg {
         array_y[hitNumber]=y;  // array to find max cell
         array_x[hitNumber]=x;
         Arrays.sort(array_x);
-        dirHorisontal=dirVertical=false;
-        int result1 = Double.compare(array_x[4],array_x[5]);
-        switch (result1)
-        {
-            case 0: dirVertical=true;break;
-            case 1: dirHorisontal=true;break;
-            case -1: dirHorisontal=true;break;
-
-        }
-        Arrays.sort(array_y);
-        int result2 = Double.compare(array_y[4],array_y[5]);
-        switch (result2)
-        {
-            case 0: dirHorisontal=true;break;
-            case 1: dirVertical=true;break;
-            case -1: dirVertical=true;break;
-
-        }
-
-        if((dirVertical==true))
-        {
-            //-------------------- set side points for vertical ship
-            int length1 = hitNumber ;     //ship length
-            int maxLine=array_y[5] ;// max y  line
-            int botLine=maxLine+1;
-            int topLine=(maxLine)-hitNumber;
-
-//------------------------- bot line --------------------------
-            if ((botLine <= 9) & (dirVertical == true)) {
-                array1[botLine][(x)] = "c ";
-                if ((x+1) <= 9) array1[botLine][(x + 1)] = "c ";
-                if ((x-1) >= 0) array1[botLine][(x - 1)] = "c ";
-            }
-            //Array2();
-//-------------------------top line --------------------------------
-            if ((topLine >= 0) & (dirVertical == true)) {
-                array1[topLine][(x)] = "c ";
-                if ((x+1) <= 9) array1[topLine][(x + 1)] = "c ";
-                if ((x-1) >= 0) array1[topLine][(x - 1)] = "c ";
-            }
-            //Array2();
-//-------------------------right side   ---------------------------
-            if ((dirVertical == true) & ((x+1) <= 9)) {
-                int i = length1;int j=maxLine;
-                while (i > 0) {
-                    array1[j][(x + 1)] = "c ";   //right top field
-                    j--;i--;
-                }
-               // Array2();
-            }
-//-------------------- left side ----------------------------------
-            if ((dirVertical == true) & ((x-1) >= 0)) {
-                int i = length1;int j=maxLine;
-                while (i > 0) {
-                    array1[j][(x - 1)] = "c ";   //right top field
-                    j--;i--;
-                   // Array2();
-                }
-            }
-        }
-//----------------------& set side points for vertical ship ------------------------------
-
-//---------------------- set top / bottom points for horizontal ship --------------------------
-        if((dirHorisontal==true))
-        {   int length1 = hitNumber ;     //ship length
-            int maxLine=array_y[5] ;// max y  line
-            int maxColumn=array_x[5] ;// max x line
-            int minColumn=maxColumn-hitNumber+1;
-            int rightSide=maxColumn+1;
-            int leftSide=minColumn-1;
-            int botLineHor=maxLine+1;
-            int topLineHor=maxLine-1;
-            //-------------------------top line --------------------------------
-            if ((topLineHor >= 0))
-            {
-                int i=length1; int j=maxColumn;
-                while ((i>0) )
-                    {
-                        array1[topLineHor][(j)] = "c ";
-                        j--;
-                        i--;
-                    }
-            }
-            Array2();
-            //------------------------- bot line --------------------------
-            if ((botLineHor <= 9))
-            {
-                int i=length1;int j=maxColumn;
-                while  ((i>0))
-                {
-                    array1[botLineHor][(j)] = "c ";
-                    j--;
-                    i--;
-                   Array2();
-                }
-            }
-    //-------------------------right side   ---------------------------
-            if ((rightSide <= 9))
-            {
-                if ((topLineHor>=0))array1[topLineHor][(rightSide)] = "c ";   //left top field
-                array1[maxLine][(rightSide)] = "c ";   //right top field
-                if ((botLineHor<=9))array1[botLineHor][(rightSide)] = "c ";   //left top field
-              Array2();
-            }
-    //-------------------- left side ----------------------------------
-            if ((leftSide >= 0))
-            {
-                if ((topLineHor>=0))array1[topLineHor][(leftSide)] = "c ";   //left top field
-                array1[maxLine][(leftSide)] = "c ";   //right top field
-                if ((botLineHor<=9))array1[botLineHor][(leftSide)] = "c ";   //left bot field
-               Array2();
-            }
-        }
-
+        makeBorder();
 //------------------------  & set top / bottom points for horizontal ship
 switch (hitNumber)
 {
@@ -463,7 +351,9 @@ switch (hitNumber)
     case 3: ship3++;break;
     case 4: ship4++;break;
 }
-       ifNdef( "msg 3      repeated shot switch hit number"+totalShot+  " ship1= "+ ship1+"  ship2="+ship2+"  ship3="+ship3 +"  ship4="+ship4     );
+       ifNdef( "msg3 TOTAL H/D/C shot="+totalShot+" New Kill:" );
+        ifNdef( "msg3 ship1= "+ ship1+"  ship2="+ship2+"  ship3="+ship3 +"  ship4="+ship4     );
+        shipState="D";
 
 //-----------------clear buffer------------------------------------
         hitNumber=5;
@@ -475,15 +365,15 @@ switch (hitNumber)
         }
         checkedAll=checkedLeft=checkedRight=checkedUp=checkedDown=shipServicing=dirVertical=dirHorisontal = false;
         dirLeft=dirRight=dirUp=dirDown=gotocaseHit=changedDirection=false;
-        over =true;
+        //over =true;
         if (((ship1==4)& (ship2==3)&(ship3==2)&(ship4==1))) return;
-        return;
     }
 //---------------------------------- & DESTROYED -------------------------------------------
 
     //----------------------------  MISS -----------------------------------------------
     public void caseMiss(SeaBattle seaBattle)
     {
+        if ((y >-1) & (y <10) & (x > -1) & (x < 10)&(array1[y][x] != "c ") & (array1[y][x] != "C ") & (array1[y][x] != "H ") & (array1[y][x] != "D "))
         array1[y][x] = "C ";   //little c -from sophisticated, big C -  from firing
         checkedAll=checkedLeft=checkedRight=checkedUp=checkedDown=shipServicing=dirVertical=dirHorisontal = false;
         dirLeft=dirRight=dirUp=dirDown=gotocaseHit=changedDirection=false;
@@ -524,7 +414,123 @@ public void ifNdef(String str)
             System.out.println(  str );
         }
     }
+public void makeBorder()
+{
+    dirHorisontal=dirVertical=false;
+    int result1 = Double.compare(array_x[4],array_x[5]);
+    switch (result1)
+    {
+        case 0: dirVertical=true;break;
+        case 1: dirHorisontal=true;break;
+        case -1: dirHorisontal=true;break;
 
+    }
+    Arrays.sort(array_y);
+    int result2 = Double.compare(array_y[4],array_y[5]);
+    switch (result2)
+    {
+        case 0: dirHorisontal=true;break;
+        case 1: dirVertical=true;break;
+        case -1: dirVertical=true;break;
+
+    }
+
+    if((dirVertical==true))
+    {
+        //-------------------- set side points for vertical ship
+        int length1 = hitNumber ;     //ship length
+        int maxLine=array_y[5] ;// max y  line
+        int botLine=maxLine+1;
+        int topLine=(maxLine)-hitNumber;
+
+//------------------------- bot line --------------------------
+        if ((botLine <= 9) & (dirVertical == true)) {
+            array1[botLine][(x)] = "c ";
+            if ((x+1) <= 9) array1[botLine][(x + 1)] = "c ";
+            if ((x-1) >= 0) array1[botLine][(x - 1)] = "c ";
+        }
+        //Array2();
+//-------------------------top line --------------------------------
+        if ((topLine >= 0) & (dirVertical == true)) {
+            array1[topLine][(x)] = "c ";
+            if ((x+1) <= 9) array1[topLine][(x + 1)] = "c ";
+            if ((x-1) >= 0) array1[topLine][(x - 1)] = "c ";
+        }
+        //Array2();
+//-------------------------right side   ---------------------------
+        if ((dirVertical == true) & ((x+1) <= 9)) {
+            int i = length1;int j=maxLine;
+            while (i > 0) {
+                array1[j][(x + 1)] = "c ";   //right top field
+                j--;i--;
+            }
+            // Array2();
+        }
+//-------------------- left side ----------------------------------
+        if ((dirVertical == true) & ((x-1) >= 0)) {
+            int i = length1;int j=maxLine;
+            while (i > 0) {
+                array1[j][(x - 1)] = "c ";   //right top field
+                j--;i--;
+                // Array2();
+            }
+        }
+    }
+//----------------------& set side points for vertical ship ------------------------------
+
+//---------------------- set top / bottom points for horizontal ship --------------------------
+    if((dirHorisontal==true))
+    {   int length1 = hitNumber ;     //ship length
+        int maxLine=array_y[5] ;// max y  line
+        int maxColumn=array_x[5] ;// max x line
+        int minColumn=maxColumn-hitNumber+1;
+        int rightSide=maxColumn+1;
+        int leftSide=minColumn-1;
+        int botLineHor=maxLine+1;
+        int topLineHor=maxLine-1;
+        //-------------------------top line --------------------------------
+        if ((topLineHor >= 0))
+        {
+            int i=length1; int j=maxColumn;
+            while ((i>0) )
+            {
+                array1[topLineHor][(j)] = "c ";
+                j--;
+                i--;
+            }
+        }
+        //Array2();
+        //------------------------- bot line --------------------------
+        if ((botLineHor <= 9))
+        {
+            int i=length1;int j=maxColumn;
+            while  ((i>0))
+            {
+                array1[botLineHor][(j)] = "c ";
+                j--;
+                i--;
+                //Array2();
+            }
+        }
+        //-------------------------right side   ---------------------------
+        if ((rightSide <= 9))
+        {
+            if ((topLineHor>=0))array1[topLineHor][(rightSide)] = "c ";   //left top field
+            array1[maxLine][(rightSide)] = "c ";   //right top field
+            if ((botLineHor<=9))array1[botLineHor][(rightSide)] = "c ";   //left top field
+            //Array2();
+        }
+        //-------------------- left side ----------------------------------
+        if ((leftSide >= 0))
+        {
+            if ((topLineHor>=0))array1[topLineHor][(leftSide)] = "c ";   //left top field
+            array1[maxLine][(leftSide)] = "c ";   //right top field
+            if ((botLineHor<=9))array1[botLineHor][(leftSide)] = "c ";   //left bot field
+           // Array2();
+        }
+    }
+
+}
 //------------------------- Decision -----------------------------------------
     int x = 0;
     int y = 0;
@@ -535,25 +541,25 @@ public void ifNdef(String str)
     {
 
         Array1();// 1.create firing notepad
-        label: while ( !((ship1==4)& (ship2==3)&(ship3==2)&(ship4==1)))    //original string
+        label: while (!((ship1 == 4) & (ship2 == 3) & (ship3 == 2) & (ship4 == 1)))    //original string
         {
             while (h <= 9)
             {
-                if (h > 0) v = ~(h) + 1;
+                if (h > 0) v = -(h);
                 v -= d;
 //---------------------------------------vertical fire----------------------------------
-      label2:   while ((v <=9) | (y <= 9))
+
+                label2:  while ((v <= 9) | (y <= 9))
                 {
 
-                    if (((ship1==4)& (ship2==3)&(ship3==2)&(ship4==1) |((ship1>4)|(ship2>3)|(ship3>2)|(ship4>1))))
-                    {
-                        ship1=ship2=ship3=ship4=0;
-                        checkedAll = checkedLeft = checkedRight = checkedUp = checkedDown = over= false;
-                        checkedAll=checkedLeft=checkedRight=checkedUp=checkedDown=shipServicing=dirVertical=dirHorisontal = false;
-                        dirLeft=dirRight=dirUp=dirDown=gotocaseHit=changedDirection=false;
+                    if (((ship1 == 4) & (ship2 == 3) & (ship3 == 2) & (ship4 == 1) | ((ship1 > 4) | (ship2 > 3) | (ship3 > 2) | (ship4 > 1)))) {
+                        ship1 = ship2 = ship3 = ship4 = 0;
+                        checkedAll = checkedLeft = checkedRight = checkedUp = checkedDown = over = false;
+                        checkedAll = checkedLeft = checkedRight = checkedUp = checkedDown = shipServicing = dirVertical = dirHorisontal = false;
+                        dirLeft = dirRight = dirUp = dirDown = gotocaseHit = changedDirection = false;
                         Array1();
-                        missCount=totalShot=hitNumber = x= y= 0;
-                        d=3;
+                        missCount = totalShot = hitNumber = x = y = 0;
+                        d = 3;
                         break label;
                     }
                     //if ((d==3)&(over==true)&(v>9) ) break label2;
@@ -567,49 +573,59 @@ public void ifNdef(String str)
                         }
                     }
                     v = v + 4;
-                    if (missCount>50) over=true;
-                    if ((v > 9)&(over==true)) break label2;
+                    //if (missCount>20) over=true;
+                    if ((v > 9) & (over == true)) break label2;
 
                     if ((v > 9)) break;
                     x = h;
                     y = v;
+                    //array1[y][x] = "? ";
+                    Array2();
 //--------------------------------- main firing -------------------------------------------------------
-                        if ((y >-1) & (y <10) & (x > -1) & (x < 10)&(array1[y][x] != "c ") &  (array1[y][x] != "C ") & (array1[y][x] != "H ") & (array1[y][x] != "D ")) //check up
-                        {
-                            SeaBattle.FireResult fireResult = seaBattle.fire(x, y);totalShot++;
-                            checkedAll = checkedLeft = checkedRight = checkedUp = checkedDown = false;
-                            checkedAll=checkedLeft=checkedRight=checkedUp=checkedDown=shipServicing=dirVertical=dirHorisontal = false;
-                            dirLeft=dirRight=dirUp=dirDown=gotocaseHit=changedDirection=false;
-                            switch (fireResult)
-                            {
-                                case HIT:  //check which type we need
+                    if ((y > -1) & (y < 10) & (x > -1) & (x < 10) & (array1[y][x] != "c ") & (array1[y][x] != "C ") & (array1[y][x] != "H ") & (array1[y][x] != "D ")) //check up
+                    {
+                        SeaBattle.FireResult fireResult = seaBattle.fire(x, y);
+                        totalShot++;
 
-                                    caseHit(seaBattle);
-                                    break;
-                                case DESTROYED: //check to close ship type
-                                    caseDestroyed(seaBattle);
-                                    break;
-                                case MISS: //do nothing
-                                    caseMiss(seaBattle);
-                                    break;
-                                default:   //do nothing
-                                    break;
-                            }
-                            ifNdef( "msg2  d=" +d+ "  x=" + x +  "  y="+y +" h=" +h+   "v="+v + "H/D/C shot"+ totalShot);
+                        checkedAll = checkedLeft = checkedRight = checkedUp = checkedDown = false;
+                        checkedAll = checkedLeft = checkedRight = checkedUp = checkedDown = shipServicing = dirVertical = dirHorisontal = false;
+                        dirLeft = dirRight = dirUp = dirDown = gotocaseHit = changedDirection = false;
+                        switch (fireResult) {
+                            case HIT:  //check which type we need
+                                int v0, h0;
+                                v0 = v;
+                                h0 = h;
+                                shipState="F";
+                                caseHit(seaBattle);
+                                shipState="Z";
+                                v = v0;
+                                h = h0;
+                                break;
+                            case DESTROYED: //check to close ship type
+                                v0 = v;
+                                h0 = h;
+                                caseDestroyed(seaBattle);
+                                shipState="Z";
+                                v = v0;
+                                h = h0;
+                                break;
+                            case MISS: //do nothing
+                                v0 = v;
+                                h0 = h;
+                                caseMiss(seaBattle);
+                                v = v0;
+                                h = h0;
+                                break;
+                            default:   //do nothing
+                                break;
                         }
-                        else {
+                        ifNdef("msg2 return to main firing d=" + d + "  x=" + x + "  y=" + y + " h=" + h + "v=" + v + "H/D/C shot" + totalShot);
+                    } else {
 
-                                missCount++;
-                                if ( (missCount > 40) & (d == 3)|(missCount > 40) & (d == 1) |(missCount > 40) & (d == 2) | (missCount > 40) & (d == 4))
-                                {
+                        missCount++;
+                        ifNdef("msg1 -misscount=" + missCount + "   totalShot=" + totalShot + " d=" + d + " x=" + x + " y=" + y + " h=" + h + " v=" + v + " ");
 
-                                    ifNdef("msg1 -misscount=" + missCount + "   totalShot=" + totalShot + " d=" + d + " x=" + x + " y=" + y +  " h=" +h+   " v="+v+ " ");
-                                    //if ((missCount > 35))
-                                    {   missCount=0;
-                                        return;
-                                    }
-                                }
-                            }
+                    }
 //---------------------------------------& firing------------------------------
 //---------------------------------false  firing -------------------------------------------------------
                     /*if ((array1[y][x] != "c ") &  (array1[y][x] != "C ") & (array1[y][x] != "H ") & (array1[y][x] != "D ")) //check up
@@ -622,34 +638,43 @@ public void ifNdef(String str)
                     }*/
 //---------------------------------------& false firing------------------------------
 
-                }
 
+                }
 //-----------------end vertical fire
-                h++;over=false;
+                    h++;
+                    over = false;
             }
 //------------------------------------& horizontal fire cycle -------------------------
-            v=h=0;
-            ifNdef( "msg5      d change "+d+ "ship1= "+ ship1+"  ship2="+ship2+"  ship3="+ship3 +"  ship4="+ship4     );
+                v = h = 0;
+                ifNdef("msg5      d change " + d + "ship1= " + ship1 + "  ship2=" + ship2 + "  ship3=" + ship3 + "  ship4=" + ship4);
 
-            switch (d)
-            {
-               /* case 0:break;
-                case 1: d=3;break;
-                case 3: d=4;break;
-                case 4: d=2;break;
-                default: d=8; break; //do nothing 178*/
-                case 4: break;
-                case 3: d=1;break;
-                case 1: d=2;break;
-                case 2: d=4;break;
-                default: break; //do nothing
-            }
-            ifNdef( " msg 6 d=" +d+ "  x=" + x +  "  y="+y + "  hitNumberF   " + hitNumberF);
+                switch (d)
+                {
+                           /* case 0:break;
+                            case 1: d=3;break;
+                            case 3: d=4;break;
+                            case 4: d=2;break;
+                            default: d=8; break; //do nothing 178*/
+                    case 4:
+                        break;
+                    case 3:
+                        d = 1;
+                        break;
+                    case 1:
+                        d = 2;
+                        break;
+                    case 2:
+                        d = 4;
+                        break;
+                    default:
+                        break; //do nothing
+                }
+                ifNdef(" msg 6 d=" + d + "  x=" + x + "  y=" + y + "  hitNumberF   " + hitNumberF);
 
-        }
-            Array2();
+            } //end of case hit
+
+
     }
-
 
     // функция для отладки
  /*   public static void main(String[] args)
@@ -677,11 +702,12 @@ public void ifNdef(String str)
     public static void main(String[] args)
     {
         // System.out.println("Sea battle");
-        int divider=3;
-        outPut=1;
+        int divider=111;
+        outPut=0;
         double result = 0;
         SeaBattleAlg alg = new SeaBattleAlg();
-        for (int i=1; i<=divider; i++) {
+        for (int i=1; i<=divider; i++)
+        {
             SeaBattle seaBattle = new SeaBattle();      //random config
             alg.battleAlgorithm(seaBattle);
             result += seaBattle.getResult();
