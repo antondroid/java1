@@ -567,7 +567,7 @@ public void ifNdef(String str)
                         }
                     }
                     v = v + 4;
-                    if (missCount>40) over=true;
+                    if (missCount>50) over=true;
                     if ((v > 9)&(over==true)) break label2;
 
                     if ((v > 9)) break;
@@ -598,11 +598,16 @@ public void ifNdef(String str)
                             ifNdef( "msg2  d=" +d+ "  x=" + x +  "  y="+y +" h=" +h+   "v="+v + "H/D/C shot"+ totalShot);
                         }
                         else {
-                                if ((totalShot > 40) & (d == 4))
+
+                                missCount++;
+                                if ( (missCount > 40) & (d == 3)|(missCount > 40) & (d == 1) |(missCount > 40) & (d == 2) | (missCount > 40) & (d == 4))
                                 {
-                                    missCount++;
+
                                     ifNdef("msg1 -misscount=" + missCount + "   totalShot=" + totalShot + " d=" + d + " x=" + x + " y=" + y +  " h=" +h+   " v="+v+ " ");
-                                    if ((missCount > 35)) return;
+                                    //if ((missCount > 35))
+                                    {   missCount=0;
+                                        return;
+                                    }
                                 }
                             }
 //---------------------------------------& firing------------------------------
@@ -672,8 +677,8 @@ public void ifNdef(String str)
     public static void main(String[] args)
     {
         // System.out.println("Sea battle");
-        int divider=11;
-        outPut=0;
+        int divider=3;
+        outPut=1;
         double result = 0;
         SeaBattleAlg alg = new SeaBattleAlg();
         for (int i=1; i<=divider; i++) {

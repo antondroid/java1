@@ -10,7 +10,7 @@ import java.util.Arrays;
 /*import ru.progwards.java1.SeaBattle.system.SeaBattle;
         import ru.progwards.java1.SeaBattle.system.SeaBattle.FireResult;
 */
-public class SeaBattleAlg2 {
+public class SeaBattleAlg3 {
    /* public SeaBattleAlg2(){
         SeaBattle seaBattle = new SeaBattle();
     }*/
@@ -62,6 +62,7 @@ public class SeaBattleAlg2 {
      Alg1 - the same w/0 print output arrays. // removing doesn/t help.
      Alg2 - made of Alg0 removed HIT point defining from switch case directly. ()
      0.7 output removed 1111 runs 136 in average
+     0.8 makeBorder created 180 points
     *
     *
     *
@@ -246,7 +247,7 @@ public class SeaBattleAlg2 {
 // -------------------------------------------firing 1 ----------------------------------------------------------------------------------------
             if ((y >-1) & (y <10) & (x > -1) & (x < 10)&(array1[y][x] != "c ") & (array1[y][x] != "C ") & (array1[y][x] != "H ") & (array1[y][x] != "D "))
             {
-                array1[y][x] = "? ";
+                //array1[y][x] = "? ";
                 Array2();
             }
             ifNdef("msg4 start main firing  y=" + y + " x=" + x + " y0=" + y0 + "  x0=" + x0);
@@ -341,120 +342,7 @@ public class SeaBattleAlg2 {
         array_y[hitNumber]=y;  // array to find max cell
         array_x[hitNumber]=x;
         Arrays.sort(array_x);
-        dirHorisontal=dirVertical=false;
-        int result1 = Double.compare(array_x[4],array_x[5]);
-        switch (result1)
-        {
-            case 0: dirVertical=true;break;
-            case 1: dirHorisontal=true;break;
-            case -1: dirHorisontal=true;break;
-
-        }
-        Arrays.sort(array_y);
-        int result2 = Double.compare(array_y[4],array_y[5]);
-        switch (result2)
-        {
-            case 0: dirHorisontal=true;break;
-            case 1: dirVertical=true;break;
-            case -1: dirVertical=true;break;
-
-        }
-
-        if((dirVertical==true))
-        {
-            //-------------------- set side points for vertical ship
-            int length1 = hitNumber ;     //ship length
-            int maxLine=array_y[5] ;// max y  line
-            int botLine=maxLine+1;
-            int topLine=(maxLine)-hitNumber;
-
-//------------------------- bot line --------------------------
-            if ((botLine <= 9) & (dirVertical == true)) {
-                array1[botLine][(x)] = "c ";
-                if ((x+1) <= 9) array1[botLine][(x + 1)] = "c ";
-                if ((x-1) >= 0) array1[botLine][(x - 1)] = "c ";
-            }
-            //Array2();
-//-------------------------top line --------------------------------
-            if ((topLine >= 0) & (dirVertical == true)) {
-                array1[topLine][(x)] = "c ";
-                if ((x+1) <= 9) array1[topLine][(x + 1)] = "c ";
-                if ((x-1) >= 0) array1[topLine][(x - 1)] = "c ";
-            }
-            //Array2();
-//-------------------------right side   ---------------------------
-            if ((dirVertical == true) & ((x+1) <= 9)) {
-                int i = length1;int j=maxLine;
-                while (i > 0) {
-                    array1[j][(x + 1)] = "c ";   //right top field
-                    j--;i--;
-                }
-               // Array2();
-            }
-//-------------------- left side ----------------------------------
-            if ((dirVertical == true) & ((x-1) >= 0)) {
-                int i = length1;int j=maxLine;
-                while (i > 0) {
-                    array1[j][(x - 1)] = "c ";   //right top field
-                    j--;i--;
-                   // Array2();
-                }
-            }
-        }
-//----------------------& set side points for vertical ship ------------------------------
-
-//---------------------- set top / bottom points for horizontal ship --------------------------
-        if((dirHorisontal==true))
-        {   int length1 = hitNumber ;     //ship length
-            int maxLine=array_y[5] ;// max y  line
-            int maxColumn=array_x[5] ;// max x line
-            int minColumn=maxColumn-hitNumber+1;
-            int rightSide=maxColumn+1;
-            int leftSide=minColumn-1;
-            int botLineHor=maxLine+1;
-            int topLineHor=maxLine-1;
-            //-------------------------top line --------------------------------
-            if ((topLineHor >= 0))
-            {
-                int i=length1; int j=maxColumn;
-                while ((i>0) )
-                    {
-                        array1[topLineHor][(j)] = "c ";
-                        j--;
-                        i--;
-                    }
-            }
-            Array2();
-            //------------------------- bot line --------------------------
-            if ((botLineHor <= 9))
-            {
-                int i=length1;int j=maxColumn;
-                while  ((i>0))
-                {
-                    array1[botLineHor][(j)] = "c ";
-                    j--;
-                    i--;
-                   Array2();
-                }
-            }
-    //-------------------------right side   ---------------------------
-            if ((rightSide <= 9))
-            {
-                if ((topLineHor>=0))array1[topLineHor][(rightSide)] = "c ";   //left top field
-                array1[maxLine][(rightSide)] = "c ";   //right top field
-                if ((botLineHor<=9))array1[botLineHor][(rightSide)] = "c ";   //left top field
-              Array2();
-            }
-    //-------------------- left side ----------------------------------
-            if ((leftSide >= 0))
-            {
-                if ((topLineHor>=0))array1[topLineHor][(leftSide)] = "c ";   //left top field
-                array1[maxLine][(leftSide)] = "c ";   //right top field
-                if ((botLineHor<=9))array1[botLineHor][(leftSide)] = "c ";   //left bot field
-               Array2();
-            }
-        }
-
+        makeBorder();
 //------------------------  & set top / bottom points for horizontal ship
 switch (hitNumber)
 {
@@ -526,7 +414,123 @@ public void ifNdef(String str)
             System.out.println(  str );
         }
     }
+public void makeBorder()
+{
+    dirHorisontal=dirVertical=false;
+    int result1 = Double.compare(array_x[4],array_x[5]);
+    switch (result1)
+    {
+        case 0: dirVertical=true;break;
+        case 1: dirHorisontal=true;break;
+        case -1: dirHorisontal=true;break;
 
+    }
+    Arrays.sort(array_y);
+    int result2 = Double.compare(array_y[4],array_y[5]);
+    switch (result2)
+    {
+        case 0: dirHorisontal=true;break;
+        case 1: dirVertical=true;break;
+        case -1: dirVertical=true;break;
+
+    }
+
+    if((dirVertical==true))
+    {
+        //-------------------- set side points for vertical ship
+        int length1 = hitNumber ;     //ship length
+        int maxLine=array_y[5] ;// max y  line
+        int botLine=maxLine+1;
+        int topLine=(maxLine)-hitNumber;
+
+//------------------------- bot line --------------------------
+        if ((botLine <= 9) & (dirVertical == true)) {
+            array1[botLine][(x)] = "c ";
+            if ((x+1) <= 9) array1[botLine][(x + 1)] = "c ";
+            if ((x-1) >= 0) array1[botLine][(x - 1)] = "c ";
+        }
+        //Array2();
+//-------------------------top line --------------------------------
+        if ((topLine >= 0) & (dirVertical == true)) {
+            array1[topLine][(x)] = "c ";
+            if ((x+1) <= 9) array1[topLine][(x + 1)] = "c ";
+            if ((x-1) >= 0) array1[topLine][(x - 1)] = "c ";
+        }
+        //Array2();
+//-------------------------right side   ---------------------------
+        if ((dirVertical == true) & ((x+1) <= 9)) {
+            int i = length1;int j=maxLine;
+            while (i > 0) {
+                array1[j][(x + 1)] = "c ";   //right top field
+                j--;i--;
+            }
+            // Array2();
+        }
+//-------------------- left side ----------------------------------
+        if ((dirVertical == true) & ((x-1) >= 0)) {
+            int i = length1;int j=maxLine;
+            while (i > 0) {
+                array1[j][(x - 1)] = "c ";   //right top field
+                j--;i--;
+                // Array2();
+            }
+        }
+    }
+//----------------------& set side points for vertical ship ------------------------------
+
+//---------------------- set top / bottom points for horizontal ship --------------------------
+    if((dirHorisontal==true))
+    {   int length1 = hitNumber ;     //ship length
+        int maxLine=array_y[5] ;// max y  line
+        int maxColumn=array_x[5] ;// max x line
+        int minColumn=maxColumn-hitNumber+1;
+        int rightSide=maxColumn+1;
+        int leftSide=minColumn-1;
+        int botLineHor=maxLine+1;
+        int topLineHor=maxLine-1;
+        //-------------------------top line --------------------------------
+        if ((topLineHor >= 0))
+        {
+            int i=length1; int j=maxColumn;
+            while ((i>0) )
+            {
+                array1[topLineHor][(j)] = "c ";
+                j--;
+                i--;
+            }
+        }
+        //Array2();
+        //------------------------- bot line --------------------------
+        if ((botLineHor <= 9))
+        {
+            int i=length1;int j=maxColumn;
+            while  ((i>0))
+            {
+                array1[botLineHor][(j)] = "c ";
+                j--;
+                i--;
+                //Array2();
+            }
+        }
+        //-------------------------right side   ---------------------------
+        if ((rightSide <= 9))
+        {
+            if ((topLineHor>=0))array1[topLineHor][(rightSide)] = "c ";   //left top field
+            array1[maxLine][(rightSide)] = "c ";   //right top field
+            if ((botLineHor<=9))array1[botLineHor][(rightSide)] = "c ";   //left top field
+            //Array2();
+        }
+        //-------------------- left side ----------------------------------
+        if ((leftSide >= 0))
+        {
+            if ((topLineHor>=0))array1[topLineHor][(leftSide)] = "c ";   //left top field
+            array1[maxLine][(leftSide)] = "c ";   //right top field
+            if ((botLineHor<=9))array1[botLineHor][(leftSide)] = "c ";   //left bot field
+           // Array2();
+        }
+    }
+
+}
 //------------------------- Decision -----------------------------------------
     int x = 0;
     int y = 0;
@@ -555,7 +559,6 @@ public void ifNdef(String str)
                         dirLeft = dirRight = dirUp = dirDown = gotocaseHit = changedDirection = false;
                         Array1();
                         missCount = totalShot = hitNumber = x = y = 0;
-                        shipState="Z";
                         d = 3;
                         break label;
                     }
@@ -576,7 +579,7 @@ public void ifNdef(String str)
                     if ((v > 9)) break;
                     x = h;
                     y = v;
-                    array1[y][x] = "? ";
+                    //array1[y][x] = "? ";
                     Array2();
 //--------------------------------- main firing -------------------------------------------------------
                     if ((y > -1) & (y < 10) & (x > -1) & (x < 10) & (array1[y][x] != "c ") & (array1[y][x] != "C ") & (array1[y][x] != "H ") & (array1[y][x] != "D ")) //check up
@@ -699,10 +702,10 @@ public void ifNdef(String str)
     public static void main(String[] args)
     {
         // System.out.println("Sea battle");
-        int divider=11;
+        int divider=111;
         outPut=0;
         double result = 0;
-        SeaBattleAlg2 alg = new SeaBattleAlg2();
+        SeaBattleAlg3 alg = new SeaBattleAlg3();
         for (int i=1; i<=divider; i++)
         {
             SeaBattle seaBattle = new SeaBattle();      //random config
