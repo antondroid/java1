@@ -1,4 +1,7 @@
 package ru.progwards.java1.lessons.classes;
+
+import java.util.Objects;
+
 /*
 //--------------------------------------------------------------------------
 Реализовать класс Duck, потомок класса Animal, переопределяющий методы:
@@ -51,6 +54,23 @@ public double getFoodCoeff() {
 
     return foodCoeff;
     }
+//-------------------------------------------------------------------------------
+
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (!(o instanceof Duck)) return false;
+        Duck duck = (Duck) o;
+        return Double.compare(duck.getWeight(), getWeight()) == 0;
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(getWeight());
+    }
+
+    //-------------------------------------------------------------------------------
     public static void main(String[] args) {
 
     }

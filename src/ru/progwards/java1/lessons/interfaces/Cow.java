@@ -1,5 +1,7 @@
 package ru.progwards.java1.lessons.interfaces;
 
+import java.util.Objects;
+
 /*
 //------------------------------------------------------------------------
 Реализовать класс Cow, потомок класса Animal, переопределяющий методы:
@@ -73,7 +75,19 @@ public class Cow extends Animal {
         return foodCoeff;
     }
 
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (!(o instanceof Cow)) return false;
+        if (!super.equals(o)) return false;
+        Cow cow = (Cow) o;
+        return Double.compare(cow.getWeight(), getWeight()) == 0;
+    }
 
+    @Override
+    public int hashCode() {
+        return Objects.hash(super.hashCode(), getWeight());
+    }
 
     public static void main(String[] args) {
 

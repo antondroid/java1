@@ -3,6 +3,7 @@ package ru.progwards.java1.lessons.interfaces;
 import Lesson8_hsh_eqls.Rectangle;
 
 import java.util.Arrays;
+import java.util.Objects;
 
 /*
 //------------------------------------------------------------------------------------
@@ -238,14 +239,15 @@ class Animal {
 //--------------------------------------------------------------------------------------
  /*1. Классы Animal, Cow, Hamster, Duck
 1.1 Для класса Animal из задач 1 и 2, домашнего задания к уроку 5 реализовать метод:
-    public boolean equals(Object anObject), который возвращает true, если объекты равны и false
+    public boolean equals(Object anObject), который возвращает true,
+    если объекты равны и false
     если не равны по параметру - вес животного. Убедится, что при равном весе,
     утка все равно не равна хомяку. Обратите внимание на тип принимаемого параметра и
     подумайте над тем, что будет делать ваша программа, если в качестве параметра
     будет передан объект не являющийся экземпляром Animal.*/
 
 //-------------------------------public boolean equals(Object anObject)-------------------------------------------------------
-    @Override
+ /*   @Override
 public boolean equals(Object anObject)
 {
 
@@ -258,9 +260,28 @@ public boolean equals(Object anObject)
     return false;
 
 }
+//-----------------------------------------------------------------------------------------
 
 
-//-------------------------------& public boolean equals(Object anObject)-------------------------------------------------------
+    @Override
+    public int hashCode() {
+        return Objects.hash(getWeight());
+    }*/
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (!(o instanceof Animal)) return false;
+        Animal animal = (Animal) o;
+        return Double.compare(animal.getWeight(), getWeight()) == 0;
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(getWeight());
+    }
+
+    //-------------------------------& public boolean equals(Object anObject)-------------------------------------------------------
     public static void main(String[] args) {
         Animal test0 = new Animal ();
         Animal test1 = new Animal (4);

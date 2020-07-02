@@ -1,4 +1,7 @@
 package ru.progwards.java1.lessons.classes;
+
+import java.util.Objects;
+
 /*
 Реализовать класс Hamster, потомок класса Animal, переопределяющий методы:
 1.6  public AnimalKind getKind(), который возвращает HAMSTER.
@@ -50,7 +53,23 @@ public double getFoodCoeff() {
     System.out.println("Hamster foodcoeff " +foodCoeff);
     return foodCoeff;
     }
+//-------------------------------------------------------------
 
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (!(o instanceof Hamster)) return false;
+        Hamster hamster = (Hamster) o;
+        return Double.compare(hamster.getWeight(), getWeight()) == 0;
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(getWeight());
+    }
+
+    //-------------------------------------------------------------
     public static void main(String[] args) {
 
     }
