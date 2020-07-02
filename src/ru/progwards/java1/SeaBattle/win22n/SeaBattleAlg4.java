@@ -10,7 +10,7 @@ import java.util.Arrays;
 /*import ru.progwards.java1.SeaBattle.system.SeaBattle;
         import ru.progwards.java1.SeaBattle.system.SeaBattle.FireResult;
 */
-public class SeaBattleAlg3 {
+public class SeaBattleAlg4 {
    /* public SeaBattleAlg2(){
         SeaBattle seaBattle = new SeaBattle();
     }*/
@@ -62,7 +62,8 @@ public class SeaBattleAlg3 {
      Alg1 - the same w/0 print output arrays. // removing doesn/t help.
      Alg2 - made of Alg0 removed HIT point defining from switch case directly. ()
      0.7 output removed 1111 runs 136 in average
-     0.8 makeBorder created 180 points
+     0.8 makeBorder created 180 points alg3 - stable version
+     alg4 - try new firing order
     *
     *
     *
@@ -116,7 +117,7 @@ public class SeaBattleAlg3 {
             int v1 = 0;
             int h1 = 0;
             System.out.println("  ");
-            System.out.println("   X  0  1  2  3  4  5  6  7  8  9  ---- array 2");
+            System.out.println("   X   0  1  2  3  4  5  6  7  8  9  ---- array 2");
             System.out.println("Y  ");
             while ((v1 < 10)) {
                 System.out.print(v1 + "     ");
@@ -539,7 +540,7 @@ public void makeBorder()
 
     public void battleAlgorithm(SeaBattle seaBattle)
     {
-
+         totalShot=0;
         Array1();// 1.create firing notepad
         label: while (!((ship1 == 4) & (ship2 == 3) & (ship3 == 2) & (ship4 == 1)))    //original string
         {
@@ -628,12 +629,12 @@ public void makeBorder()
                     }
 //---------------------------------------& firing------------------------------
 //---------------------------------false  firing -------------------------------------------------------
-                    /*if ((array1[y][x] != "c ") &  (array1[y][x] != "C ") & (array1[y][x] != "H ") & (array1[y][x] != "D ")) //check up
+                   /* if ((array1[y][x] != "c ") &  (array1[y][x] != "C ") & (array1[y][x] != "H ") & (array1[y][x] != "D ")) //check up
                     {
                         totalShot++;
                         if (totalShot>100) return;
                         array1[y][x]=(" " +d) ;
-                        Array2(2);
+                        Array2();
                         System.out.println( "d=" +d+ "  x=" + x +  "  y="+y + "  hitNumberF   " + hitNumberF);
                     }*/
 //---------------------------------------& false firing------------------------------
@@ -641,7 +642,43 @@ public void makeBorder()
 
                 }
 //-----------------end vertical fire
-                    h++;
+               /* switch (d)
+                {
+                           *//* case 0:break;
+                            case 1: d=3;break;
+                            case 3: d=4;break;
+                            case 4: d=2;break;
+                            default: d=8; break; //do nothing 178*//*
+                    case 4:
+                        d=3;break;
+                    case 3:
+                        d = 1;
+                        break;
+                    case 1:
+                        d = 2;
+                        break;
+                    case 2:
+                        d = 4;
+                        break;
+                    default:
+                        break; //do nothing
+                }*/
+
+
+                switch (h)
+                {
+                    case 0: h=9;break ;
+                    case 9: h=1;break ;
+                    case 1: h=8;break;
+                    case 8: h=2;break ;
+                    case 2: h=7;break ;
+                    case 7: h=3;break ;
+                    case 3: h=6;break;
+                    case 6: h=4; break;
+                    case 4: h=5;break;
+                    case 5: h=10;break ;// do nothing
+                }
+                //h++;
                     over = false;
             }
 //------------------------------------& horizontal fire cycle -------------------------
@@ -702,10 +739,10 @@ public void makeBorder()
     public static void main(String[] args)
     {
         // System.out.println("Sea battle");
-        int divider=1;
-        outPut=1;
-        double result = 0;
-        SeaBattleAlg3 alg = new SeaBattleAlg3();
+        int divider=11;
+        outPut=0;
+        double result = 1;
+        SeaBattleAlg4 alg = new SeaBattleAlg4();
         for (int i=1; i<=divider; i++)
         {
             SeaBattle seaBattle = new SeaBattle();      //random config
