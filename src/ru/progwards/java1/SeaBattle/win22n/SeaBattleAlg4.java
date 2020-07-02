@@ -739,7 +739,7 @@ public void makeBorder()
     public static void main(String[] args)
     {
         // System.out.println("Sea battle");
-        int divider=11;
+        int divider=1111;
         outPut=0;
         double result = 1;
         SeaBattleAlg4 alg = new SeaBattleAlg4();
