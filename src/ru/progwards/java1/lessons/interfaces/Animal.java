@@ -282,7 +282,56 @@ public boolean equals(Object anObject)
     }
 
     //-------------------------------& public boolean equals(Object anObject)-------------------------------------------------------
-    public static void main(String[] args) {
+
+ //-------------------------------------------------------------------
+
+ /*1.2 В класс Animal добавить метод
+    public double getFood1kgPrice(), который возвращает информацию о цене 1 кг еды.
+    метод реализовать в виде switch по FoodKind со следующими значениями
+    HAY : 20
+    CORN: 50
+    UNKNOWN: 0*/
+
+ //-----------------------------------------------------------------------
+ public double getFood1kgPrice()
+ {
+     double food1kgPrice=0;
+     switch (foodKind)
+     {
+         case UNKNOWN:
+             food1kgPrice = 0;
+             break;
+         case HAY:
+             food1kgPrice = 20;
+             break;
+         case CORN:
+             food1kgPrice = 50;
+             break;
+
+     }
+     return food1kgPrice;
+ }
+//-----------------------------public double getFoodPrice()-----------------------------------------------------------
+
+    /*1.3 В класс Animal добавить метод
+    public double getFoodPrice(), который возвращает информацию о цене еды для
+    данного животного по формуле calculateFoodWeight() * getFood1kgPrice()*/
+
+//--------------------------------&-public double getFoodPrice()-------------------------------------------------------
+
+    public double getFoodPrice()
+    {
+        double foodPrice=0;
+
+        return foodPrice;
+
+    }
+
+//--------------------------------------------------------------------
+
+
+    public static void main(String[] args)
+    {
         Animal test0 = new Animal ();
         Animal test1 = new Animal (4);
         Animal test2 = new Animal (6);
