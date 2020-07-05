@@ -271,17 +271,27 @@ public boolean equals(Object anObject)
         return Objects.hash(getWeight());
     }*/
 
+    /*@Override
+    public boolean equals(Object anObject) {
+        if (this == anObject) return true;
+        if (!(anObject instanceof Animal)) return false;
+        if (this.weight == ((Animal)anObject).weight) {
+            return true;
+        }
+        return false;
+    }*/
+//--------------------------------------------------------------------
     @Override
     public boolean equals(Object anObject) {
         if (this == anObject) return true;
         if (!(anObject instanceof Animal)) return false;
-       /* Animal animal = (Animal) anObject;
-        result=Double.compare(this.getWeight(), anObject.getWeight());*/
+        if(anObject==null || getClass() != anObject.getClass()) return false;
         if (this.weight == ((Animal)anObject).weight) {
             return true;
         }
         return false;
     }
+//------------------------------------------------------------------
 
     @Override
     public int hashCode() {
@@ -417,6 +427,7 @@ public int compare(House h1, House h2) {
         Hamster test4 = new Hamster(4);
         Animal animal = new Animal (7);
         Duck duck = new Duck(3);
+        Duck duck4 = new Duck(4);
         Hamster hamster = new Hamster(4);
         test1.equals(test2);
         System.out.println("    test1.compareTo(test2)           " + test1.equals(test2));
@@ -426,10 +437,13 @@ public int compare(House h1, House h2) {
         System.out.println("    test1.compareTo(test3)           " + test1.equals(test3));
         System.out.println("    animal.compareTo(hamster)           " + animal.equals(hamster));
         System.out.println("    animal.compareTo(duck)           " + animal.equals(duck));
-        System.out.println("    duck.compareTo(hamster)           " + duck.equals(hamster));
+        System.out.println("    duck3.compareTo(hamster4)           " + duck.equals(hamster));
+        System.out.println("    duck4.compareTo(hamster4)           " + duck4.equals(hamster));
+
         //-------------------compare foodprice ------------------------------------------------------------
         test1.compareFoodPrice(test2);
-        System.out.println("    duck.compareFoodPrice(hamster)           " + duck.compareFoodPrice(hamster));
+        System.out.println("    duck3compareFoodPrice(hamster4)           " + duck.compareFoodPrice(hamster));
+        System.out.println("    duck4.compareFoodPrice(hamster4)           " + duck4.compareFoodPrice(hamster));
         //System.out.println("Animal  " + toString);
         //System.out.println("Animal  " + ca);
         //System.out.println(ge);
