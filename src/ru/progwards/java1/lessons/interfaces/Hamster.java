@@ -9,16 +9,17 @@ package ru.progwards.java1.lessons.interfaces;
 public double getFoodCoeff(), который должен возвращать 0.03
 //-------------------------------------------------------------------------
  */
-public class Hamster extends Animal {
+public class Hamster extends Animal implements FoodCompare
+{
     double weight;
-    AnimalKind animalKind = AnimalKind.HAMSTER;
-    FoodKind foodKind  = FoodKind.CORN;
-    double   foodCoeff = 0.03;
+   //AnimalKind animalKind = AnimalKind.HAMSTER;
+   // FoodKind foodKind  = FoodKind.CORN;
+
     Hamster(){}
     public Hamster (double weight)//конструктор который сохраняет вес животного.
     {
         super(weight);
-        System.out.println("hamster w "+weight);
+        ifNdef("hamster w "+weight);
     }
  //------------------------------------------------------------------------
 // класс Hamster, потомок класса Animal, переопределяющий методы:
@@ -26,8 +27,7 @@ public class Hamster extends Animal {
 //-------------------------------------------------------------------------
 @Override
 public AnimalKind getKind() {
-    System.out.println("hamster kind " +animalKind);
-    return animalKind;
+    return AnimalKind.HAMSTER;
 }
 
 
@@ -36,10 +36,7 @@ public AnimalKind getKind() {
 //----------------------------------------------------------------------------
 @Override
 public FoodKind getFoodKind() {
-
-    System.out.println("hamster food -final " +FoodKind.CORN);
-    System.out.println("hamster food -var " +foodKind);
-    return foodKind;
+    return FoodKind.CORN;
 }
 
 //--------------------------------------------------------------------------
@@ -48,8 +45,7 @@ public FoodKind getFoodKind() {
 //--------------------------------------------------------------------------
 @Override
 public double getFoodCoeff() {
-    System.out.println("Hamster foodcoeff " +foodCoeff);
-    return foodCoeff;
+    return 0.03;
     }
 
     public static void main(String[] args) {

@@ -1,6 +1,6 @@
 package ru.progwards.java1.lessons.interfaces;
 
-import Lesson8_hsh_eqls.Rectangle;
+import Lesson6.Rectangle;
 
 import java.util.Arrays;
 import java.util.Objects;
@@ -75,14 +75,16 @@ public int compareFoodPrice(Animal aminal), который возвращает 
 
 //---------------------------------------------------------------------------------------
  */
-class Animal {
+class Animal implements  FoodCompare {
     double weight;  //class property
-    AnimalKind animalKind = AnimalKind.ANIMAL;
-    FoodKind foodKind = FoodKind.UNKNOWN;
-    double foodCoeff=0.02;
+    //AnimalKind animalKind = AnimalKind.ANIMAL;
+    // FoodKind foodKind = FoodKind.UNKNOWN;
 
-   // FoodKind foodKind;
-    Animal() { }
+
+    // FoodKind foodKind;
+    Animal() {
+    }
+
     //1.0----------------------------------------------------------------------
     Animal(double weight)//конструктор который сохраняет вес животного.
     {//AnimalKind animalKind,FoodKind foodKind,double foodCoeff
@@ -91,7 +93,7 @@ class Animal {
         this.foodKind=foodKind;
         this.foodCoeff=foodCoeff;*/
 
-        System.out.println(" animal weight  "+weight);
+        ifNdef(" animal weight  " + weight);
 
     }
 
@@ -99,36 +101,37 @@ class Animal {
     //
     //String result;
 
-   /* enum AnimalKind {ANIMAL, COW, HAMSTER, DUCK,}
-    AnimalKind anim = AnimalKind.ANIMAL;
-    AnimalKind animal = AnimalKind.ANIMAL;
+    /* enum AnimalKind {ANIMAL, COW, HAMSTER, DUCK,}
+     AnimalKind anim = AnimalKind.ANIMAL;
+     AnimalKind animal = AnimalKind.ANIMAL;
 
+     //1.1----------------------------------------------------------------------
+      AnimalKind getKind() //Метод: который возвращает вид животного
+     {                           //enum AnimalKind
+
+         switch (animal) {
+             case AnimalKind.ANIMAL:
+                anim = AnimalKind.ANIMAL;
+                 break;
+             case AnimalKind.COW:
+                 anim =AnimalKind.COW;
+                 break;
+             case AnimalKind.HAMSTER:
+                anim=AnimalKind.HAMSTER;
+                 break;
+             case AnimalKind.DUCK:
+                 anim=AnimalKind.DUCK;
+                 break;
+         }
+         return anim;
+         //return result;*/
+    enum AnimalKind {ANIMAL, COW, HAMSTER, DUCK}
+
+    //AnimalKind animalKind = AnimalKind.COW;
+    //AnimalKind anim;
+    //animalKind = new  AnimalKind.COW;
     //1.1----------------------------------------------------------------------
-     AnimalKind getKind() //Метод: который возвращает вид животного
-    {                           //enum AnimalKind
-
-        switch (animal) {
-            case AnimalKind.ANIMAL:
-               anim = AnimalKind.ANIMAL;
-                break;
-            case AnimalKind.COW:
-                anim =AnimalKind.COW;
-                break;
-            case AnimalKind.HAMSTER:
-               anim=AnimalKind.HAMSTER;
-                break;
-            case AnimalKind.DUCK:
-                anim=AnimalKind.DUCK;
-                break;
-        }
-        return anim;
-        //return result;*/
-        enum AnimalKind {ANIMAL, COW, HAMSTER, DUCK}
-        //AnimalKind animalKind = AnimalKind.COW;
-        AnimalKind anim;
-        //animalKind = new  AnimalKind.COW;
-        //1.1----------------------------------------------------------------------
-        public AnimalKind getKind() //Метод: который возвращает вид животного
+       /* public AnimalKind getKind() //Метод: который возвращает вид животного
         {                           //enum AnimalKind
             //switch is just for the sample, there needn't it really
             switch (animalKind)
@@ -145,39 +148,29 @@ class Animal {
                 case DUCK:
                     anim= AnimalKind.DUCK;
                     break;
-            }
-            System.out.println("anim  " +anim);
-            System.out.println("animalkind  " +animalKind);
-            System.out.println("Arrays   "+ Arrays.toString(AnimalKind.values()));
-            //System.out.println(Arrays.toString(Season.values()));
-            return animalKind;  //return result;
+            }*/
+    public AnimalKind getKind() {
+        //System.out.println("Duck kind " +animalKind);
+        //AnimalKind animalKind = AnimalKind.ANIMAL;
+        //System.out.println("anim  " +anim);
 
-
-        }
+        //System.out.println("Arrays   "+ Arrays.toString(AnimalKind.values()));
+        //System.out.println(Arrays.toString(Season.values()));
+         //return result;
+        //System.out.println("animal kind  " + getKind());
+        return AnimalKind.ANIMAL;
+    }
 
     //1.2 -----------------------------------------------------------------
     enum FoodKind {UNKNOWN, HAY, CORN}
 
-    FoodKind foodKind1;
+    //////  ////FoodKind foodKind1;
 //switch is just for the sample, there needn't it really
     public FoodKind getFoodKind()    //, который возвращает вид еды,
     {
-        switch (foodKind) {
-            //case FoodKind.UNKNOWN:
-            case UNKNOWN:
-               //foodKind=FoodKind.UNKNOWN;
-                foodKind1= FoodKind.UNKNOWN;
-                break;
-            case HAY:
-                foodKind1 = FoodKind.HAY;
-                break;
-            case CORN:
-                foodKind1= FoodKind.CORN;
-                break;
-        }
-        System.out.println("animal foodKind "    +foodKind);
+        //System.out.println("animal foodKind "    +getFoodKind());
 
-        return foodKind;
+        return FoodKind.UNKNOWN;
     }
 
     //--1.3 Метод
@@ -185,8 +178,8 @@ class Animal {
 //I am <AnimalKind>, eat <FoodKind>
 //-------------------------------------------------------------------------------
     public String toString() {
-        System.out.println("Animal var : I am " + animalKind + ", eat " + foodKind);
-        System.out.println("Animal_func: I am " + getKind() + ", eat " + getFoodKind());
+       // System.out.println("Animal var : I am " + animalKind + ", eat " + foodKind);
+        ifNdef("Animal_func: I am " + getKind() + ", eat " + getFoodKind());
         return "I am " + getKind() + ", eat " + getFoodKind() ;
 
     }
@@ -195,7 +188,7 @@ class Animal {
 // 2.1 В классе Animal реализовать метод:
 //public double getWeight(), который возвращает вес животного
     public double getWeight() {
-        System.out.println("animal weight  "        +weight);
+        ifNdef("animal weight  "        +weight);
         return weight;
     }
 
@@ -207,8 +200,9 @@ class Animal {
     //double foodCoeff = 0.02;
 
     public double getFoodCoeff() {
-        System.out.println("animal foodCoeff  "        +foodCoeff);
-        return foodCoeff;
+        //double foodCoeff=0.02;
+        //System.out.println("animal foodCoeff  "        +foodCoeff);
+        return 0.02;
     }
 
     //---------------------------------------------------------------------------------------
@@ -216,13 +210,14 @@ class Animal {
 //public double calculateFoodWeight(), который рассчитывает необходимый вес еды,
 // по формуле - вес-еды = вес-животного * коэффициент веса тела.
 //----------------------------------------------------------------------------------
-    double foodWeight;
+
 
     public double calculateFoodWeight() {
+        double foodWeight;
         //foodWeight = (weight * foodCoeff);
         foodWeight = (getWeight() * getFoodCoeff());
-        System.out.println("foodCoeff  " + animalKind+ "   "+foodCoeff);
-        System.out.println("foodCoeff  " + getKind()+ "   "+getFoodCoeff());
+       // System.out.println("foodCoeff  " + animalKind+ "   "+foodCoeff);
+        ifNdef("foodCoeff  " + getKind()+ "   "+getFoodCoeff());
         return foodWeight;
     }
 
@@ -232,8 +227,8 @@ class Animal {
     //I am <AnimalKind>, eat <FoodKind> <CalculateFoodWeight>
     //----------------------------------------------------------------------------------
     public String toStringFull() {
-        System.out.println("I am " + animalKind + ", eat " + foodKind + " " + foodWeight); //inheritance didn't work if use variable - functions output
-        System.out.println("I am " + getKind() + ", eat " + getFoodKind() + " " + calculateFoodWeight()); //inheritance work if use functions
+       // System.out.println("I am " + animalKind + ", eat " + foodKind + " " + foodWeight); //inheritance didn't work if use variable - functions output
+        ifNdef("I am " + getKind() + ", eat " + getFoodKind() + " " + calculateFoodWeight()); //inheritance work if use functions
         return "I am " + getKind() + ", eat " + getFoodKind() + " " + calculateFoodWeight();
     }
 //--------------------------------------------------------------------------------------
@@ -261,24 +256,36 @@ public boolean equals(Object anObject)
 
 }
 //-----------------------------------------------------------------------------------------
+//----------------------------------------------------------------------------
+ /*public  int compareTo(Rectangle anRectangle)
+ {
+     Double rect1 = this.area();
+     int result=0;
+     result = Double.compare(this.area(), anRectangle.area());
+     return result;
+ }*/
+//----------------------& public int compareFoodPrice(Animal aminal)-------------------------
 
-
-    @Override
+    /*@Override
     public int hashCode() {
         return Objects.hash(getWeight());
     }*/
 
     @Override
-    public boolean equals(Object o) {
-        if (this == o) return true;
-        if (!(o instanceof Animal)) return false;
-        Animal animal = (Animal) o;
-        return Double.compare(animal.getWeight(), getWeight()) == 0;
+    public boolean equals(Object anObject) {
+        if (this == anObject) return true;
+        if (!(anObject instanceof Animal)) return false;
+       /* Animal animal = (Animal) anObject;
+        result=Double.compare(this.getWeight(), anObject.getWeight());*/
+        if (this.weight == ((Animal)anObject).weight) {
+            return true;
+        }
+        return false;
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash(getWeight());
+        return Objects.hash(weight);
     }
 
     //-------------------------------& public boolean equals(Object anObject)-------------------------------------------------------
@@ -294,9 +301,9 @@ public boolean equals(Object anObject)
 
  //-----------------------------------------------------------------------
  public double getFood1kgPrice()
- {
+ { //FoodKind foodKind = FoodKind.UNKNOWN;
      double food1kgPrice=0;
-     switch (foodKind)
+     switch (getFoodKind())
      {
          case UNKNOWN:
              food1kgPrice = 0;
@@ -309,8 +316,26 @@ public boolean equals(Object anObject)
              break;
 
      }
+
+     ifNdef(    "food1kgPrice="+ food1kgPrice);
      return food1kgPrice;
  }
+//--------------------------sample---------------------------------------
+/*{ FoodKind foodKind1 = FoodKind.UNKNOWN;
+    switch (foodKind1) {
+        //case FoodKind.UNKNOWN:
+        case UNKNOWN:
+            //foodKind=FoodKind.UNKNOWN;
+            foodKind1= FoodKind.UNKNOWN;
+            break;
+        case HAY:
+            foodKind1 = FoodKind.HAY;
+            break;
+        case CORN:
+            foodKind1= FoodKind.CORN;
+            break;
+    }*/
+//--------------------------& sample-------------------------------------
 //-----------------------------public double getFoodPrice()-----------------------------------------------------------
 
     /*1.3 В класс Animal добавить метод
@@ -322,14 +347,67 @@ public boolean equals(Object anObject)
     public double getFoodPrice()
     {
         double foodPrice=0;
-
+        foodPrice=calculateFoodWeight()*getFood1kgPrice();
+        ifNdef(" getclass "+getClass());
         return foodPrice;
 
     }
 
 //--------------------------------------------------------------------
 
+ /*1.5 В класс Animal реализовать
+    public int compareFoodPrice(Animal aminal), который возвращает результаты
+    сравнения цены еды для данного животного с ценой еды для другого животного,
+    используя Double.compare;   */
+//----------------------public int compareFoodPrice(Animal aminal)---------------------------------------------------
 
+    //-------------sample---------------------------------------------------
+/*
+public int compare(House h1, House h2) {
+    if (h1.price == h2.price) {
+        return 0;
+    }
+    if (h1.price > h2.price) {
+        return 1;
+    }
+    else {
+        return -1;
+    }
+}
+*/
+    @Override
+    public int  compareFoodPrice(Animal aminal)
+    {
+        // Double rect1 = this.getFoodPrice();
+        int result=0;
+       /*if (Double.compare(this.getFoodPrice(), animal.getFoodPrice())==1) result=1;
+        if (Double.compare(this.getFoodPrice(), animal.getFoodPrice())==0) result=0;
+        if (Double.compare(this.getFoodPrice(), animal.getFoodPrice())==-1) result=-1;*/
+        result=Double.compare(this.getFoodPrice(), aminal.getFoodPrice());
+
+        return result;
+
+    }
+
+    //-------------& sample --------------------------------------------------------
+    //----------------------------------------------------------------------------
+     /*public  int compareTo(Rectangle anRectangle)
+     {
+         Double rect1 = this.area();
+         int result=0;
+         result = Double.compare(this.area(), anRectangle.area());
+         return result;
+     }*/
+    //----------------------& public int compareFoodPrice(Animal aminal)----------------------------------------------
+    @Override
+    public void ifNdef(String str)
+    {
+        if ((outPut==1))
+        {
+            System.out.println(  str );
+        }
+    }
+    //-----------------------------------------------------
     public static void main(String[] args)
     {
         Animal test0 = new Animal ();
@@ -337,7 +415,7 @@ public boolean equals(Object anObject)
         Animal test2 = new Animal (6);
         Hamster test3 = new Hamster(4);
         Hamster test4 = new Hamster(4);
-        Animal animal = new Animal (4);
+        Animal animal = new Animal (7);
         Duck duck = new Duck(4);
         Hamster hamster = new Hamster(4);
         test1.equals(test2);
@@ -349,7 +427,9 @@ public boolean equals(Object anObject)
         System.out.println("    animal.compareTo(hamster)           " + animal.equals(hamster));
         System.out.println("    animal.compareTo(duck)           " + animal.equals(duck));
         System.out.println("    duck.compareTo(hamster)           " + duck.equals(hamster));
-
+        //-------------------compare foodprice ------------------------------------------------------------
+        test1.compareFoodPrice(test2);
+        System.out.println("    duck.compareFoodPrice(hamster)           " + duck.compareFoodPrice(hamster));
         //System.out.println("Animal  " + toString);
         //System.out.println("Animal  " + ca);
         //System.out.println(ge);

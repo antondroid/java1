@@ -1,3 +1,4 @@
+/*
 package ru.progwards.java1.lessons.telbot;
 
 import org.telegram.telegrambots.ApiContextInitializer;
@@ -19,3 +20,4 @@ public class PizzaBot extends ProgwardsTelegramBot {
         bot.start();
     }
 }
+*/

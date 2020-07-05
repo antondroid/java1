@@ -10,27 +10,39 @@ package ru.progwards.java1.lessons.interfaces;
 public double getFoodCoeff(), который должен возвращать 0.04
 //----------------------------------------------------------------------------
  */
-public class Duck extends Animal
+public class Duck extends Animal implements FoodCompare
 {
     double weight;
-    AnimalKind animalKind = AnimalKind.DUCK;
-    FoodKind foodKind = FoodKind.CORN;
-    double foodCoeff=0.04;
+   // AnimalKind animalKind = AnimalKind.DUCK;
+    //FoodKind foodKind = FoodKind.CORN;
+
     Duck(){}
 
     public Duck (double weight)//конструктор который сохраняет вес животного.
     {
         super(weight);
-        System.out.println("Duck w " +weight);
+        ifNdef("Duck weight " +weight);
     }
+//static int outPut=0;
+    /*public void ifNdef(String str)
+    {
+        if ((outPut==1))
+        {
+            System.out.println(  str );
+        }
+    }*/
 //---------------------------------------------------------------------------
 //переопределяющий методы:
 //1.8 public AnimalKind getKind(), который возвращает DUCK.
 //---------------------------------------------------------------------------
-@Override
+
+
+
+
+    @Override
     public AnimalKind getKind() {
-    System.out.println("Duck kind " +animalKind);
-    return animalKind;
+    ifNdef("Duck kind " +AnimalKind.DUCK);
+    return AnimalKind.DUCK;
 }
 
 //---------------------------------------------------------------------------
@@ -38,8 +50,8 @@ public class Duck extends Animal
 //---------------------------------------------------------------------------------
 @Override
 public FoodKind getFoodKind() {
-    System.out.println("Duck food final " +FoodKind.CORN);
-    System.out.println("Duck food var " +foodKind);
+    //FoodKind foodKind = FoodKind.CORN;
+    ifNdef("Duck food is " +FoodKind.CORN);
     return FoodKind.CORN;  //just for joke (can simple foodKind variable)
 }
 //---------------------------------------------------------------------------
@@ -48,11 +60,15 @@ public FoodKind getFoodKind() {
 //----------------------------------------------------------------------------
 @Override
 public double getFoodCoeff() {
-    System.out.println("Duck foodcoeff " +foodCoeff);
-
-    return foodCoeff;
+    //System.out.println("Duck foodcoeff " +getFoodCoeff());
+    return 0.04;
     }
-    public static void main(String[] args) {
-
+    public static void main(String[] args)
+    {
+        //outPut=1;
+        Duck duck = new Duck(3);
+        Hamster hamster = new Hamster(4);
+        duck.compareFoodPrice(hamster);
+        duck.ifNdef("    duck.compareFoodPrice(hamster)           " + duck.compareFoodPrice(hamster));
     }
 }
