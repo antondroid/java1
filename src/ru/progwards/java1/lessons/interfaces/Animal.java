@@ -1,6 +1,6 @@
 package ru.progwards.java1.lessons.interfaces;
 
-import Lesson6.Rectangle;
+
 
 import java.util.Arrays;
 import java.util.Objects;
@@ -416,7 +416,7 @@ public int compare(House h1, House h2) {
         Hamster test3 = new Hamster(4);
         Hamster test4 = new Hamster(4);
         Animal animal = new Animal (7);
-        Duck duck = new Duck(4);
+        Duck duck = new Duck(3);
         Hamster hamster = new Hamster(4);
         test1.equals(test2);
         System.out.println("    test1.compareTo(test2)           " + test1.equals(test2));
