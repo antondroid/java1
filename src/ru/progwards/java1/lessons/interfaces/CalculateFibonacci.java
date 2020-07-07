@@ -41,7 +41,14 @@ public class CalculateFibonacci   {
 
 //---------------------------------------------------------------
     public static int fiboNumber(int n)
-    {   int fibo = 1;
+    {   int fibo = 1;int n3;
+        if ((lastFibo==null))
+        {
+            lastFibo = new CacheInfo(0,0);
+            //getLastFibo().n=0;
+            //getLastFibo().fibo=0;
+        }
+    n3=getLastFibo().n;
         if (n != getLastFibo().n)
         {
 
@@ -67,14 +74,14 @@ public class CalculateFibonacci   {
                         }
 
                     }
-            ifNdef(" calculated  "+ " n="+n +" fibo=" + fibo);
+            ifNdef("msg2 calculated  "+ " n="+n +" fibo=" + fibo);
                 getLastFibo().n = n;
             getLastFibo().fibo=fibo;
                 return fibo;
             }
                 else{
                         fibo=getLastFibo().fibo;
-                        ifNdef(" took from cash  " + " n="+n +" fibo=" + fibo);
+                        ifNdef("msg3 took from cash  " + " n="+n +" fibo=" + fibo);
                         return fibo;
                     }
     }
@@ -111,7 +118,7 @@ public class CalculateFibonacci   {
     // который сбрасывает lastFibo в null*/
 //-----------------------------------------------------------------
     public static void clearLastFibo()
-    {
+    {   ifNdef("msg4 clear  ");
         lastFibo=null;
     }
 //-------------------------------------------------------------
@@ -128,16 +135,21 @@ static int outPut=1;
     public static void main(String[] args)
     {
          CalculateFibonacci test1 = new CalculateFibonacci();
-         /*int n=2;
+         CalculateFibonacci test2= new CalculateFibonacci();
+         int n=2;
          while (n<5) {
-             test1.fiboNumber(n);
              n++;
+             test1.fiboNumber(n);
+
          }
         while (n>1) {
             test1.fiboNumber(n);
             n--;
-        }*/
+        }
         test1.fiboNumber(3);
         test1.fiboNumber(3);
+        test1.clearLastFibo();
+        test1.fiboNumber(3);
+        ifNdef("msg3 took from cash  " + " n="+n +" fibo=" + lastFibo);
     }
 }
