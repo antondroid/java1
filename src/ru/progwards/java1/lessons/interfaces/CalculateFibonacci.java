@@ -30,10 +30,10 @@ public static int fiboNumber(int n)
 2.3 Разместить в классе CalculateFibonacci приватную статическую
  переменную CacheInfo lastFibo;
 */
-public class CalculateFibonacci implements   ifNdef {
-   private static  CacheInfo lastFibo;
-   // private static  CacheInfo lastFibo = new CacheInfo(0,0);
-    static int n3;
+public class CalculateFibonacci   {
+    //  private static  CacheInfo lastFibo;
+   private static  CacheInfo lastFibo = new CacheInfo(0,0);
+    //static int n3;
   /*CalculateFibonacci(CacheInfo lastFibo)
   {
 
@@ -42,7 +42,7 @@ public class CalculateFibonacci implements   ifNdef {
 //---------------------------------------------------------------
     public static int fiboNumber(int n)
     {   int fibo = 1;
-        if (n != n3)
+        if (n != getLastFibo().n)
         {
 
             int i = 2;
@@ -50,8 +50,9 @@ public class CalculateFibonacci implements   ifNdef {
             int n2 = 1;
             if ((n == 1) | (n == 2))
                 {
-                    ifNdef.ifNdef(" took from settings  " + fibo);
-                    n3 = n;
+                    ifNdef("msg1 took from settings  "+ " n="+n +" fibo=" + fibo);
+                    getLastFibo().n = n;
+                    getLastFibo().fibo=fibo;
                     return fibo;
                 } else
                     {
@@ -66,18 +67,17 @@ public class CalculateFibonacci implements   ifNdef {
                         }
 
                     }
-            ifNdef.ifNdef(" calculated  " + fibo);
-                n3 = n;
+            ifNdef(" calculated  "+ " n="+n +" fibo=" + fibo);
+                getLastFibo().n = n;
+            getLastFibo().fibo=fibo;
                 return fibo;
             }
                 else{
-            ifNdef.ifNdef(" took from cash  " + fibo);
+                        fibo=getLastFibo().fibo;
+                        ifNdef(" took from cash  " + " n="+n +" fibo=" + fibo);
                         return fibo;
                     }
     }
-
-
-
     //-------------------------------------------------------------------
 
  /*2.2 Разместить вложенный класс
@@ -91,11 +91,11 @@ public class CalculateFibonacci implements   ifNdef {
      {
          public int n;
      public int fibo;
-        /* CacheInfo(int n, int fibo)
+         CacheInfo(int n, int fibo)
          {
             this.n=n;
             this.fibo=fibo;
-         }*/
+         }
 
      }
 //-----------------------------------------------------
@@ -114,12 +114,30 @@ public class CalculateFibonacci implements   ifNdef {
     {
         lastFibo=null;
     }
-
+//-------------------------------------------------------------
+static int outPut=1;
+    static void ifNdef(String str)
+    {
+        if ((outPut==1))
+        {
+            System.out.println(  str );
+        }
+    }
+//------------------------------------------------------------
 //------------------------------------------------------------
     public static void main(String[] args)
-    {    int output=1;
+    {
          CalculateFibonacci test1 = new CalculateFibonacci();
-            test1.fiboNumber(5);
-
+         /*int n=2;
+         while (n<5) {
+             test1.fiboNumber(n);
+             n++;
+         }
+        while (n>1) {
+            test1.fiboNumber(n);
+            n--;
+        }*/
+        test1.fiboNumber(3);
+        test1.fiboNumber(3);
     }
 }

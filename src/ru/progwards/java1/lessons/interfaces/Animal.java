@@ -409,7 +409,7 @@ public int compare(House h1, House h2) {
          return result;
      }*/
     //----------------------& public int compareFoodPrice(Animal aminal)----------------------------------------------
-    @Override
+    int outPut=0;
     public void ifNdef(String str)
     {
         if ((outPut==1))
@@ -417,6 +417,7 @@ public int compare(House h1, House h2) {
             System.out.println(  str );
         }
     }
+
     //-----------------------------------------------------
     public static void main(String[] args)
     {

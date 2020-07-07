@@ -1,7 +1,7 @@
 package ru.progwards.java1.lessons.interfaces;
 
 public interface FoodCompare {
-    int outPut =0;
+    int outPut =1;
     //-------------sample---------------------------------------------------
 /*
 public int compare(House h1, House h2) {
@@ -28,5 +28,4 @@ public int compare(House h1, House h2) {
          return result;
      }*/
     //----------------------& public int compareFoodPrice(Animal aminal)----------------------------------------------
-    void ifNdef(String str);
 }
