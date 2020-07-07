@@ -30,14 +30,14 @@ public static int fiboNumber(int n)
 2.3 Разместить в классе CalculateFibonacci приватную статическую
  переменную CacheInfo lastFibo;
 */
-public class CalculateFibonacci
-{
-   private static  CacheInfo lastFibo = new CacheInfo(0,0);
+public class CalculateFibonacci implements   ifNdef {
+   private static  CacheInfo lastFibo;
+   // private static  CacheInfo lastFibo = new CacheInfo(0,0);
     static int n3;
-  CalculateFibonacci(CacheInfo lastFibo)
+  /*CalculateFibonacci(CacheInfo lastFibo)
   {
-        
-  }
+
+  }*/
 
 //---------------------------------------------------------------
     public static int fiboNumber(int n)
@@ -50,6 +50,7 @@ public class CalculateFibonacci
             int n2 = 1;
             if ((n == 1) | (n == 2))
                 {
+                    ifNdef.ifNdef(" took from settings  " + fibo);
                     n3 = n;
                     return fibo;
                 } else
@@ -65,15 +66,19 @@ public class CalculateFibonacci
                         }
 
                     }
+            ifNdef.ifNdef(" calculated  " + fibo);
                 n3 = n;
                 return fibo;
             }
                 else{
+            ifNdef.ifNdef(" took from cash  " + fibo);
                         return fibo;
                     }
-        }
     }
-//-------------------------------------------------------------------
+
+
+
+    //-------------------------------------------------------------------
 
  /*2.2 Разместить вложенный класс
     public static class CacheInfo, содержащий пару свойств
@@ -83,13 +88,14 @@ public class CalculateFibonacci
 */
 //--------------------------------------------------------------------
      public static class CacheInfo
-     { public int n;
+     {
+         public int n;
      public int fibo;
-         CacheInfo(int n, int fibo)
+        /* CacheInfo(int n, int fibo)
          {
             this.n=n;
             this.fibo=fibo;
-         }
+         }*/
 
      }
 //-----------------------------------------------------
@@ -98,7 +104,7 @@ public class CalculateFibonacci
 //-----------------------------------------------------
     public static CacheInfo getLastFibo()
     {
-        return l;
+        return lastFibo;
     }
 //---------------------------------------------------------------
     // 2.6 Реализовать метод public static void clearLastFibo(),
@@ -110,9 +116,10 @@ public class CalculateFibonacci
     }
 
 //------------------------------------------------------------
-    public static void main(String[] args) {
-         CalculateFibonacci test1 = new CalculateFibonacci(12);
-
+    public static void main(String[] args)
+    {    int output=1;
+         CalculateFibonacci test1 = new CalculateFibonacci();
+            test1.fiboNumber(5);
 
     }
 }
