@@ -462,8 +462,10 @@ public int compare(House h1, House h2) {
         test1.compareFoodPrice(test2);
         System.out.println("    duck3compareFoodPrice(hamster4)           " + duck.compareFoodPrice(hamster));
         System.out.println("    duck4.compareFoodPrice(hamster4)           " + duck4.compareFoodPrice(hamster));
-        animal.compareWeight(2);
-
+        animal.compareWeight(duck);
+        System.out.println("  "+animal.compareWeight(duck));
+        System.out.println("  "+duck.compareWeight(animal));
+        System.out.println("  "+duck.compareWeight(duck));
     }
 
 
