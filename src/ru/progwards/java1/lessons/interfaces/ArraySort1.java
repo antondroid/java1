@@ -17,17 +17,13 @@ public static void sort(int[] a), по следующему алгоритму:
 8. Обобщая, алгоритм звучит следующим образом - сделать 2 вложенных цикла,
  внешний по i и внутренний по j. Внутренний цикл начинается от i+1,
   и если a[i] > a[j], то нужно поменять элементы a[i] и a[j] местами.
- sort0-original
- sort1 - try to change to food type
-
  */
-
-public class ArraySort {
+public class ArraySort1 {
     int a[];
     private static int N;
-    ArraySort(){}
+    ArraySort1(){}
     //ArraySort(int a[], int N)
-    ArraySort(int a[], int N)
+    ArraySort1(int a[], int N)
     {
     this.N=N;
     this.a=a;
@@ -72,7 +68,7 @@ public class ArraySort {
     public static void main(String[] args) {
        // int a[]=new int[]{1};     //this is transfer array from main to method sort (if uncommented)
 
-        ArraySort testD=new ArraySort(new int[]{1},6); //these parameter not mentioned it'just for took place
+        ArraySort1 testD=new ArraySort1(new int[]{1},6); //these parameter not mentioned it'just for took place
         testD.sort(new int[]{1,-3,2,9,7,-5});  //input array modelling
 
 

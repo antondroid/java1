@@ -40,10 +40,13 @@ public class Food implements CompareWeight{
         System.out.println("  "+hamster2.compareWeight(duck3));
         System.out.println("  "+hamster2.compareWeight(hamster18));
         System.out.println("  "+hamster17.compareWeight(hamster18));
-        //--------------------sort-----------------------------------
+        //--------------------sort-by int (original )----------------------------------
         Food testD=new Food(1700);
-        ArraySort testF =new ArraySort(new int[]{1},6);
-        testF.sort(new int[]{1800,duck,hamster2,duck3,hamster17,hamster18,hamster19});
+        /*ArraySort testF =new ArraySort(new int[]{1},6);
+        testF.sort(new int[]{1800,duck,hamster2,duck3,hamster17,hamster18,hamster19});*/
+//----------------------------sort by Food-----------------------------------------------
+        ArraySort0 testF =new ArraySort0(new Food[]{duck},6);
+        testF.sort(new Food[]{duck,hamster2,duck3,hamster17,hamster18,hamster19});
     }
 }
 /*
