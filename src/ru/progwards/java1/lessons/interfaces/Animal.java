@@ -75,7 +75,7 @@ public int compareFoodPrice(Animal aminal), который возвращает 
 
 //---------------------------------------------------------------------------------------
  */
-class Animal implements  FoodCompare {
+class Animal implements  FoodCompare, CompareWeight {
     double weight;  //class property
     //AnimalKind animalKind = AnimalKind.ANIMAL;
     // FoodKind foodKind = FoodKind.UNKNOWN;
@@ -383,7 +383,7 @@ public int compare(House h1, House h2) {
     else {
         return -1;
     }
-}
+}//-------------& sample --------------------------------------------------------
 */
     @Override
     public int  compareFoodPrice(Animal aminal)
@@ -399,7 +399,7 @@ public int compare(House h1, House h2) {
 
     }
 
-    //-------------& sample --------------------------------------------------------
+
     //----------------------------------------------------------------------------
      /*public  int compareTo(Rectangle anRectangle)
      {
@@ -409,6 +409,24 @@ public int compare(House h1, House h2) {
          return result;
      }*/
     //----------------------& public int compareFoodPrice(Animal aminal)----------------------------------------------
+//-----------------------------------------------------------------------------------------
+ /*3.4 Для класса Animal реализовать интерфейс CompareWeight..Сравнение сделать на основе веса животного.
+    Метод CompareResult compareWeight должен возвращать
+    LESS если свой вес < веса параметра метода
+    EQUAL если свой вес = веса параметра метода
+    GREATER если свой вес > веса параметра метода*/
+
+    //public enum CompareResult {LESS, EQUAL, GREATER}
+    @Override
+    public CompareResult compareWeight(CompareWeight smthHasWeigt)
+    {
+        int n=0;
+        if (Double.compare(this.getWeight(), smthHasWeigt.getWeight())==1) return CompareResult.GREATER;
+        if (Double.compare(this.getWeight(), smthHasWeigt.getWeight())==0) return CompareResult.EQUAL;
+        if (Double.compare(this.getWeight(), smthHasWeigt.getWeight())==-1) return CompareResult.LESS;
+        else return CompareResult.LESS;
+    }
+//-----------------------------------------------------------------------------
     int outPut=0;
     public void ifNdef(String str)
     {
@@ -417,7 +435,6 @@ public int compare(House h1, House h2) {
             System.out.println(  str );
         }
     }
-
     //-----------------------------------------------------
     public static void main(String[] args)
     {
@@ -445,9 +462,7 @@ public int compare(House h1, House h2) {
         test1.compareFoodPrice(test2);
         System.out.println("    duck3compareFoodPrice(hamster4)           " + duck.compareFoodPrice(hamster));
         System.out.println("    duck4.compareFoodPrice(hamster4)           " + duck4.compareFoodPrice(hamster));
-        //System.out.println("Animal  " + toString);
-        //System.out.println("Animal  " + ca);
-        //System.out.println(ge);
+        animal.compareWeight(2);
 
     }
 
