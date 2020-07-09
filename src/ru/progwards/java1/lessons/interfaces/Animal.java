@@ -425,7 +425,7 @@ public int compare(House h1, House h2) {
         else return CompareResult.LESS;
     }
 //-----------------------------------------------------------------------------
-    //int outPut=1;
+    int outPut=0;
     public void ifNdef(String str)
     {
         if ((outPut==1))

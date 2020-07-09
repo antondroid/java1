@@ -1,7 +1,7 @@
 package ru.progwards.java1.lessons.interfaces;
 
 import java.util.Arrays;
-
+import java.util.Objects;
 /*
 3.5 Создать класс Food (еда), которое никак не связано иерархией наследования с Animal.
 3.6 В классе Food разместить приватную переменную int weight - вес еды в граммах,
@@ -14,6 +14,13 @@ public class Food implements CompareWeight
     {
         this.weight=weight;
     }
+
+    //ifNdef(" getclass "+getClass());
+    //-----------------------------------------------------------------------------
+
+    //-----------------------------------------------------
+
+
     @Override
     public CompareResult compareWeight(CompareWeight smthHasWeigt) {
         if (Double.compare(this.getWeight(), smthHasWeigt.getWeight())==1) return CompareResult.GREATER;
@@ -23,12 +30,21 @@ public class Food implements CompareWeight
     public double getWeight() {
         return weight;
     }
-    @Override
+    /*@Override
     public String toString() {
         return getClass().getSimpleName() + "[name="  + "]";
-    }
-    //--------------------------------------------------------------
 
+    }*/
+
+    //--------------------------------------------------------------
+    int outPut=0;
+    public void ifNdef(String str)
+    {
+        if ((outPut==1))
+        {
+            System.out.println(  str );
+        }
+    }
     //--------------------------------------------------------------
     public static void main(String[] args) {
         Food duck = new Food(3000);
@@ -37,6 +53,7 @@ public class Food implements CompareWeight
         Food hamster17 = new Food(1700);
         Food hamster18 = new Food(1800);
         Food hamster19 = new Food(1900);
+
 
         System.out.println("  "+duck.compareWeight(duck3));
         System.out.println("  "+duck.compareWeight(hamster2));
@@ -50,11 +67,13 @@ public class Food implements CompareWeight
 //----------------------------sort by Food-----------------------------------------------
        Food a[]={duck,hamster2,duck3,hamster17,hamster18,hamster19};
         ArraySort1 testF =new ArraySort1(new  Food[]{duck},6);
-        System.out.println("print arrayInt after filling " + Arrays.toString(a));
+       // System.out.println("print arrayInt after filling " + Arrays.toString(a));
        testF.sort(a);
        //testF.sort(new Food[]{duck,hamster2,duck3,hamster17,hamster18,hamster19});
-        System.out.println("print arrayInt after filling " + Arrays.toString(a));
+        //System.out.println("print arrayInt after filling " + Arrays.toString(a));
     }
+
+
 
    /* @Override
     public CompareResult compareWeight(CompareWeight smthHasWeigt) {

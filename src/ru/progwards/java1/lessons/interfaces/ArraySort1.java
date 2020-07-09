@@ -37,7 +37,7 @@ public class ArraySort1 implements CompareWeight{
 
 
     public static void sort(CompareWeight[] a) {
-        System.out.println("print arrayInt after input                     " + Arrays.toString(a));
+        //System.out.println("print arrayInt after input                     " + Arrays.toString(a));
         //-----------------------------------------------------------------------------------
         //a = new int[N];
         int a_length = a.length;
@@ -51,7 +51,7 @@ public class ArraySort1 implements CompareWeight{
             i++;
             cellValue--;
         }*/
-        System.out.println("print arrayInt after filling " + Arrays.toString(a));
+        //System.out.println("print arrayInt after filling " + Arrays.toString(a));
         //----------------------------------------------end of create array-------------------------------------
         i = 0;
         Food x;
@@ -68,7 +68,7 @@ public class ArraySort1 implements CompareWeight{
                     {
                         a[i] = y;
                         a[j] = x;
-                        System.out.println("print arrayInt after filling                     " + Arrays.toString(a)+" "+i+" "+j);
+                        //System.out.println("print arrayInt after filling                     " + Arrays.toString(a)+" "+i+" "+j);
                     }
                     j++;
                 }
