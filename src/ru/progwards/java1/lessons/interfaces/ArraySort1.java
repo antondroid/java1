@@ -24,18 +24,13 @@ public static void sort(int[] a), по следующему алгоритму:
 public class ArraySort1 implements CompareWeight{
     Food a[];
     private static int N;
-    ArraySort1(){}
-    //ArraySort(int a[], int N)
     ArraySort1(Food a[], int N)
     {
     this.N=N;
     this.a=a;
     }
-
     public ArraySort1(CompareWeight[] compareWeights, int n) {
     }
-
-
     public static void sort(CompareWeight[] a) {
         //System.out.println("print arrayInt after input                     " + Arrays.toString(a));
         //-----------------------------------------------------------------------------------
@@ -44,14 +39,6 @@ public class ArraySort1 implements CompareWeight{
         N=a_length;
         //----------------------------------------create own array----------------------------------------------------
         int i = 0;  //cell counter
-       /* int cellValue = N;
-        while (i < N)//until pos reached
-        {
-            a[i] = cellValue;
-            i++;
-            cellValue--;
-        }*/
-        //System.out.println("print arrayInt after filling " + Arrays.toString(a));
         //----------------------------------------------end of create array-------------------------------------
         i = 0;
        CompareWeight x;
@@ -76,19 +63,7 @@ public class ArraySort1 implements CompareWeight{
             }
     }
 //---------------------------------------------------------
-/*public static void sort(CompareWeight [] a)
-{
-    //ArraySort0 testF =new ArraySort0(new Food[]{duck},6);
-   // testF.sort(new Food[]{duck,hamster2,duck3,hamster17,hamster18,hamster19});
-}*/
-
-//---------------------------------------------------------
     public static void main(String[] args) {
-       // int a[]=new int[]{1};     //this is transfer array from main to method sort (if uncommented)
-
-       /* ArraySort1 testD=new ArraySort1(new Food[]{duck},6); //these parameter not mentioned it'just for took place
-        testD.sort(new CompareWeight[]{du,-3,2,9,7,-5});  //input array modelling*/
-
 //---------------------------------------------------------------------
         Food duck = new Food(3000);
         Food hamster2 = new Food(2000);
@@ -96,28 +71,20 @@ public class ArraySort1 implements CompareWeight{
         Food hamster17 = new Food(1700);
         Food hamster18 = new Food(1800);
         Food hamster19 = new Food(1900);
-
-
 //---------------------------------------------------------------------
         Food a[]={duck,hamster2,duck3,hamster17,hamster18,hamster19};
         ArraySort1 testF =new ArraySort1(new  Food[]{duck},6);
         System.out.println("before " + Arrays.toString(a) );
         testF.sort(a);
         System.out.println("after " + Arrays.deepToString(a));
-
-
 //---------------------------------------------------------------------
-
     }
-
-    @Override
+    /*@Override  //this is interface realisation if interface isn't default
     public CompareResult compareWeight(CompareWeight smthHasWeigt) {
         if (Double.compare(this.getWeight(), smthHasWeigt.getWeight())==1) return CompareResult.GREATER;
         if (Double.compare(this.getWeight(), smthHasWeigt.getWeight())==0) return CompareResult.EQUAL;
         else return CompareResult.LESS;
-    }
-
-
+    }*/
     @Override
     public double getWeight()
     {

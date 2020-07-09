@@ -11,25 +11,20 @@ public class Food implements CompareWeight
 {
     //private static String name=("zero ");
     private int weight;
-
     Food(int weight)
     {
         //this.name = name;
         this.weight=weight;
     }
-
-    //ifNdef(" getclass "+getClass());
     //-----------------------------------------------------------------------------
 
     //-----------------------------------------------------
-
-
-    @Override
+   /* @Override  //if not default it's interface realisation
     public CompareResult compareWeight(CompareWeight smthHasWeigt) {
         if (Double.compare(this.getWeight(), smthHasWeigt.getWeight())==1) return CompareResult.GREATER;
         if (Double.compare(this.getWeight(), smthHasWeigt.getWeight())==0) return CompareResult.EQUAL;
         else return CompareResult.LESS;
-    }
+    }*/
     public double getWeight() {
         return weight;
     }
@@ -39,22 +34,6 @@ public class Food implements CompareWeight
         return "wgt= " + weight + " ";
         //return getClass().getSimpleName() + "[ weight = " + weight + " ]";
     }
-//---------------------------------------------------------------------
-/*class Person {
-
-    private String name;
-
-    public Person(String name){
-
-        this.name=name;
-    }
-
-    @Override
-    public String toString(){
-
-        return "Person " + name;
-    }  */
-
 //----------------------------------------------------------------------
     //--------------------------------------------------------------
     int outPut=0;
@@ -73,39 +52,18 @@ public class Food implements CompareWeight
         Food hamster17 = new Food(1700);
         Food hamster18 = new Food(1800);
         Food hamster19 = new Food(1900);
-
-
         System.out.println("  "+duck.compareWeight(duck3));
         System.out.println("  "+duck.compareWeight(hamster2));
         System.out.println("  "+hamster2.compareWeight(duck3));
         System.out.println("  "+hamster2.compareWeight(hamster18));
         System.out.println("  "+hamster17.compareWeight(hamster18));
-        //--------------------sort-by int (original )----------------------------------
-        //Food1 testD=new Food1(testD,3000);
-        /*ArraySort testF =new ArraySort(new int[]{1},6);
-        testF.sort(new int[]{1800,duck,hamster2,duck3,hamster17,hamster18,hamster19});*/
 //----------------------------sort by Food-----------------------------------------------
        Food a[]={duck,hamster2,duck3,hamster17,hamster18,hamster19};
         ArraySort1 testF =new ArraySort1(new Food[]{duck},6);
         System.out.println("before sort " + Arrays.toString(a) );
         testF.sort(a);
         System.out.println("after sort" + Arrays.deepToString(a));
-        //System.out.println("print arrayInt after filling " + duck);
-
-       //testF.sort(new Food[]{duck,hamster2,duck3,hamster17,hamster18,hamster19});
-        //System.out.println("print arrayInt after filling " + Arrays.toString(a));
     }
-
-
-
-   /* @Override
-    public CompareResult compareWeight(CompareWeight smthHasWeigt) {
-        return null;
-    }
-    @Override
-    public double getWeight() {
-        return 0;
-    }*/
 }
 /*
 3.7 Реализовать метод
