@@ -37,7 +37,7 @@ public class ArraySort implements CompareWeight{
 
 
     public static void sort(CompareWeight[] a) {
-        System.out.println("print arrayInt after input                     " + Arrays.toString(a));
+        //System.out.println("print arrayInt after input                     " + Arrays.toString(a));
         //-----------------------------------------------------------------------------------
         //a = new int[N];
         int a_length = a.length;
@@ -51,24 +51,24 @@ public class ArraySort implements CompareWeight{
             i++;
             cellValue--;
         }*/
-        System.out.println("print arrayInt after filling " + Arrays.toString(a));
+        //System.out.println("print arrayInt after filling " + Arrays.toString(a));
         //----------------------------------------------end of create array-------------------------------------
         i = 0;
-        Food x;
-        Food y;
+       CompareWeight x;
+        CompareWeight y;
         while (i < N)
             {
             int j = i+1;
             while (j < N)
                 {
-                    x = (Food) a[i];
-                    y = (Food) a[j];
+                    x = a[i];
+                    y = a[j];
                     //if (y < x)
                     if (y.compareWeight(x)==CompareResult.LESS)
                     {
                         a[i] = y;
                         a[j] = x;
-                        System.out.println("print arrayInt after filling                     " + Arrays.toString(a)+" "+i+" "+j);
+                        //System.out.println("print arrayInt after filling                     " + Arrays.toString(a)+" "+i+" "+j);
                     }
                     j++;
                 }
@@ -88,7 +88,22 @@ public class ArraySort implements CompareWeight{
 
        /* ArraySort1 testD=new ArraySort1(new Food[]{duck},6); //these parameter not mentioned it'just for took place
         testD.sort(new CompareWeight[]{du,-3,2,9,7,-5});  //input array modelling*/
+
 //---------------------------------------------------------------------
+        Food duck = new Food(3000);
+        Food hamster2 = new Food(2000);
+        Food duck3 = new Food(3000);
+        Food hamster17 = new Food(1700);
+        Food hamster18 = new Food(1800);
+        Food hamster19 = new Food(1900);
+
+
+//---------------------------------------------------------------------
+        Food a[]={duck,hamster2,duck3,hamster17,hamster18,hamster19};
+        ArraySort testF =new ArraySort(new  Food[]{duck},6);
+        System.out.println("before " + Arrays.toString(a) );
+        testF.sort(a);
+        System.out.println("after " + Arrays.deepToString(a));
 
 
 //---------------------------------------------------------------------

@@ -176,12 +176,23 @@ class Animal implements  FoodCompare, CompareWeight {
 //public String toString(), который возвращает информацию о животном в формате:
 //I am <AnimalKind>, eat <FoodKind>
 //-------------------------------------------------------------------------------
-    public String toString() {
+    /*public String toString() {
        // System.out.println("Animal var : I am " + animalKind + ", eat " + foodKind);
         ifNdef("Animal_func: I am " + getKind() + ", eat " + getFoodKind());
+
+
         return "I am " + getKind() + ", eat " + getFoodKind() ;
 
-    }
+    }*/
+//----------------------------------------------------------------------
+/*public String toString() {
+    final StringBuffer sb = new StringBuffer("animal{");
+    sb.append("kind=").append(getKind());
+    sb.append(", weight=").append(weight);
+    sb.append(", food='").append(getFoodKind()).append('\'');
+    sb.append('}');
+    return sb.toString();
+}*/
 
     //------------------------------------------------------------------------------
 // 2.1 В классе Animal реализовать метод:
@@ -424,6 +435,17 @@ public int compare(House h1, House h2) {
         if (Double.compare(this.getWeight(), smthHasWeigt.getWeight())==-1) return CompareResult.LESS;
         else return CompareResult.LESS;
     }
+//---------------------out all param------------------------------------------------
+@Override
+public String toString() {
+    final StringBuffer sb = new StringBuffer("animal{");
+    sb.append("kind=").append(getKind());
+    sb.append(", weight=").append(weight);
+    sb.append(", food='").append(getFoodKind()).append('\'');
+    sb.append('}');
+    return sb.toString();
+}
+//---------------------------------------------------------------------
 //-----------------------------------------------------------------------------
     int outPut=0;
     public void ifNdef(String str)

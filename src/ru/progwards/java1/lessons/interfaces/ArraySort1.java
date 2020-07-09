@@ -101,10 +101,10 @@ public class ArraySort1 implements CompareWeight{
 //---------------------------------------------------------------------
         Food a[]={duck,hamster2,duck3,hamster17,hamster18,hamster19};
         ArraySort1 testF =new ArraySort1(new  Food[]{duck},6);
-        System.out.println("print arrayInt after filling " + Arrays.toString(a) );
-
-        System.out.println("print arrayInt after filling " + Arrays.deepToString(a));
+        System.out.println("before " + Arrays.toString(a) );
         testF.sort(a);
+        System.out.println("after " + Arrays.deepToString(a));
+
 
 //---------------------------------------------------------------------
 

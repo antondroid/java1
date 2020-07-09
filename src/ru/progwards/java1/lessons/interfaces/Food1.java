@@ -7,12 +7,12 @@ import java.util.Arrays;
 3.6 В классе Food разместить приватную переменную int weight - вес еды в граммах,
 реализовать в классе конструктор, принимающий и устанавливающий значение веса.
  */
-public class Food implements CompareWeight
+public class Food1 implements CompareWeight
 {
     //private static String name=("zero ");
     private int weight;
 
-    Food(int weight)
+    Food1(int weight)
     {
         //this.name = name;
         this.weight=weight;
@@ -67,12 +67,12 @@ public class Food implements CompareWeight
     }
     //--------------------------------------------------------------
     public static void main(String[] args) {
-        Food duck = new Food(3000);
-        Food hamster2 = new Food(2000);
-        Food duck3 = new Food(3000);
-        Food hamster17 = new Food(1700);
-        Food hamster18 = new Food(1800);
-        Food hamster19 = new Food(1900);
+        Food1 duck = new Food1(3000);
+        Food1 hamster2 = new Food1(2000);
+        Food1 duck3 = new Food1(3000);
+        Food1 hamster17 = new Food1(1700);
+        Food1 hamster18 = new Food1(1800);
+        Food1 hamster19 = new Food1(1900);
 
 
         System.out.println("  "+duck.compareWeight(duck3));
@@ -85,8 +85,8 @@ public class Food implements CompareWeight
         /*ArraySort testF =new ArraySort(new int[]{1},6);
         testF.sort(new int[]{1800,duck,hamster2,duck3,hamster17,hamster18,hamster19});*/
 //----------------------------sort by Food-----------------------------------------------
-       Food a[]={duck,hamster2,duck3,hamster17,hamster18,hamster19};
-        ArraySort1 testF =new ArraySort1(new Food[]{duck},6);
+       Food1 a[]={duck,hamster2,duck3,hamster17,hamster18,hamster19};
+        ArraySort1 testF =new ArraySort1(new Food1[]{duck},6);
         System.out.println("before sort " + Arrays.toString(a) );
         testF.sort(a);
         System.out.println("after sort" + Arrays.deepToString(a));

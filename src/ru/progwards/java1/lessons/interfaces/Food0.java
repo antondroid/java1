@@ -7,14 +7,11 @@ import java.util.Arrays;
 3.6 В классе Food разместить приватную переменную int weight - вес еды в граммах,
 реализовать в классе конструктор, принимающий и устанавливающий значение веса.
  */
-public class Food implements CompareWeight
+public class Food0 implements CompareWeight
 {
-    //private static String name=("zero ");
     private int weight;
-
-    Food(int weight)
+    Food0(int weight)
     {
-        //this.name = name;
         this.weight=weight;
     }
 
@@ -36,8 +33,7 @@ public class Food implements CompareWeight
     @Override
     public String toString() {
         //return getClass().getSimpleName() + "[name="  + "]";
-        return "wgt= " + weight + " ";
-        //return getClass().getSimpleName() + "[ weight = " + weight + " ]";
+        return getClass().getSimpleName() + "[name = "  +  ", weight = " + weight + ", color = "  + "]";
     }
 //---------------------------------------------------------------------
 /*class Person {
@@ -67,12 +63,12 @@ public class Food implements CompareWeight
     }
     //--------------------------------------------------------------
     public static void main(String[] args) {
-        Food duck = new Food(3000);
-        Food hamster2 = new Food(2000);
-        Food duck3 = new Food(3000);
-        Food hamster17 = new Food(1700);
-        Food hamster18 = new Food(1800);
-        Food hamster19 = new Food(1900);
+        Food0 duck = new Food0(3000);
+        Food0 hamster2 = new Food0(2000);
+        Food0 duck3 = new Food0(3000);
+        Food0 hamster17 = new Food0(1700);
+        Food0 hamster18 = new Food0(1800);
+        Food0 hamster19 = new Food0(1900);
 
 
         System.out.println("  "+duck.compareWeight(duck3));
@@ -81,17 +77,17 @@ public class Food implements CompareWeight
         System.out.println("  "+hamster2.compareWeight(hamster18));
         System.out.println("  "+hamster17.compareWeight(hamster18));
         //--------------------sort-by int (original )----------------------------------
-        //Food1 testD=new Food1(testD,3000);
+        Food0 testD=new Food0(1700);
         /*ArraySort testF =new ArraySort(new int[]{1},6);
         testF.sort(new int[]{1800,duck,hamster2,duck3,hamster17,hamster18,hamster19});*/
 //----------------------------sort by Food-----------------------------------------------
-       Food a[]={duck,hamster2,duck3,hamster17,hamster18,hamster19};
-        ArraySort1 testF =new ArraySort1(new Food[]{duck},6);
-        System.out.println("before sort " + Arrays.toString(a) );
-        testF.sort(a);
-        System.out.println("after sort" + Arrays.deepToString(a));
-        //System.out.println("print arrayInt after filling " + duck);
+       Food0 a[]={duck,hamster2,duck3,hamster17,hamster18,hamster19};
+        ArraySort1 testF =new ArraySort1(new Food0[]{duck},6);
+        System.out.println("print arrayInt after filling " + Arrays.toString(a) );
 
+        System.out.println("print arrayInt after filling " + Arrays.deepToString(a));
+        System.out.println("print arrayInt after filling " + duck);
+        testF.sort(a);
        //testF.sort(new Food[]{duck,hamster2,duck3,hamster17,hamster18,hamster19});
         //System.out.println("print arrayInt after filling " + Arrays.toString(a));
     }
