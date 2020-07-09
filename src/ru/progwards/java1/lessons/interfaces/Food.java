@@ -30,12 +30,27 @@ public class Food implements CompareWeight
     public double getWeight() {
         return weight;
     }
-    /*@Override
+    @Override
     public String toString() {
         return getClass().getSimpleName() + "[name="  + "]";
+    }
+//---------------------------------------------------------------------
+/*class Person {
 
-    }*/
+    private String name;
 
+    public Person(String name){
+
+        this.name=name;
+    }
+
+    @Override
+    public String toString(){
+
+        return "Person " + name;
+    }  */
+
+//----------------------------------------------------------------------
     //--------------------------------------------------------------
     int outPut=0;
     public void ifNdef(String str)
@@ -67,7 +82,9 @@ public class Food implements CompareWeight
 //----------------------------sort by Food-----------------------------------------------
        Food a[]={duck,hamster2,duck3,hamster17,hamster18,hamster19};
         ArraySort1 testF =new ArraySort1(new  Food[]{duck},6);
-       // System.out.println("print arrayInt after filling " + Arrays.toString(a));
+        System.out.println("print arrayInt after filling " + Arrays.toString(a) );
+
+        System.out.println("print arrayInt after filling " + Arrays.deepToString(a));
        testF.sort(a);
        //testF.sort(new Food[]{duck,hamster2,duck3,hamster17,hamster18,hamster19});
         //System.out.println("print arrayInt after filling " + Arrays.toString(a));

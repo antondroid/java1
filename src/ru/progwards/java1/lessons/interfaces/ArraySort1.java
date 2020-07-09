@@ -54,15 +54,15 @@ public class ArraySort1 implements CompareWeight{
         //System.out.println("print arrayInt after filling " + Arrays.toString(a));
         //----------------------------------------------end of create array-------------------------------------
         i = 0;
-        Food x;
-        Food y;
+       CompareWeight x;
+        CompareWeight y;
         while (i < N)
             {
             int j = i+1;
             while (j < N)
                 {
-                    x = (Food) a[i];
-                    y = (Food) a[j];
+                    x = a[i];
+                    y = a[j];
                     //if (y < x)
                     if (y.compareWeight(x)==CompareResult.LESS)
                     {
@@ -88,8 +88,23 @@ public class ArraySort1 implements CompareWeight{
 
        /* ArraySort1 testD=new ArraySort1(new Food[]{duck},6); //these parameter not mentioned it'just for took place
         testD.sort(new CompareWeight[]{du,-3,2,9,7,-5});  //input array modelling*/
-//---------------------------------------------------------------------
 
+//---------------------------------------------------------------------
+        Food duck = new Food(3000);
+        Food hamster2 = new Food(2000);
+        Food duck3 = new Food(3000);
+        Food hamster17 = new Food(1700);
+        Food hamster18 = new Food(1800);
+        Food hamster19 = new Food(1900);
+
+
+//---------------------------------------------------------------------
+        Food a[]={duck,hamster2,duck3,hamster17,hamster18,hamster19};
+        ArraySort1 testF =new ArraySort1(new  Food[]{duck},6);
+        System.out.println("print arrayInt after filling " + Arrays.toString(a) );
+
+        System.out.println("print arrayInt after filling " + Arrays.deepToString(a));
+        testF.sort(a);
 
 //---------------------------------------------------------------------
 
