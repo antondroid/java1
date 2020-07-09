@@ -17,26 +17,18 @@ public static void sort(int[] a), по следующему алгоритму:
 8. Обобщая, алгоритм звучит следующим образом - сделать 2 вложенных цикла,
  внешний по i и внутренний по j. Внутренний цикл начинается от i+1,
   и если a[i] > a[j], то нужно поменять элементы a[i] и a[j] местами.
- sort1-original
- sort0 - try to change to food type
-
  */
-
 public class ArraySort0 {
-    Food a[];
+    int a[];
     private static int N;
     ArraySort0(){}
     //ArraySort(int a[], int N)
-    ArraySort0(Food a[], int N)
+    ArraySort0(int a[], int N)
     {
     this.N=N;
     this.a=a;
     }
-
-    public ArraySort0(int[] ints, int n) {
-    }
-
-    public static void sort(Food[] a) {
+    public static void sort(int[] a) {
         System.out.println("print arrayInt after input                     " + Arrays.toString(a));
         //-----------------------------------------------------------------------------------
         //a = new int[N];
@@ -54,8 +46,7 @@ public class ArraySort0 {
         System.out.println("print arrayInt after filling " + Arrays.toString(a));
         //----------------------------------------------end of create array-------------------------------------
         i = 0;
-        Food x;
-        Food y;
+        int x,y;
         while (i < N)
             {
             int j = i+1;
@@ -63,8 +54,7 @@ public class ArraySort0 {
                 {
                     x = a[i];
                     y = a[j];
-                    //if (y < x)
-                   // if (Food.compare(y, x)==-1)
+                    if (y < x)
                     {
                         a[i] = y;
                         a[j] = x;
@@ -78,8 +68,8 @@ public class ArraySort0 {
     public static void main(String[] args) {
        // int a[]=new int[]{1};     //this is transfer array from main to method sort (if uncommented)
 
-        //ArraySort0 testD=new ArraySort0(new int[]{1},6); //these parameter not mentioned it'just for took place
-        //testD.sort(new int[]{1,-3,2,9,7,-5});  //input array modelling
+        ArraySort0 testD=new ArraySort0(new int[]{1},6); //these parameter not mentioned it'just for took place
+        testD.sort(new int[]{1,-3,2,9,7,-5});  //input array modelling
 
 
     }

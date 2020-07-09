@@ -2,7 +2,6 @@ package ru.progwards.java1.lessons.interfaces;
 
 
 
-import java.util.Arrays;
 import java.util.Objects;
 
 /*
@@ -426,7 +425,7 @@ public int compare(House h1, House h2) {
         else return CompareResult.LESS;
     }
 //-----------------------------------------------------------------------------
-    int outPut=0;
+    //int outPut=1;
     public void ifNdef(String str)
     {
         if ((outPut==1))

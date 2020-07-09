@@ -7,22 +7,25 @@ import java.util.Arrays;
 3.6 В классе Food разместить приватную переменную int weight - вес еды в граммах,
 реализовать в классе конструктор, принимающий и устанавливающий значение веса.
  */
-public class Food implements CompareWeight{
-    private int weightg;
-    Food(int weightg)
+public class Food implements CompareWeight
+{
+    private int weight;
+    Food(int weight)
     {
-        this.weightg=weightg;
+        this.weight=weight;
     }
     @Override
     public CompareResult compareWeight(CompareWeight smthHasWeigt) {
         if (Double.compare(this.getWeight(), smthHasWeigt.getWeight())==1) return CompareResult.GREATER;
         if (Double.compare(this.getWeight(), smthHasWeigt.getWeight())==0) return CompareResult.EQUAL;
-        if (Double.compare(this.getWeight(), smthHasWeigt.getWeight())==-1) return CompareResult.LESS;
         else return CompareResult.LESS;
-        //return null;
     }
     public double getWeight() {
-        return weightg;
+        return weight;
+    }
+    @Override
+    public String toString() {
+        return getClass().getSimpleName() + "[name="  + "]";
     }
     //--------------------------------------------------------------
 
@@ -45,13 +48,29 @@ public class Food implements CompareWeight{
         /*ArraySort testF =new ArraySort(new int[]{1},6);
         testF.sort(new int[]{1800,duck,hamster2,duck3,hamster17,hamster18,hamster19});*/
 //----------------------------sort by Food-----------------------------------------------
-        ArraySort0 testF =new ArraySort0(new Food[]{duck},6);
-        testF.sort(new Food[]{duck,hamster2,duck3,hamster17,hamster18,hamster19});
+       Food a[]={duck,hamster2,duck3,hamster17,hamster18,hamster19};
+        ArraySort1 testF =new ArraySort1(new  Food[]{duck},6);
+        System.out.println("print arrayInt after filling " + Arrays.toString(a));
+       testF.sort(a);
+       //testF.sort(new Food[]{duck,hamster2,duck3,hamster17,hamster18,hamster19});
+        System.out.println("print arrayInt after filling " + Arrays.toString(a));
     }
+
+   /* @Override
+    public CompareResult compareWeight(CompareWeight smthHasWeigt) {
+        return null;
+    }
+    @Override
+    public double getWeight() {
+        return 0;
+    }*/
 }
 /*
 3.7 Реализовать метод
 public int getWeight(), возвращающий сохраненное значение веса.
 3.7 Для класса Food реализовать интерфейс CompareWeight..
 Сравнение сделать на основе веса еды.
+
+
+public static void sort(CompareWeight [] a)
  */

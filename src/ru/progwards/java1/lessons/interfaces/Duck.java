@@ -10,7 +10,7 @@ package ru.progwards.java1.lessons.interfaces;
 public double getFoodCoeff(), который должен возвращать 0.04
 //----------------------------------------------------------------------------
  */
-public class Duck extends Animal implements FoodCompare
+public class Duck extends Animal
 {
     double weight;
    // AnimalKind animalKind = AnimalKind.DUCK;
@@ -65,10 +65,10 @@ public double getFoodCoeff() {
     }
     public static void main(String[] args)
     {
-        //outPut=1;
+        int outPut=1;
         Duck duck = new Duck(3);
         Hamster hamster = new Hamster(4);
         duck.compareFoodPrice(hamster);
-        duck.ifNdef("    duck.compareFoodPrice(hamster)           " + duck.compareFoodPrice(hamster));
+        System.out.println("    duck.compareFoodPrice(hamster)           " + duck.compareFoodPrice(hamster));
     }
 }
